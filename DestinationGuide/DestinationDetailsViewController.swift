@@ -12,7 +12,7 @@ class DestinationDetailsController: UIViewController {
         super.init(nibName: nil, bundle: nil)
     }
 
-    @available(*, unavailable)  required init?(coder _: NSCoder) {
+    @available(*, unavailable) required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
@@ -65,9 +65,6 @@ class DestinationDetailsController: UIViewController {
 }
 
 // MARK: - WKNavigationDelegate extension
-
-// MARK: - WKWebView delegate
-
 extension DestinationDetailsController: WKNavigationDelegate {
     func showActivityIndicator(show: Bool) {
         if show {
