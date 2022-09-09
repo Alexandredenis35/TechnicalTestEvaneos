@@ -1,5 +1,6 @@
 import Foundation
+import RxSwift
 
 protocol DestinationsRepositoryProtocol {
-    func getDestinations() async -> Result<Set<Destination>, DestinationFetchingServiceError>
+    func getDestinations() -> Single<[Destination]>
 }

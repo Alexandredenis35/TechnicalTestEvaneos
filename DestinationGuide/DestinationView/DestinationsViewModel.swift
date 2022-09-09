@@ -12,5 +12,7 @@ class DestinationsViewModel: DestinationsViewModelProtocol {
         self.useCase = useCase
     }
 
-    func fetchDestinations() async {}
+    func fetchDestinations() {
+        useCase
+    }
 }
