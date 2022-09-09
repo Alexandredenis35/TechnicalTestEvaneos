@@ -1,7 +1,7 @@
 import UIKit
 import WebKit
 
-class DestinationDetailsViewController: UIViewController {
+final class DestinationDetailsViewController: UIViewController {
     @IBOutlet private var webView: WKWebView!
     @IBOutlet private var loaderIndicator: UIActivityIndicatorView!
 

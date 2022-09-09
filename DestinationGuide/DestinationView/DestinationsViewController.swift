@@ -2,9 +2,10 @@ import RxCocoa
 import RxSwift
 import UIKit
 
-class DestinationsViewController: UIViewController {
+final class DestinationsViewController: UIViewController {
     private enum Constant {
         static let destinationCellIdentifier = "DestinationCollectionViewCell"
+        static let headerViewIdentifier = "SectionHeaderView"
     }
 
     @IBOutlet private var destinationsCollectionView: UICollectionView!
@@ -24,9 +25,19 @@ class DestinationsViewController: UIViewController {
         super.viewDidLoad()
         setupCollectionView()
         viewModel?.fetchDestinations()
-        viewModel?.destinationsRelay.observe(on: MainScheduler.instance)
+        viewModel?.needToShowLoader
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] needToShowLoader in
+                if needToShowLoader {
+                    self?.showLoader()
+                } else {
+                    self?.removeLoader()
+                }
+            }).disposed(by: disposeBag)
+
+        viewModel?.destinationsRelay
+            .observe(on: MainScheduler.instance)
             .subscribe(onNext: { _ in
-                print("destinationsRelay => data received")
                 self.destinationsCollectionView.reloadData()
             }).disposed(by: disposeBag)
     }
@@ -37,13 +48,13 @@ class DestinationsViewController: UIViewController {
         destinationsCollectionView.translatesAutoresizingMaskIntoConstraints = false
         destinationsCollectionView.delegate = self
         destinationsCollectionView.register(
-            UINib(nibName: "DestinationCollectionViewCell", bundle: nil),
-            forCellWithReuseIdentifier: "DestinationCollectionViewCell"
+            UINib(nibName: Constant.destinationCellIdentifier, bundle: nil),
+            forCellWithReuseIdentifier: Constant.destinationCellIdentifier
         )
         destinationsCollectionView.register(
-            UINib(nibName: "SectionHeaderView", bundle: nil),
+            UINib(nibName: Constant.headerViewIdentifier, bundle: nil),
             forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-            withReuseIdentifier: "SectionHeaderView"
+            withReuseIdentifier: Constant.headerViewIdentifier
         )
     }
 }
@@ -103,7 +114,7 @@ extension DestinationsViewController: UICollectionViewDataSource {
         case UICollectionView.elementKindSectionHeader:
             guard let headerView = collectionView.dequeueReusableSupplementaryView(
                 ofKind: kind,
-                withReuseIdentifier: "SectionHeaderView",
+                withReuseIdentifier: Constant.headerViewIdentifier,
                 for: indexPath
             ) as? SectionHeaderView else {
                 return UICollectionReusableView()

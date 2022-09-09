@@ -8,7 +8,7 @@ protocol DestinationsViewModelProtocol: AnyObject {
     func fetchDestinationDetails(id: String)
 }
 
-class DestinationsViewModel: DestinationsViewModelProtocol {
+final class DestinationsViewModel: DestinationsViewModelProtocol {
     private enum Constant {
         static let errorTitle: String = "Erreur"
     }
@@ -18,6 +18,7 @@ class DestinationsViewModel: DestinationsViewModelProtocol {
     private let disposeBag: DisposeBag = .init()
 
     var destinationsRelay: BehaviorRelay<[Destination]> = .init(value: [])
+    var needToShowLoader: BehaviorRelay<Bool> = .init(value: true)
     weak var coordinator: AppCoordinator?
 
     init(
@@ -33,10 +34,13 @@ class DestinationsViewModel: DestinationsViewModelProtocol {
 
     func fetchDestinations() {
         destinationsUseCase.execute()
+            .do(onSubscribe: { [weak self] in self?.needToShowLoader.accept(true) })
             .observe(on: MainScheduler.instance)
             .subscribe(onSuccess: { [weak self] destinations in
                 self?.destinationsRelay.accept(destinations)
+                self?.needToShowLoader.accept(false)
             }, onFailure: { [weak self] error in
+                self?.needToShowLoader.accept(false)
                 self?.coordinator?.showAlert(
                     alertTitle: Constant.errorTitle,
                     alertMessage: error.localizedDescription
