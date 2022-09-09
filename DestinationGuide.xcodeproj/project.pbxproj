@@ -13,6 +13,11 @@
 		05626C1E28CB976F00AE96A4 /* DestinationCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05626C1C28CB976F00AE96A4 /* DestinationCollectionViewCell.xib */; };
 		05626C2528CBB45000AE96A4 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05626C2328CBB44F00AE96A4 /* SectionHeaderView.swift */; };
 		05626C2628CBB45000AE96A4 /* SectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05626C2428CBB44F00AE96A4 /* SectionHeaderView.xib */; };
+		05626C2F28CBB96C00AE96A4 /* DestinationsRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05626C2B28CBB96C00AE96A4 /* DestinationsRepositoryProtocol.swift */; };
+		05626C3028CBB96C00AE96A4 /* FetchDestinationsUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05626C2C28CBB96C00AE96A4 /* FetchDestinationsUseCaseProtocol.swift */; };
+		05626C3128CBB96C00AE96A4 /* FetchDestinationsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05626C2D28CBB96C00AE96A4 /* FetchDestinationsUseCase.swift */; };
+		05626C3228CBB96C00AE96A4 /* DestinationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05626C2E28CBB96C00AE96A4 /* DestinationsViewModel.swift */; };
+		05626C3428CBB99200AE96A4 /* DestinationsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05626C3328CBB99200AE96A4 /* DestinationsRepository.swift */; };
 		E710FABC2885AB4000326EEF /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E710FABB2885AB4000326EEF /* Fonts.swift */; };
 		E710FAC52885AF2E00326EEF /* DestinationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E710FAC42885AF2E00326EEF /* DestinationDetailsViewController.swift */; };
 		E7878C1D26BACE2400CF1DB8 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7878C1C26BACE2400CF1DB8 /* Styles.swift */; };
@@ -57,6 +62,11 @@
 		05626C1C28CB976F00AE96A4 /* DestinationCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DestinationCollectionViewCell.xib; sourceTree = "<group>"; };
 		05626C2328CBB44F00AE96A4 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		05626C2428CBB44F00AE96A4 /* SectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SectionHeaderView.xib; sourceTree = "<group>"; };
+		05626C2B28CBB96C00AE96A4 /* DestinationsRepositoryProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DestinationsRepositoryProtocol.swift; sourceTree = "<group>"; };
+		05626C2C28CBB96C00AE96A4 /* FetchDestinationsUseCaseProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchDestinationsUseCaseProtocol.swift; sourceTree = "<group>"; };
+		05626C2D28CBB96C00AE96A4 /* FetchDestinationsUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchDestinationsUseCase.swift; sourceTree = "<group>"; };
+		05626C2E28CBB96C00AE96A4 /* DestinationsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DestinationsViewModel.swift; sourceTree = "<group>"; };
+		05626C3328CBB99200AE96A4 /* DestinationsRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DestinationsRepository.swift; sourceTree = "<group>"; };
 		E710FABB2885AB4000326EEF /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		E710FAC42885AF2E00326EEF /* DestinationDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationDetailsViewController.swift; sourceTree = "<group>"; };
 		E7878C1C26BACE2400CF1DB8 /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
@@ -132,6 +142,22 @@
 			path = SectionHeaderView;
 			sourceTree = "<group>";
 		};
+		05626C2A28CBB88400AE96A4 /* DestinationView */ = {
+			isa = PBXGroup;
+			children = (
+				05626C3328CBB99200AE96A4 /* DestinationsRepository.swift */,
+				05626C2B28CBB96C00AE96A4 /* DestinationsRepositoryProtocol.swift */,
+				05626C2E28CBB96C00AE96A4 /* DestinationsViewModel.swift */,
+				05626C2D28CBB96C00AE96A4 /* FetchDestinationsUseCase.swift */,
+				05626C2C28CBB96C00AE96A4 /* FetchDestinationsUseCaseProtocol.swift */,
+				05626C1628CB93B400AE96A4 /* DestinationsViewController.storyboard */,
+				E7AE6A8D26B81F4F0059FB12 /* DestinationsViewController.swift */,
+				05626C1F28CB977500AE96A4 /* Cell */,
+				05626C2228CBB41900AE96A4 /* SectionHeaderView */,
+			);
+			path = DestinationView;
+			sourceTree = "<group>";
+		};
 		E7878C1F26BACF3E00CF1DB8 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -185,12 +211,9 @@
 		E7AE6A8826B81F4F0059FB12 /* DestinationGuide */ = {
 			isa = PBXGroup;
 			children = (
+				05626C2A28CBB88400AE96A4 /* DestinationView */,
 				05626C1828CB95C300AE96A4 /* Extensions */,
-				05626C2228CBB41900AE96A4 /* SectionHeaderView */,
-				05626C1F28CB977500AE96A4 /* Cell */,
 				E7AE6A8926B81F4F0059FB12 /* AppDelegate.swift */,
-				E7AE6A8D26B81F4F0059FB12 /* DestinationsViewController.swift */,
-				05626C1628CB93B400AE96A4 /* DestinationsViewController.storyboard */,
 				E710FAC42885AF2E00326EEF /* DestinationDetailsViewController.swift */,
 				E7B8690A287C4701000D2C2C /* GradientView.swift */,
 				E7878C1C26BACE2400CF1DB8 /* Styles.swift */,
@@ -401,9 +424,14 @@
 			files = (
 				E794201726B83C0E0032C12E /* DestinationFetchingService.swift in Sources */,
 				E7878C1D26BACE2400CF1DB8 /* Styles.swift in Sources */,
+				05626C2F28CBB96C00AE96A4 /* DestinationsRepositoryProtocol.swift in Sources */,
+				05626C3028CBB96C00AE96A4 /* FetchDestinationsUseCaseProtocol.swift in Sources */,
+				05626C3128CBB96C00AE96A4 /* FetchDestinationsUseCase.swift in Sources */,
 				05626C2528CBB45000AE96A4 /* SectionHeaderView.swift in Sources */,
 				E7AE6A8E26B81F4F0059FB12 /* DestinationsViewController.swift in Sources */,
+				05626C3228CBB96C00AE96A4 /* DestinationsViewModel.swift in Sources */,
 				05626C1D28CB976F00AE96A4 /* DestinationCollectionViewCell.swift in Sources */,
+				05626C3428CBB99200AE96A4 /* DestinationsRepository.swift in Sources */,
 				E794201A26B853F10032C12E /* Destination.swift in Sources */,
 				05626C1A28CB95EA00AE96A4 /* Storyboard+Instantiation.swift in Sources */,
 				E7AE6A8A26B81F4F0059FB12 /* AppDelegate.swift in Sources */,

@@ -78,6 +78,7 @@ class DestinationCollectionViewCell: UICollectionViewCell {
 //
 // var dataTask: URLSessionDataTask?
 //
+
 // MARK: - Components
 //
 // let labelDestination: UILabel = {
@@ -131,6 +132,7 @@ class DestinationCollectionViewCell: UICollectionViewCell {
 // return gradientView
 // }()
 //
+
 // MARK: - Init
 //
 // override init(frame: CGRect) {
@@ -155,6 +157,7 @@ class DestinationCollectionViewCell: UICollectionViewCell {
 // fatalError("init(coder:) has not been implemented")
 // }
 //
+
 // MARK: - Override func
 //
 // override func prepareForReuse() {
@@ -182,6 +185,7 @@ class DestinationCollectionViewCell: UICollectionViewCell {
 // self.dataTask?.resume()
 // }
 //
+
 // MARK: - Function
 //
 // func setupCell(destination: Destination) {
