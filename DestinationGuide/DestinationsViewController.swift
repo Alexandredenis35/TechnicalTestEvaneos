@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DestinationsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class DestinationsViewController: UIViewController {
     
     @IBOutlet private var destinationsCollectionView: UICollectionView!
     
@@ -24,9 +24,7 @@ class DestinationsViewController: UIViewController, UICollectionViewDataSource, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupCollectionView()
-        
         DestinationFetchingService().getDestinations { destinations in
             self.array = Array(try! destinations.get()).sorted(by: { $0.name < $1.name })
             
@@ -45,9 +43,26 @@ class DestinationsViewController: UIViewController, UICollectionViewDataSource, 
             UINib(nibName: "DestinationCollectionViewCell", bundle: nil),
             forCellWithReuseIdentifier: "MyCell"
         )
-        destinationsCollectionView.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "SectionHeader")
+        destinationsCollectionView.register(UINib(nibName: "SectionHeaderView", bundle: nil),
+                                            forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "SectionHeaderView")
     }
     
+}
+
+extension DestinationsViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        
+        // Get the view for the first header
+        let indexPath = IndexPath(row: 0, section: section)
+        let headerView = self.collectionView(collectionView, viewForSupplementaryElementOfKind: UICollectionView.elementKindSectionHeader, at: indexPath)
+        
+        // Use this view to calculate the optimal size based on the collection view's width
+        return headerView.systemLayoutSizeFitting(CGSize(width: collectionView.frame.width, height: UIView.layoutFittingExpandedSize.height),
+                                                  withHorizontalFittingPriority: .required, // Width is fixed
+                                                  verticalFittingPriority: .fittingSizeLevel) // Height can be as large as needed
+    }
+}
+extension DestinationsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if array != nil {
             return array.count
@@ -65,34 +80,23 @@ class DestinationsViewController: UIViewController, UICollectionViewDataSource, 
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        
-        
+    func collectionView(_ collectionView: UICollectionView,
+                        viewForSupplementaryElementOfKind kind: String,
+                        at indexPath: IndexPath) -> UICollectionReusableView {
         switch kind {
-            
         case UICollectionView.elementKindSectionHeader:
-            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SectionHeader", for: indexPath) as! SectionHeader
-            headerView.titleLabel.text = "Toutes nos destinations"
+            guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SectionHeaderView", for: indexPath) as? SectionHeaderView else {
+                return UICollectionReusableView()
+            }
+            headerView.setup(titleLabel: "Toutes nos destinations")
             return headerView
-            
         default:
-            
-            assert(false, "Unexpected element kind")
+            return UICollectionReusableView()
         }
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        
-        // Get the view for the first header
-        let indexPath = IndexPath(row: 0, section: section)
-        let headerView = self.collectionView(collectionView, viewForSupplementaryElementOfKind: UICollectionView.elementKindSectionHeader, at: indexPath)
-        
-        // Use this view to calculate the optimal size based on the collection view's width
-        return headerView.systemLayoutSizeFitting(CGSize(width: collectionView.frame.width, height: UIView.layoutFittingExpandedSize.height),
-                                                  withHorizontalFittingPriority: .required, // Width is fixed
-                                                  verticalFittingPriority: .fittingSizeLevel) // Height can be as large as needed
-    }
-    
+}
+
+extension DestinationsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let desti = array[indexPath.item]
         
