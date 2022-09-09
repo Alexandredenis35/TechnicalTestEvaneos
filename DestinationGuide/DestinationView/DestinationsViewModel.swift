@@ -5,9 +5,10 @@ protocol DestinationsViewModelProtocol: AnyObject {
 }
 
 class DestinationsViewModel: DestinationsViewModelProtocol {
-    private let useCase: FetchDestinationsUseCaseProtocol
+    private let useCase: FetchDestinationsUseCaseProtocol?
+    var destinations: [Destination] = []
 
-    init(useCase: FetchDestinationsUseCaseProtocol) {
+    init(useCase: FetchDestinationsUseCaseProtocol? = nil) {
         self.useCase = useCase
     }
 

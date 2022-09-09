@@ -18,6 +18,9 @@
 		05626C3128CBB96C00AE96A4 /* FetchDestinationsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05626C2D28CBB96C00AE96A4 /* FetchDestinationsUseCase.swift */; };
 		05626C3228CBB96C00AE96A4 /* DestinationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05626C2E28CBB96C00AE96A4 /* DestinationsViewModel.swift */; };
 		05626C3428CBB99200AE96A4 /* DestinationsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05626C3328CBB99200AE96A4 /* DestinationsRepository.swift */; };
+		05626C3728CBBBFC00AE96A4 /* DestinationDetailsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05626C3628CBBBFC00AE96A4 /* DestinationDetailsViewController.storyboard */; };
+		05C3EBAA28CBBD990068597C /* DestinationDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3EBA928CBBD990068597C /* DestinationDetailsViewModel.swift */; };
+		05C3EBAC28CBBFE00068597C /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3EBAB28CBBFE00068597C /* AppCoordinator.swift */; };
 		E710FABC2885AB4000326EEF /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E710FABB2885AB4000326EEF /* Fonts.swift */; };
 		E710FAC52885AF2E00326EEF /* DestinationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E710FAC42885AF2E00326EEF /* DestinationDetailsViewController.swift */; };
 		E7878C1D26BACE2400CF1DB8 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7878C1C26BACE2400CF1DB8 /* Styles.swift */; };
@@ -67,6 +70,9 @@
 		05626C2D28CBB96C00AE96A4 /* FetchDestinationsUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchDestinationsUseCase.swift; sourceTree = "<group>"; };
 		05626C2E28CBB96C00AE96A4 /* DestinationsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DestinationsViewModel.swift; sourceTree = "<group>"; };
 		05626C3328CBB99200AE96A4 /* DestinationsRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DestinationsRepository.swift; sourceTree = "<group>"; };
+		05626C3628CBBBFC00AE96A4 /* DestinationDetailsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DestinationDetailsViewController.storyboard; sourceTree = "<group>"; };
+		05C3EBA928CBBD990068597C /* DestinationDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationDetailsViewModel.swift; sourceTree = "<group>"; };
+		05C3EBAB28CBBFE00068597C /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		E710FABB2885AB4000326EEF /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		E710FAC42885AF2E00326EEF /* DestinationDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationDetailsViewController.swift; sourceTree = "<group>"; };
 		E7878C1C26BACE2400CF1DB8 /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
@@ -158,6 +164,16 @@
 			path = DestinationView;
 			sourceTree = "<group>";
 		};
+		05626C3528CBBBBE00AE96A4 /* DestinationDetailsView */ = {
+			isa = PBXGroup;
+			children = (
+				E710FAC42885AF2E00326EEF /* DestinationDetailsViewController.swift */,
+				05626C3628CBBBFC00AE96A4 /* DestinationDetailsViewController.storyboard */,
+				05C3EBA928CBBD990068597C /* DestinationDetailsViewModel.swift */,
+			);
+			path = DestinationDetailsView;
+			sourceTree = "<group>";
+		};
 		E7878C1F26BACF3E00CF1DB8 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -211,10 +227,11 @@
 		E7AE6A8826B81F4F0059FB12 /* DestinationGuide */ = {
 			isa = PBXGroup;
 			children = (
+				E7AE6A8926B81F4F0059FB12 /* AppDelegate.swift */,
+				05C3EBAB28CBBFE00068597C /* AppCoordinator.swift */,
+				05626C3528CBBBBE00AE96A4 /* DestinationDetailsView */,
 				05626C2A28CBB88400AE96A4 /* DestinationView */,
 				05626C1828CB95C300AE96A4 /* Extensions */,
-				E7AE6A8926B81F4F0059FB12 /* AppDelegate.swift */,
-				E710FAC42885AF2E00326EEF /* DestinationDetailsViewController.swift */,
 				E7B8690A287C4701000D2C2C /* GradientView.swift */,
 				E7878C1C26BACE2400CF1DB8 /* Styles.swift */,
 				E7878C1F26BACF3E00CF1DB8 /* Fonts */,
@@ -354,6 +371,7 @@
 				05626C1E28CB976F00AE96A4 /* DestinationCollectionViewCell.xib in Resources */,
 				E7AE6A9326B81F510059FB12 /* Assets.xcassets in Resources */,
 				05626C1728CB93B400AE96A4 /* DestinationsViewController.storyboard in Resources */,
+				05626C3728CBBBFC00AE96A4 /* DestinationDetailsViewController.storyboard in Resources */,
 				E7878C2826BACF3E00CF1DB8 /* Averta-Bold.otf in Resources */,
 				E7878C2526BACF3E00CF1DB8 /* Averta-Light.otf in Resources */,
 				05626C2628CBB45000AE96A4 /* SectionHeaderView.xib in Resources */,
@@ -430,12 +448,14 @@
 				05626C2528CBB45000AE96A4 /* SectionHeaderView.swift in Sources */,
 				E7AE6A8E26B81F4F0059FB12 /* DestinationsViewController.swift in Sources */,
 				05626C3228CBB96C00AE96A4 /* DestinationsViewModel.swift in Sources */,
+				05C3EBAA28CBBD990068597C /* DestinationDetailsViewModel.swift in Sources */,
 				05626C1D28CB976F00AE96A4 /* DestinationCollectionViewCell.swift in Sources */,
 				05626C3428CBB99200AE96A4 /* DestinationsRepository.swift in Sources */,
 				E794201A26B853F10032C12E /* Destination.swift in Sources */,
 				05626C1A28CB95EA00AE96A4 /* Storyboard+Instantiation.swift in Sources */,
 				E7AE6A8A26B81F4F0059FB12 /* AppDelegate.swift in Sources */,
 				E7B8690B287C4701000D2C2C /* GradientView.swift in Sources */,
+				05C3EBAC28CBBFE00068597C /* AppCoordinator.swift in Sources */,
 				E710FABC2885AB4000326EEF /* Fonts.swift in Sources */,
 				E710FAC52885AF2E00326EEF /* DestinationDetailsViewController.swift in Sources */,
 				E794201C26B854040032C12E /* DestinationDetails.swift in Sources */,

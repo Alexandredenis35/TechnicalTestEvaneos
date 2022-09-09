@@ -3,7 +3,8 @@ import UIKit
 class DestinationsViewController: UIViewController {
     @IBOutlet private var destinationsCollectionView: UICollectionView!
 
-    var array: [Destination]!
+    weak var coordinator: AppCoordinator?
+    var viewModel: DestinationsViewModel?
 
     lazy var collectionViewLayout: UICollectionViewLayout = {
         let layout = UICollectionViewFlowLayout()
@@ -17,7 +18,7 @@ class DestinationsViewController: UIViewController {
         super.viewDidLoad()
         setupCollectionView()
         DestinationFetchingService().getDestinations { destinations in
-            self.array = Array(try! destinations.get()).sorted(by: { $0.name < $1.name })
+            self.viewModel?.destinations = Array(try! destinations.get()).sorted(by: { $0.name < $1.name })
 
             DispatchQueue.main.async {
                 self.destinationsCollectionView.reloadData()
@@ -69,20 +70,16 @@ extension DestinationsViewController: UICollectionViewDelegateFlowLayout {
 // MARK: - UICollectionViewDataSource extension
 extension DestinationsViewController: UICollectionViewDataSource {
     func collectionView(_: UICollectionView, numberOfItemsInSection _: Int) -> Int {
-        if array != nil {
-            return array.count
-        }
-
-        return 0
+        return viewModel?.destinations.count ?? 0
     }
 
     func collectionView(
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
-        let desti = array[indexPath.item]
-        guard let cell = collectionView
-            .dequeueReusableCell(withReuseIdentifier: "MyCell", for: indexPath) as? DestinationCollectionViewCell else {
+        guard let desti = viewModel?.destinations[indexPath.item],
+              let cell = collectionView
+                  .dequeueReusableCell(withReuseIdentifier: "MyCell", for: indexPath) as? DestinationCollectionViewCell else {
             return UICollectionViewCell()
         }
         cell.setupCell(destination: desti)
@@ -114,16 +111,16 @@ extension DestinationsViewController: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate extension
 extension DestinationsViewController: UICollectionViewDelegate {
     func collectionView(_: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let desti = array[indexPath.item]
+        guard let desti = viewModel?.destinations[indexPath.item] else {
+            return
+        }
 
-        DestinationFetchingService().getDestinationDetails(for: desti.id) { result in
+        DestinationFetchingService().getDestinationDetails(for: desti.id) { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
                 case let .success(details):
-                    self.navigationController?.pushViewController(
-                        DestinationDetailsController(title: details.name, webviewUrl: details.url),
-                        animated: true
-                    )
+                    print("coordinator => \(self?.coordinator)")
+                    self?.coordinator?.goToDetails(name: desti.name, webViewURL: details.url)
                 case let .failure(error):
                     let alert = UIAlertController(
                         title: "Erreur",
@@ -132,7 +129,7 @@ extension DestinationsViewController: UICollectionViewDelegate {
                     )
                     alert.addAction(UIAlertAction(title: "Annuler", style: .cancel))
 
-                    self.present(alert, animated: true)
+                    self?.present(alert, animated: true)
                 }
             }
         }
