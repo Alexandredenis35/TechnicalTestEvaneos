@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		05626C1728CB93B400AE96A4 /* DestinationsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05626C1628CB93B400AE96A4 /* DestinationsViewController.storyboard */; };
 		05626C1A28CB95EA00AE96A4 /* Storyboard+Instantiation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05626C1928CB95EA00AE96A4 /* Storyboard+Instantiation.swift */; };
+		05626C1D28CB976F00AE96A4 /* DestinationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05626C1B28CB976F00AE96A4 /* DestinationCollectionViewCell.swift */; };
+		05626C1E28CB976F00AE96A4 /* DestinationCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05626C1C28CB976F00AE96A4 /* DestinationCollectionViewCell.xib */; };
+		05626C2128CB98C100AE96A4 /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05626C2028CB98C100AE96A4 /* SectionHeader.swift */; };
 		E710FABC2885AB4000326EEF /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E710FABB2885AB4000326EEF /* Fonts.swift */; };
 		E710FAC52885AF2E00326EEF /* DestinationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E710FAC42885AF2E00326EEF /* DestinationDetailsViewController.swift */; };
 		E7878C1D26BACE2400CF1DB8 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7878C1C26BACE2400CF1DB8 /* Styles.swift */; };
@@ -49,6 +52,9 @@
 /* Begin PBXFileReference section */
 		05626C1628CB93B400AE96A4 /* DestinationsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DestinationsViewController.storyboard; sourceTree = "<group>"; };
 		05626C1928CB95EA00AE96A4 /* Storyboard+Instantiation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Storyboard+Instantiation.swift"; sourceTree = "<group>"; };
+		05626C1B28CB976F00AE96A4 /* DestinationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationCollectionViewCell.swift; sourceTree = "<group>"; };
+		05626C1C28CB976F00AE96A4 /* DestinationCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DestinationCollectionViewCell.xib; sourceTree = "<group>"; };
+		05626C2028CB98C100AE96A4 /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
 		E710FABB2885AB4000326EEF /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		E710FAC42885AF2E00326EEF /* DestinationDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationDetailsViewController.swift; sourceTree = "<group>"; };
 		E7878C1C26BACE2400CF1DB8 /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
@@ -106,6 +112,16 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		05626C1F28CB977500AE96A4 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				05626C1B28CB976F00AE96A4 /* DestinationCollectionViewCell.swift */,
+				05626C1C28CB976F00AE96A4 /* DestinationCollectionViewCell.xib */,
+				05626C2028CB98C100AE96A4 /* SectionHeader.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		E7878C1F26BACF3E00CF1DB8 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +175,7 @@
 		E7AE6A8826B81F4F0059FB12 /* DestinationGuide */ = {
 			isa = PBXGroup;
 			children = (
+				05626C1F28CB977500AE96A4 /* Cell */,
 				05626C1828CB95C300AE96A4 /* Extensions */,
 				E7AE6A8926B81F4F0059FB12 /* AppDelegate.swift */,
 				E7AE6A8D26B81F4F0059FB12 /* DestinationsViewController.swift */,
@@ -298,6 +315,7 @@
 			files = (
 				E7AE6A9626B81F510059FB12 /* LaunchScreen.storyboard in Resources */,
 				E7878C2926BACF3E00CF1DB8 /* Averta-Semibold.otf in Resources */,
+				05626C1E28CB976F00AE96A4 /* DestinationCollectionViewCell.xib in Resources */,
 				E7AE6A9326B81F510059FB12 /* Assets.xcassets in Resources */,
 				05626C1728CB93B400AE96A4 /* DestinationsViewController.storyboard in Resources */,
 				E7878C2826BACF3E00CF1DB8 /* Averta-Bold.otf in Resources */,
@@ -331,10 +349,12 @@
 				E794201726B83C0E0032C12E /* DestinationFetchingService.swift in Sources */,
 				E7878C1D26BACE2400CF1DB8 /* Styles.swift in Sources */,
 				E7AE6A8E26B81F4F0059FB12 /* DestinationsViewController.swift in Sources */,
+				05626C1D28CB976F00AE96A4 /* DestinationCollectionViewCell.swift in Sources */,
 				E794201A26B853F10032C12E /* Destination.swift in Sources */,
 				05626C1A28CB95EA00AE96A4 /* Storyboard+Instantiation.swift in Sources */,
 				E7AE6A8A26B81F4F0059FB12 /* AppDelegate.swift in Sources */,
 				E7B8690B287C4701000D2C2C /* GradientView.swift in Sources */,
+				05626C2128CB98C100AE96A4 /* SectionHeader.swift in Sources */,
 				E710FABC2885AB4000326EEF /* Fonts.swift in Sources */,
 				E710FAC52885AF2E00326EEF /* DestinationDetailsViewController.swift in Sources */,
 				E794201C26B854040032C12E /* DestinationDetails.swift in Sources */,
