@@ -122,9 +122,6 @@ extension DestinationsViewController: UICollectionViewDelegate {
         guard let selectedDestination = viewModel?.destinationsRelay.value[indexPath.item] else {
             return
         }
-        viewModel?.fetchDestinationDetails(
-            id: selectedDestination.id,
-            parentVC: self
-        )
+        viewModel?.fetchDestinationDetails(id: selectedDestination.id)
     }
 }

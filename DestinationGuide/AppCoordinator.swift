@@ -18,10 +18,8 @@ class AppCoordinator: Coordinator {
 
     func start() {
         let mainVC = DestinationsViewController.instantiate()
-        let destinationsUseCase =
-            FetchDestinationsUseCase(repository: DestinationsRepository(dataSource: DestinationFetchingService()))
-        let destinationDetailUseCase =
-            FetchDestinatioDetailsUseCase(repository: DestinationsRepository(dataSource: DestinationFetchingService()))
+        let destinationsUseCase = Resolver.shared.resolve(FetchDestinationsUseCaseProtocol.self)
+        let destinationDetailUseCase = Resolver.shared.resolve(FetchDestinationDetailsUseCaseProtocol.self)
         let viewModel = DestinationsViewModel(
             destinationsUseCase: destinationsUseCase,
             destinationDetailsUseCase: destinationDetailUseCase,
@@ -39,7 +37,6 @@ class AppCoordinator: Coordinator {
     }
 
     func showAlert(
-        parentVC: UIViewController,
         alertTitle: String,
         alertMessage: String
     ) {
@@ -49,7 +46,6 @@ class AppCoordinator: Coordinator {
             preferredStyle: .alert
         )
         alert.addAction(UIAlertAction(title: "Annuler", style: .cancel))
-
-        parentVC.present(alert, animated: true)
+        navigationController.viewControllers.last?.present(alert, animated: true)
     }
 }

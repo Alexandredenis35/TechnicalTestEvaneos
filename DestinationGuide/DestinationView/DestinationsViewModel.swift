@@ -5,15 +5,19 @@ import UIKit
 
 protocol DestinationsViewModelProtocol: AnyObject {
     func fetchDestinations()
-    func fetchDestinationDetails(id: String, parentVC: UIViewController)
+    func fetchDestinationDetails(id: String)
 }
 
 class DestinationsViewModel: DestinationsViewModelProtocol {
+    private enum Constant {
+        static let errorTitle: String = "Erreur"
+    }
+
     private let destinationsUseCase: FetchDestinationsUseCaseProtocol
     private let destinationDetailsUseCase: FetchDestinationDetailsUseCaseProtocol
     private let disposeBag: DisposeBag = .init()
-    var destinationsRelay: BehaviorRelay<[Destination]> = .init(value: [])
 
+    var destinationsRelay: BehaviorRelay<[Destination]> = .init(value: [])
     weak var coordinator: AppCoordinator?
 
     init(
@@ -32,28 +36,24 @@ class DestinationsViewModel: DestinationsViewModelProtocol {
             .observe(on: MainScheduler.instance)
             .subscribe(onSuccess: { [weak self] destinations in
                 self?.destinationsRelay.accept(destinations)
-            }, onFailure: { error in
-                guard let error = error as? DestinationFetchingServiceError else {
-                    return
-                }
-                // TODO: Handle Error case
+            }, onFailure: { [weak self] error in
+                self?.coordinator?.showAlert(
+                    alertTitle: Constant.errorTitle,
+                    alertMessage: error.localizedDescription
+                )
             }).disposed(by: disposeBag)
     }
 
-    func fetchDestinationDetails(id: String, parentVC: UIViewController) {
+    func fetchDestinationDetails(id: String) {
         destinationDetailsUseCase.execute(destinationID: id)
             .observe(on: MainScheduler.instance)
             .subscribe(onSuccess: { [weak self] destinationDetails in
-                print("destinationDetails => \(destinationDetails)")
                 self?.coordinator?.goToDetails(name: destinationDetails.name, webViewURL: destinationDetails.url)
-                // TODO: go to detailView
             }, onFailure: { [weak self] error in
                 self?.coordinator?.showAlert(
-                    parentVC: parentVC,
-                    alertTitle: "Erreur",
+                    alertTitle: Constant.errorTitle,
                     alertMessage: error.localizedDescription
                 )
-
             }).disposed(by: disposeBag)
     }
 }

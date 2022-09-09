@@ -25,6 +25,9 @@
 		05C3EBB928CBD2790068597C /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 05C3EBB828CBD2790068597C /* RxCocoa */; };
 		05C3EBBD28CBD82E0068597C /* FetchDestinationDetailsUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3EBBC28CBD82E0068597C /* FetchDestinationDetailsUseCaseProtocol.swift */; };
 		05C3EBBF28CBD8420068597C /* FetchDestinationDetailsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3EBBE28CBD8420068597C /* FetchDestinationDetailsUseCase.swift */; };
+		05C3EBC428CBE4480068597C /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 05C3EBC328CBE4480068597C /* Swinject */; };
+		05C3EBC728CBE6CF0068597C /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3EBC628CBE6CF0068597C /* Assembly.swift */; };
+		05C3EBC928CBE8020068597C /* Resolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3EBC828CBE8020068597C /* Resolver.swift */; };
 		E710FABC2885AB4000326EEF /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E710FABB2885AB4000326EEF /* Fonts.swift */; };
 		E710FAC52885AF2E00326EEF /* DestinationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E710FAC42885AF2E00326EEF /* DestinationDetailsViewController.swift */; };
 		E7878C1D26BACE2400CF1DB8 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7878C1C26BACE2400CF1DB8 /* Styles.swift */; };
@@ -79,6 +82,8 @@
 		05C3EBAB28CBBFE00068597C /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		05C3EBBC28CBD82E0068597C /* FetchDestinationDetailsUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchDestinationDetailsUseCaseProtocol.swift; sourceTree = "<group>"; };
 		05C3EBBE28CBD8420068597C /* FetchDestinationDetailsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchDestinationDetailsUseCase.swift; sourceTree = "<group>"; };
+		05C3EBC628CBE6CF0068597C /* Assembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembly.swift; sourceTree = "<group>"; };
+		05C3EBC828CBE8020068597C /* Resolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resolver.swift; sourceTree = "<group>"; };
 		E710FABB2885AB4000326EEF /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		E710FAC42885AF2E00326EEF /* DestinationDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationDetailsViewController.swift; sourceTree = "<group>"; };
 		E7878C1C26BACE2400CF1DB8 /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
@@ -110,6 +115,7 @@
 			files = (
 				05C3EBB928CBD2790068597C /* RxCocoa in Frameworks */,
 				05C3EBB628CBCC1A0068597C /* RxSwift in Frameworks */,
+				05C3EBC428CBE4480068597C /* Swinject in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,6 +220,15 @@
 			path = DestinationDetailsUseCase;
 			sourceTree = "<group>";
 		};
+		05C3EBC528CBE6C40068597C /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				05C3EBC628CBE6CF0068597C /* Assembly.swift */,
+				05C3EBC828CBE8020068597C /* Resolver.swift */,
+			);
+			path = DI;
+			sourceTree = "<group>";
+		};
 		E7878C1F26BACF3E00CF1DB8 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -268,6 +283,7 @@
 		E7AE6A8826B81F4F0059FB12 /* DestinationGuide */ = {
 			isa = PBXGroup;
 			children = (
+				05C3EBC528CBE6C40068597C /* DI */,
 				E7AE6A8926B81F4F0059FB12 /* AppDelegate.swift */,
 				05C3EBAB28CBBFE00068597C /* AppCoordinator.swift */,
 				05C3EBBB28CBD8120068597C /* UseCase */,
@@ -323,6 +339,7 @@
 			packageProductDependencies = (
 				05C3EBB528CBCC1A0068597C /* RxSwift */,
 				05C3EBB828CBD2790068597C /* RxCocoa */,
+				05C3EBC328CBE4480068597C /* Swinject */,
 			);
 			productName = DestinationGuide;
 			productReference = E7AE6A8626B81F4F0059FB12 /* DestinationGuide.app */;
@@ -399,6 +416,7 @@
 			packageReferences = (
 				05C3EBB428CBCC1A0068597C /* XCRemoteSwiftPackageReference "RxSwift" */,
 				05C3EBB728CBD2790068597C /* XCRemoteSwiftPackageReference "RxSwift" */,
+				05C3EBC228CBE4480068597C /* XCRemoteSwiftPackageReference "Swinject" */,
 			);
 			productRefGroup = E7AE6A8726B81F4F0059FB12 /* Products */;
 			projectDirPath = "";
@@ -491,7 +509,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E794201726B83C0E0032C12E /* DestinationFetchingService.swift in Sources */,
+				05C3EBC728CBE6CF0068597C /* Assembly.swift in Sources */,
 				05C3EBBF28CBD8420068597C /* FetchDestinationDetailsUseCase.swift in Sources */,
+				05C3EBC928CBE8020068597C /* Resolver.swift in Sources */,
 				E7878C1D26BACE2400CF1DB8 /* Styles.swift in Sources */,
 				05626C2F28CBB96C00AE96A4 /* DestinationsRepositoryProtocol.swift in Sources */,
 				05626C3028CBB96C00AE96A4 /* FetchDestinationsUseCaseProtocol.swift in Sources */,
@@ -881,6 +901,14 @@
 				kind = branch;
 			};
 		};
+		05C3EBC228CBE4480068597C /* XCRemoteSwiftPackageReference "Swinject" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Swinject/Swinject.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -893,6 +921,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 05C3EBB728CBD2790068597C /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxCocoa;
+		};
+		05C3EBC328CBE4480068597C /* Swinject */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 05C3EBC228CBE4480068597C /* XCRemoteSwiftPackageReference "Swinject" */;
+			productName = Swinject;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
