@@ -1,9 +1,15 @@
+import RxCocoa
+import RxSwift
 import UIKit
 
 class DestinationsViewController: UIViewController {
+    private enum Constant {
+        static let destinationCellIdentifier = "DestinationCollectionViewCell"
+    }
+
     @IBOutlet private var destinationsCollectionView: UICollectionView!
 
-    weak var coordinator: AppCoordinator?
+    private var disposeBag = DisposeBag()
     var viewModel: DestinationsViewModel?
 
     lazy var collectionViewLayout: UICollectionViewLayout = {
@@ -17,13 +23,12 @@ class DestinationsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
-        DestinationFetchingService().getDestinations { destinations in
-            self.viewModel?.destinations = Array(try! destinations.get()).sorted(by: { $0.name < $1.name })
-
-            DispatchQueue.main.async {
+        viewModel?.fetchDestinations()
+        viewModel?.destinationsRelay.observe(on: MainScheduler.instance)
+            .subscribe(onNext: { _ in
+                print("destinationsRelay => data received")
                 self.destinationsCollectionView.reloadData()
-            }
-        }
+            }).disposed(by: disposeBag)
     }
 
     private func setupCollectionView() {
@@ -33,7 +38,7 @@ class DestinationsViewController: UIViewController {
         destinationsCollectionView.delegate = self
         destinationsCollectionView.register(
             UINib(nibName: "DestinationCollectionViewCell", bundle: nil),
-            forCellWithReuseIdentifier: "MyCell"
+            forCellWithReuseIdentifier: "DestinationCollectionViewCell"
         )
         destinationsCollectionView.register(
             UINib(nibName: "SectionHeaderView", bundle: nil),
@@ -70,16 +75,19 @@ extension DestinationsViewController: UICollectionViewDelegateFlowLayout {
 // MARK: - UICollectionViewDataSource extension
 extension DestinationsViewController: UICollectionViewDataSource {
     func collectionView(_: UICollectionView, numberOfItemsInSection _: Int) -> Int {
-        return viewModel?.destinations.count ?? 0
+        return viewModel?.destinationsRelay.value.count ?? 0
     }
 
     func collectionView(
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
-        guard let desti = viewModel?.destinations[indexPath.item],
+        guard let desti = viewModel?.destinationsRelay.value[indexPath.item],
               let cell = collectionView
-                  .dequeueReusableCell(withReuseIdentifier: "MyCell", for: indexPath) as? DestinationCollectionViewCell else {
+                  .dequeueReusableCell(
+                      withReuseIdentifier: Constant.destinationCellIdentifier,
+                      for: indexPath
+                  ) as? DestinationCollectionViewCell else {
             return UICollectionViewCell()
         }
         cell.setupCell(destination: desti)
@@ -111,27 +119,12 @@ extension DestinationsViewController: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate extension
 extension DestinationsViewController: UICollectionViewDelegate {
     func collectionView(_: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let desti = viewModel?.destinations[indexPath.item] else {
+        guard let selectedDestination = viewModel?.destinationsRelay.value[indexPath.item] else {
             return
         }
-
-        DestinationFetchingService().getDestinationDetails(for: desti.id) { [weak self] result in
-            DispatchQueue.main.async {
-                switch result {
-                case let .success(details):
-                    print("coordinator => \(self?.coordinator)")
-                    self?.coordinator?.goToDetails(name: desti.name, webViewURL: details.url)
-                case let .failure(error):
-                    let alert = UIAlertController(
-                        title: "Erreur",
-                        message: error.localizedDescription,
-                        preferredStyle: .alert
-                    )
-                    alert.addAction(UIAlertAction(title: "Annuler", style: .cancel))
-
-                    self?.present(alert, animated: true)
-                }
-            }
-        }
+        viewModel?.fetchDestinationDetails(
+            id: selectedDestination.id,
+            parentVC: self
+        )
     }
 }

@@ -2,8 +2,9 @@ import Foundation
 import RxSwift
 
 struct FetchDestinationsUseCase: FetchDestinationsUseCaseProtocol {
+    var repository: DestinationsRepositoryProtocol
+
     func execute() -> Single<[Destination]> {
-        let destinationSet = [Destination(id: "", name: "", picture: URL(string: "")!, tag: "", rating: 3)]
-        return Single.just(destinationSet)
+        return repository.getDestinations()
     }
 }

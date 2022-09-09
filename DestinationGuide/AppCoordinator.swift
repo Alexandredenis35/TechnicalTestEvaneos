@@ -18,9 +18,16 @@ class AppCoordinator: Coordinator {
 
     func start() {
         let mainVC = DestinationsViewController.instantiate()
-        let viewModel = DestinationsViewModel()
+        let destinationsUseCase =
+            FetchDestinationsUseCase(repository: DestinationsRepository(dataSource: DestinationFetchingService()))
+        let destinationDetailUseCase =
+            FetchDestinatioDetailsUseCase(repository: DestinationsRepository(dataSource: DestinationFetchingService()))
+        let viewModel = DestinationsViewModel(
+            destinationsUseCase: destinationsUseCase,
+            destinationDetailsUseCase: destinationDetailUseCase,
+            coordinator: self
+        )
         mainVC.viewModel = viewModel
-        mainVC.coordinator = self
         navigationController.pushViewController(mainVC, animated: false)
     }
 
@@ -29,5 +36,20 @@ class AppCoordinator: Coordinator {
         let viewModel = DestinationDetailsViewModel(name: name, webviewUrl: webViewURL)
         detailsVC.viewModel = viewModel
         navigationController.pushViewController(detailsVC, animated: false)
+    }
+
+    func showAlert(
+        parentVC: UIViewController,
+        alertTitle: String,
+        alertMessage: String
+    ) {
+        let alert = UIAlertController(
+            title: alertTitle,
+            message: alertMessage,
+            preferredStyle: .alert
+        )
+        alert.addAction(UIAlertAction(title: "Annuler", style: .cancel))
+
+        parentVC.present(alert, animated: true)
     }
 }

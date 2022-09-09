@@ -3,7 +3,6 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -11,12 +10,12 @@
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController id="Y6W-OH-hqX" customClass="DestinationsViewController" customModule="DestinationGuide" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                    <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="aR8-CB-7hs">
-                                <rect key="frame" x="0.0" y="44" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" sectionInsetReference="layoutMargins" id="MlL-m9-wkh">
                                     <size key="itemSize" width="342" height="280"/>
@@ -27,12 +26,11 @@
                                 <cells/>
                             </collectionView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="aR8-CB-7hs" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="1ni-ZE-NQv"/>
+                            <constraint firstItem="aR8-CB-7hs" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="1ni-ZE-NQv"/>
                             <constraint firstItem="aR8-CB-7hs" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="6ME-mG-BVq"/>
-                            <constraint firstItem="aR8-CB-7hs" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="bGq-1a-9AY"/>
+                            <constraint firstItem="aR8-CB-7hs" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="bGq-1a-9AY"/>
                             <constraint firstItem="aR8-CB-7hs" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="iey-MK-urh"/>
                         </constraints>
                     </view>
