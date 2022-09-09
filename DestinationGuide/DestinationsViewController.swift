@@ -9,6 +9,8 @@ import UIKit
 
 class DestinationsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
+    @IBOutlet private var destinationsCollectionView: UICollectionView!
+    
     var array: [Destination]!
     
     lazy var collectionViewLayout: UICollectionViewLayout = {
@@ -18,35 +20,30 @@ class DestinationsViewController: UIViewController, UICollectionViewDataSource, 
         layout.itemSize = .init(width: 342, height: 280)
         return layout
     }()
-    
-    lazy var collectionView: UICollectionView = {
-        let collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: self.collectionViewLayout)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        collectionView.register(DestinationCell.self, forCellWithReuseIdentifier: "MyCell")
-        collectionView.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "SectionHeader")
-        collectionView.backgroundColor = .clear
-        collectionView.showsVerticalScrollIndicator = false
-        
-        return collectionView
-    }()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
-        view.addSubview(collectionView)
-        collectionView.frame = view.frame
-        collectionView.dataSource = self
+        setupCollectionView()
         
         DestinationFetchingService().getDestinations { destinations in
             self.array = Array(try! destinations.get()).sorted(by: { $0.name < $1.name })
             
             DispatchQueue.main.async {
-                self.collectionView.reloadData()
+                self.destinationsCollectionView.reloadData()
             }
         }
+    }
+    
+    private func setupCollectionView() {
+        self.destinationsCollectionView.collectionViewLayout = collectionViewLayout
+        destinationsCollectionView.dataSource = self
+       // let collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: self.collectionViewLayout)
+        destinationsCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        destinationsCollectionView.delegate = self
+        destinationsCollectionView.register(DestinationCell.self, forCellWithReuseIdentifier: "MyCell")
+        destinationsCollectionView.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "SectionHeader")
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

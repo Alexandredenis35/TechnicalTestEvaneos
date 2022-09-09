@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05626C1728CB93B400AE96A4 /* DestinationsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05626C1628CB93B400AE96A4 /* DestinationsViewController.storyboard */; };
+		05626C1A28CB95EA00AE96A4 /* Storyboard+Instantiation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05626C1928CB95EA00AE96A4 /* Storyboard+Instantiation.swift */; };
 		E710FABC2885AB4000326EEF /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E710FABB2885AB4000326EEF /* Fonts.swift */; };
 		E710FAC52885AF2E00326EEF /* DestinationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E710FAC42885AF2E00326EEF /* DestinationDetailsViewController.swift */; };
 		E7878C1D26BACE2400CF1DB8 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7878C1C26BACE2400CF1DB8 /* Styles.swift */; };
@@ -19,7 +21,6 @@
 		E794201A26B853F10032C12E /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = E794201926B853F10032C12E /* Destination.swift */; };
 		E794201C26B854040032C12E /* DestinationDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = E794201B26B854040032C12E /* DestinationDetails.swift */; };
 		E7AE6A8A26B81F4F0059FB12 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AE6A8926B81F4F0059FB12 /* AppDelegate.swift */; };
-		E7AE6A8C26B81F4F0059FB12 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AE6A8B26B81F4F0059FB12 /* SceneDelegate.swift */; };
 		E7AE6A8E26B81F4F0059FB12 /* DestinationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AE6A8D26B81F4F0059FB12 /* DestinationsViewController.swift */; };
 		E7AE6A9326B81F510059FB12 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7AE6A9226B81F510059FB12 /* Assets.xcassets */; };
 		E7AE6A9626B81F510059FB12 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7AE6A9426B81F510059FB12 /* LaunchScreen.storyboard */; };
@@ -46,6 +47,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		05626C1628CB93B400AE96A4 /* DestinationsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DestinationsViewController.storyboard; sourceTree = "<group>"; };
+		05626C1928CB95EA00AE96A4 /* Storyboard+Instantiation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Storyboard+Instantiation.swift"; sourceTree = "<group>"; };
 		E710FABB2885AB4000326EEF /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		E710FAC42885AF2E00326EEF /* DestinationDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationDetailsViewController.swift; sourceTree = "<group>"; };
 		E7878C1C26BACE2400CF1DB8 /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
@@ -59,7 +62,6 @@
 		E794201B26B854040032C12E /* DestinationDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationDetails.swift; sourceTree = "<group>"; };
 		E7AE6A8626B81F4F0059FB12 /* DestinationGuide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DestinationGuide.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7AE6A8926B81F4F0059FB12 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E7AE6A8B26B81F4F0059FB12 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E7AE6A8D26B81F4F0059FB12 /* DestinationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationsViewController.swift; sourceTree = "<group>"; };
 		E7AE6A9226B81F510059FB12 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E7AE6A9526B81F510059FB12 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -96,6 +98,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		05626C1828CB95C300AE96A4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				05626C1928CB95EA00AE96A4 /* Storyboard+Instantiation.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		E7878C1F26BACF3E00CF1DB8 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -149,9 +159,10 @@
 		E7AE6A8826B81F4F0059FB12 /* DestinationGuide */ = {
 			isa = PBXGroup;
 			children = (
+				05626C1828CB95C300AE96A4 /* Extensions */,
 				E7AE6A8926B81F4F0059FB12 /* AppDelegate.swift */,
-				E7AE6A8B26B81F4F0059FB12 /* SceneDelegate.swift */,
 				E7AE6A8D26B81F4F0059FB12 /* DestinationsViewController.swift */,
+				05626C1628CB93B400AE96A4 /* DestinationsViewController.storyboard */,
 				E710FAC42885AF2E00326EEF /* DestinationDetailsViewController.swift */,
 				E7B8690A287C4701000D2C2C /* GradientView.swift */,
 				E7878C1C26BACE2400CF1DB8 /* Styles.swift */,
@@ -288,6 +299,7 @@
 				E7AE6A9626B81F510059FB12 /* LaunchScreen.storyboard in Resources */,
 				E7878C2926BACF3E00CF1DB8 /* Averta-Semibold.otf in Resources */,
 				E7AE6A9326B81F510059FB12 /* Assets.xcassets in Resources */,
+				05626C1728CB93B400AE96A4 /* DestinationsViewController.storyboard in Resources */,
 				E7878C2826BACF3E00CF1DB8 /* Averta-Bold.otf in Resources */,
 				E7878C2526BACF3E00CF1DB8 /* Averta-Light.otf in Resources */,
 				E7878C2726BACF3E00CF1DB8 /* Averta-ExtraBold.otf in Resources */,
@@ -320,8 +332,8 @@
 				E7878C1D26BACE2400CF1DB8 /* Styles.swift in Sources */,
 				E7AE6A8E26B81F4F0059FB12 /* DestinationsViewController.swift in Sources */,
 				E794201A26B853F10032C12E /* Destination.swift in Sources */,
+				05626C1A28CB95EA00AE96A4 /* Storyboard+Instantiation.swift in Sources */,
 				E7AE6A8A26B81F4F0059FB12 /* AppDelegate.swift in Sources */,
-				E7AE6A8C26B81F4F0059FB12 /* SceneDelegate.swift in Sources */,
 				E7B8690B287C4701000D2C2C /* GradientView.swift in Sources */,
 				E710FABC2885AB4000326EEF /* Fonts.swift in Sources */,
 				E710FAC52885AF2E00326EEF /* DestinationDetailsViewController.swift in Sources */,
