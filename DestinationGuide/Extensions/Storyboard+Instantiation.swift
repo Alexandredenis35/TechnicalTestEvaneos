@@ -1,10 +1,3 @@
-//
-//  Storyboard+Instantiation.swift
-//  DestinationGuide
-//
-//  Created by Alexandre DENIS on 09/09/2022.
-//
-
 import UIKit
 
 extension UIViewController {

@@ -1,12 +1,5 @@
-//
-//  Fonts.swift
-//  DestinationGuide
-//
-//  Created by Alexandre Guibert1 on 18/07/2022.
-//
-
-import UIKit
 import SwiftUI
+import UIKit
 
 public enum EvaneosFont {
     case defaultLExtrabold
@@ -17,14 +10,14 @@ public enum EvaneosFont {
     case defaultXsRegular
     case defaultBodyLink
     case defaultXsLink
-    
+
     enum AvertaFontWeight {
         case light
         case regular
         case semiBold
         case bold
         case extraBold
-        
+
         var fontSystemName: String {
             switch self {
             case .light: return "Averta-Light"
@@ -35,7 +28,7 @@ public enum EvaneosFont {
             }
         }
     }
-    
+
     public var font: UIFont {
         switch self {
         case .defaultLExtrabold: return UIFont.averta(weight: .extraBold, size: 38)
@@ -48,12 +41,17 @@ public enum EvaneosFont {
         case .defaultXsLink: return UIFont.averta(weight: .bold, size: 16)
         }
     }
-    
+
     public var lineHeightFromDesignSystem: CGFloat {
         switch self {
         case .defaultLExtrabold: return 36
         case .defaultMExtrabold: return 28
-        case .defaultBodyBold, .defaultBodyRegular, .defaultXsBold, .defaultXsRegular, .defaultBodyLink, .defaultXsLink: return 24
+        case .defaultBodyBold,
+             .defaultBodyLink,
+             .defaultBodyRegular,
+             .defaultXsBold,
+             .defaultXsLink,
+             .defaultXsRegular: return 24
         }
     }
 }
@@ -66,7 +64,7 @@ extension UIFont {
 
 struct DesignSystemFontModifier: ViewModifier {
     let designSystemFont: EvaneosFont
-    
+
     func body(content: Content) -> some View {
         content
             .font(Font(designSystemFont.font))
@@ -75,8 +73,8 @@ struct DesignSystemFontModifier: ViewModifier {
     }
 }
 
-public extension View {
-    func font(designSystemFont: EvaneosFont) -> some View {
+extension View {
+    public func font(designSystemFont: EvaneosFont) -> some View {
         ModifiedContent(content: self, modifier: DesignSystemFontModifier(designSystemFont: designSystemFont))
     }
 }
