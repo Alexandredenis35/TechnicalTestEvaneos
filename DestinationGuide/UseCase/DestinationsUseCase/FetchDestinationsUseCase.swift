@@ -4,7 +4,7 @@ import RxSwift
 struct FetchDestinationsUseCase: FetchDestinationsUseCaseProtocol {
     var repository: DestinationsRepositoryProtocol
 
-    func execute() -> Single<[Destination]> {
-        return repository.getDestinations()
+    func execute() async -> Result<Set<Destination>, DestinationFetchingServiceError> {
+        return await repository.getDestinations()
     }
 }

@@ -29,7 +29,7 @@ class FetchDestinationsUseCaseTests: XCTestCase {
                 rating: 4
             )
         ]
-        
+
         mockedRepository.getDestinationsUseCaseData = expectedResult
         sut.execute()
     }

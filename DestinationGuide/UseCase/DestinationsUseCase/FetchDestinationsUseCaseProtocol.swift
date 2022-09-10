@@ -2,5 +2,5 @@ import Foundation
 import RxSwift
 
 protocol FetchDestinationsUseCaseProtocol {
-    func execute() -> Single<[Destination]>
+    func execute() async -> Result<Set<Destination>, DestinationFetchingServiceError>
 }

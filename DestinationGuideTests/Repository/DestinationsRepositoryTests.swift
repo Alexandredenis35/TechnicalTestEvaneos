@@ -7,7 +7,7 @@ class DestinationsRepositoryTests: XCTestCase {
     var sut: DestinationsRepository!
     var mockedDataSource: MockFetchingService!
     var testExpectation: XCTestExpectation!
-    
+
     override func setUp() {
         testExpectation = expectation(description: "Waiting for the getDestinations method to complete.")
         mockedDataSource = MockFetchingService()

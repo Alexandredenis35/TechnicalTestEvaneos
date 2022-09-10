@@ -5,8 +5,8 @@ import RxSwift
 import UIKit
 
 protocol DestinationsViewModelProtocol: AnyObject {
-    func fetchDestinations()
-    func fetchDestinationDetails(id: String)
+    func fetchDestinations() async
+    func fetchDestinationDetails(id: String) async
 }
 
 final class DestinationsViewModel: DestinationsViewModelProtocol {
@@ -39,40 +39,49 @@ final class DestinationsViewModel: DestinationsViewModelProtocol {
         let data = UserDefaults.standard.data(forKey: Constant.recentDestinationsKey)
         let recentDestinations: [DestinationDetails] = CodableUtils.parse(data: data)
         recentDestinationsRelay = .init(value: recentDestinations)
-        fetchDestinations()
+        Task {
+            await fetchDestinations()
+        }
     }
 
-    func fetchDestinations() {
-        destinationsUseCase.execute()
-            .observe(on: MainScheduler.instance)
-            .do(onSubscribe: { [weak self] in self?.needToShowLoader.accept(true) })
-            .subscribe(onSuccess: { [weak self] destinations in
-                self?.destinationsRelay.accept(destinations)
-                self?.needToShowLoader.accept(false)
-            }, onFailure: { [weak self] error in
-                self?.needToShowLoader.accept(false)
-                self?.coordinator?.showAlert(
+    func fetchDestinations() async {
+        needToShowLoader.accept(true)
+        let result = await destinationsUseCase.execute()
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else {
+                return
+            }
+            self.needToShowLoader.accept(false)
+            switch result {
+            case let .success(destinations):
+                self.destinationsRelay.accept(Array(destinations))
+            case let .failure(error):
+                self.coordinator?.showAlert(
                     alertTitle: Constant.errorTitle,
                     alertMessage: error.localizedDescription
                 )
-            }).disposed(by: disposeBag)
+            }
+        }
     }
 
-    func fetchDestinationDetails(id: String) {
-        destinationDetailsUseCase.execute(destinationID: id)
-            .observe(on: MainScheduler.instance)
-            .do(onSubscribe: { [weak self] in self?.needToShowLoader.accept(true) })
-            .subscribe(onSuccess: { [weak self] destinationDetails in
+    func fetchDestinationDetails(id: String) async {
+        needToShowLoader.accept(true)
+        let result = await destinationDetailsUseCase.execute(destinationID: id)
+        DispatchQueue.main.async { [weak self] in
+            self?.needToShowLoader.accept(false)
+
+            switch result {
+            case let .success(destinationDetails):
                 self?.addRecentDestination(destinationDetails)
-                self?.needToShowLoader.accept(false)
                 self?.coordinator?.goToDetails(name: destinationDetails.name, webViewURL: destinationDetails.url)
-            }, onFailure: { [weak self] error in
-                self?.needToShowLoader.accept(false)
+
+            case let .failure(error):
                 self?.coordinator?.showAlert(
                     alertTitle: Constant.errorTitle,
                     alertMessage: error.localizedDescription
                 )
-            }).disposed(by: disposeBag)
+            }
+        }
     }
 
     private func addRecentDestination(_ details: DestinationDetails) {

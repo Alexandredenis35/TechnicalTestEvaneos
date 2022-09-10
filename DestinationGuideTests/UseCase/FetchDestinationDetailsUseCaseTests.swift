@@ -1,10 +1,3 @@
-//
-//  FetchDestinationDetailsUseCaseTests.swift
-//  DestinationGuideTests
-//
-//  Created by Alexandre DENIS on 10/09/2022.
-//
-
 @testable import DestinationGuide
 import Foundation
 import RxSwift

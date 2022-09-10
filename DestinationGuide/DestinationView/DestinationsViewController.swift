@@ -24,7 +24,6 @@ final class DestinationsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
-        viewModel?.fetchDestinations()
         setupBinding()
     }
 
@@ -151,13 +150,17 @@ extension DestinationsViewController: UICollectionViewDelegate {
         guard let selectedDestination = viewModel?.destinationsRelay.value[indexPath.item] else {
             return
         }
-        viewModel?.fetchDestinationDetails(id: selectedDestination.id)
+        Task {
+            await viewModel?.fetchDestinationDetails(id: selectedDestination.id)
+        }
     }
 }
 
 // MARK: - LastSearchedDestinationProtocol extension
 extension DestinationsViewController: LastSearchedDestinationProtocol {
     func didSelectRecentDestination(id: String) {
-        viewModel?.fetchDestinationDetails(id: id)
+        Task {
+            await viewModel?.fetchDestinationDetails(id: id)
+        }
     }
 }

@@ -21,22 +21,24 @@
 		05626C3728CBBBFC00AE96A4 /* DestinationDetailsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05626C3628CBBBFC00AE96A4 /* DestinationDetailsViewController.storyboard */; };
 		05C3EBAA28CBBD990068597C /* DestinationDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3EBA928CBBD990068597C /* DestinationDetailsViewModel.swift */; };
 		05C3EBAC28CBBFE00068597C /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3EBAB28CBBFE00068597C /* AppCoordinator.swift */; };
-		05C3EBB628CBCC1A0068597C /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 05C3EBB528CBCC1A0068597C /* RxSwift */; };
-		05C3EBB928CBD2790068597C /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 05C3EBB828CBD2790068597C /* RxCocoa */; };
 		05C3EBBD28CBD82E0068597C /* FetchDestinationDetailsUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3EBBC28CBD82E0068597C /* FetchDestinationDetailsUseCaseProtocol.swift */; };
 		05C3EBBF28CBD8420068597C /* FetchDestinationDetailsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3EBBE28CBD8420068597C /* FetchDestinationDetailsUseCase.swift */; };
-		05C3EBC428CBE4480068597C /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 05C3EBC328CBE4480068597C /* Swinject */; };
 		05C3EBC728CBE6CF0068597C /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3EBC628CBE6CF0068597C /* Assembly.swift */; };
 		05C3EBC928CBE8020068597C /* Resolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3EBC828CBE8020068597C /* Resolver.swift */; };
 		05C3EBCB28CBE9B80068597C /* UIViewController+Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3EBCA28CBE9B80068597C /* UIViewController+Loader.swift */; };
 		05C3EBCD28CC026B0068597C /* LastSearchedDestinationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3EBCC28CC026B0068597C /* LastSearchedDestinationView.swift */; };
 		05C3EBCF28CC02830068597C /* LastSearchedDestinationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05C3EBCE28CC02830068597C /* LastSearchedDestinationView.xib */; };
 		05C3EBD128CC03180068597C /* NibInstantiationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3EBD028CC03180068597C /* NibInstantiationProtocol.swift */; };
+		05F5FDFA28CCE0C60025D7F5 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 05F5FDF928CCE0C60025D7F5 /* Swinject */; };
+		05F5FDFB28CCE1460025D7F5 /* MockFetchingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB538E28CC7727008C57BC /* MockFetchingService.swift */; };
+		05F5FDFC28CCE1490025D7F5 /* MockDestinationsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB539128CC7B4A008C57BC /* MockDestinationsRepository.swift */; };
+		05F5FDFF28CCE23B0025D7F5 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 05F5FDFE28CCE23B0025D7F5 /* RxCocoa */; };
+		05F5FE0128CCE23B0025D7F5 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 05F5FE0028CCE23B0025D7F5 /* RxSwift */; };
+		05F5FE0328CCEB0B0025D7F5 /* FetchDestinationDetailsUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F5FE0228CCEB0B0025D7F5 /* FetchDestinationDetailsUseCaseTests.swift */; };
 		05FB538928CC72BE008C57BC /* DestinationsRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB538828CC72BE008C57BC /* DestinationsRepositoryTests.swift */; };
-		05FB538F28CC7727008C57BC /* MockFetchingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB538E28CC7727008C57BC /* MockFetchingService.swift */; };
-		05FB539228CC7B4A008C57BC /* MockDestinationsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB539128CC7B4A008C57BC /* MockDestinationsRepository.swift */; };
 		05FB539528CC7D22008C57BC /* FetchDestinationsUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB539428CC7D22008C57BC /* FetchDestinationsUseCaseTests.swift */; };
 		05FB539728CCB356008C57BC /* UIView+Subviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB539628CCB356008C57BC /* UIView+Subviews.swift */; };
+		05FB539928CCBDC4008C57BC /* CodableUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB539828CCBDC4008C57BC /* CodableUtils.swift */; };
 		E710FABC2885AB4000326EEF /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E710FABB2885AB4000326EEF /* Fonts.swift */; };
 		E710FAC52885AF2E00326EEF /* DestinationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E710FAC42885AF2E00326EEF /* DestinationDetailsViewController.swift */; };
 		E7878C1D26BACE2400CF1DB8 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7878C1C26BACE2400CF1DB8 /* Styles.swift */; };
@@ -52,7 +54,6 @@
 		E7AE6A8E26B81F4F0059FB12 /* DestinationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AE6A8D26B81F4F0059FB12 /* DestinationsViewController.swift */; };
 		E7AE6A9326B81F510059FB12 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7AE6A9226B81F510059FB12 /* Assets.xcassets */; };
 		E7AE6A9626B81F510059FB12 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7AE6A9426B81F510059FB12 /* LaunchScreen.storyboard */; };
-		E7AE6AA126B81F520059FB12 /* DestinationGuideTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AE6AA026B81F520059FB12 /* DestinationGuideTests.swift */; };
 		E7AE6AAB26B81F520059FB12 /* DestinationGuideUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AE6AAA26B81F520059FB12 /* DestinationGuideUITests.swift */; };
 		E7B8690B287C4701000D2C2C /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B8690A287C4701000D2C2C /* GradientView.swift */; };
 /* End PBXBuildFile section */
@@ -97,11 +98,13 @@
 		05C3EBCC28CC026B0068597C /* LastSearchedDestinationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastSearchedDestinationView.swift; sourceTree = "<group>"; };
 		05C3EBCE28CC02830068597C /* LastSearchedDestinationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LastSearchedDestinationView.xib; sourceTree = "<group>"; };
 		05C3EBD028CC03180068597C /* NibInstantiationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibInstantiationProtocol.swift; sourceTree = "<group>"; };
+		05F5FE0228CCEB0B0025D7F5 /* FetchDestinationDetailsUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchDestinationDetailsUseCaseTests.swift; sourceTree = "<group>"; };
 		05FB538828CC72BE008C57BC /* DestinationsRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationsRepositoryTests.swift; sourceTree = "<group>"; };
 		05FB538E28CC7727008C57BC /* MockFetchingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFetchingService.swift; sourceTree = "<group>"; };
 		05FB539128CC7B4A008C57BC /* MockDestinationsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDestinationsRepository.swift; sourceTree = "<group>"; };
 		05FB539428CC7D22008C57BC /* FetchDestinationsUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchDestinationsUseCaseTests.swift; sourceTree = "<group>"; };
 		05FB539628CCB356008C57BC /* UIView+Subviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Subviews.swift"; sourceTree = "<group>"; };
+		05FB539828CCBDC4008C57BC /* CodableUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableUtils.swift; sourceTree = "<group>"; };
 		E710FABB2885AB4000326EEF /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		E710FAC42885AF2E00326EEF /* DestinationDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationDetailsViewController.swift; sourceTree = "<group>"; };
 		E7878C1C26BACE2400CF1DB8 /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
@@ -120,7 +123,6 @@
 		E7AE6A9526B81F510059FB12 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E7AE6A9726B81F510059FB12 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E7AE6A9C26B81F520059FB12 /* DestinationGuideTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DestinationGuideTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E7AE6AA026B81F520059FB12 /* DestinationGuideTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationGuideTests.swift; sourceTree = "<group>"; };
 		E7AE6AA626B81F520059FB12 /* DestinationGuideUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DestinationGuideUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7AE6AAA26B81F520059FB12 /* DestinationGuideUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationGuideUITests.swift; sourceTree = "<group>"; };
 		E7B8690A287C4701000D2C2C /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
@@ -131,9 +133,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				05C3EBB928CBD2790068597C /* RxCocoa in Frameworks */,
-				05C3EBB628CBCC1A0068597C /* RxSwift in Frameworks */,
-				05C3EBC428CBE4480068597C /* Swinject in Frameworks */,
+				05F5FE0128CCE23B0025D7F5 /* RxSwift in Frameworks */,
+				05F5FDFF28CCE23B0025D7F5 /* RxCocoa in Frameworks */,
+				05F5FDFA28CCE0C60025D7F5 /* Swinject in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +282,7 @@
 			isa = PBXGroup;
 			children = (
 				05FB539428CC7D22008C57BC /* FetchDestinationsUseCaseTests.swift */,
+				05F5FE0228CCEB0B0025D7F5 /* FetchDestinationDetailsUseCaseTests.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 		E7AE6A8826B81F4F0059FB12 /* DestinationGuide */ = {
 			isa = PBXGroup;
 			children = (
+				05FB539828CCBDC4008C57BC /* CodableUtils.swift */,
 				05FB539028CC7731008C57BC /* DataSource */,
 				05C3EBC528CBE6C40068597C /* DI */,
 				E7AE6A8926B81F4F0059FB12 /* AppDelegate.swift */,
@@ -364,7 +368,6 @@
 				05FB539328CC7D13008C57BC /* UseCase */,
 				05FB538D28CC770B008C57BC /* DataSource */,
 				05FB538C28CC7701008C57BC /* Repository */,
-				E7AE6AA026B81F520059FB12 /* DestinationGuideTests.swift */,
 			);
 			path = DestinationGuideTests;
 			sourceTree = "<group>";
@@ -396,9 +399,9 @@
 			);
 			name = DestinationGuide;
 			packageProductDependencies = (
-				05C3EBB528CBCC1A0068597C /* RxSwift */,
-				05C3EBB828CBD2790068597C /* RxCocoa */,
-				05C3EBC328CBE4480068597C /* Swinject */,
+				05F5FDF928CCE0C60025D7F5 /* Swinject */,
+				05F5FDFE28CCE23B0025D7F5 /* RxCocoa */,
+				05F5FE0028CCE23B0025D7F5 /* RxSwift */,
 			);
 			productName = DestinationGuide;
 			productReference = E7AE6A8626B81F4F0059FB12 /* DestinationGuide.app */;
@@ -473,9 +476,8 @@
 			);
 			mainGroup = E7AE6A7D26B81F4F0059FB12;
 			packageReferences = (
-				05C3EBB428CBCC1A0068597C /* XCRemoteSwiftPackageReference "RxSwift" */,
-				05C3EBB728CBD2790068597C /* XCRemoteSwiftPackageReference "RxSwift" */,
-				05C3EBC228CBE4480068597C /* XCRemoteSwiftPackageReference "Swinject" */,
+				05F5FDF828CCE0C60025D7F5 /* XCRemoteSwiftPackageReference "Swinject" */,
+				05F5FDFD28CCE23B0025D7F5 /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = E7AE6A8726B81F4F0059FB12 /* Products */;
 			projectDirPath = "";
@@ -586,12 +588,15 @@
 				E794201A26B853F10032C12E /* Destination.swift in Sources */,
 				05C3EBCB28CBE9B80068597C /* UIViewController+Loader.swift in Sources */,
 				05626C1A28CB95EA00AE96A4 /* Storyboard+Instantiation.swift in Sources */,
+				05F5FDFB28CCE1460025D7F5 /* MockFetchingService.swift in Sources */,
 				E7AE6A8A26B81F4F0059FB12 /* AppDelegate.swift in Sources */,
 				E7B8690B287C4701000D2C2C /* GradientView.swift in Sources */,
+				05FB539928CCBDC4008C57BC /* CodableUtils.swift in Sources */,
 				05C3EBAC28CBBFE00068597C /* AppCoordinator.swift in Sources */,
 				05FB539728CCB356008C57BC /* UIView+Subviews.swift in Sources */,
 				05C3EBBD28CBD82E0068597C /* FetchDestinationDetailsUseCaseProtocol.swift in Sources */,
 				E710FABC2885AB4000326EEF /* Fonts.swift in Sources */,
+				05F5FDFC28CCE1490025D7F5 /* MockDestinationsRepository.swift in Sources */,
 				05C3EBD128CC03180068597C /* NibInstantiationProtocol.swift in Sources */,
 				E710FAC52885AF2E00326EEF /* DestinationDetailsViewController.swift in Sources */,
 				E794201C26B854040032C12E /* DestinationDetails.swift in Sources */,
@@ -602,11 +607,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				05FB539228CC7B4A008C57BC /* MockDestinationsRepository.swift in Sources */,
 				05FB538928CC72BE008C57BC /* DestinationsRepositoryTests.swift in Sources */,
-				E7AE6AA126B81F520059FB12 /* DestinationGuideTests.swift in Sources */,
+				05F5FE0328CCEB0B0025D7F5 /* FetchDestinationDetailsUseCaseTests.swift in Sources */,
 				05FB539528CC7D22008C57BC /* FetchDestinationsUseCaseTests.swift in Sources */,
-				05FB538F28CC7727008C57BC /* MockFetchingService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -953,23 +956,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		05C3EBB428CBCC1A0068597C /* XCRemoteSwiftPackageReference "RxSwift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 6.0.0;
-			};
-		};
-		05C3EBB728CBD2790068597C /* XCRemoteSwiftPackageReference "RxSwift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
-		05C3EBC228CBE4480068597C /* XCRemoteSwiftPackageReference "Swinject" */ = {
+		05F5FDF828CCE0C60025D7F5 /* XCRemoteSwiftPackageReference "Swinject" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Swinject/Swinject.git";
 			requirement = {
@@ -977,23 +964,31 @@
 				kind = branch;
 			};
 		};
+		05F5FDFD28CCE23B0025D7F5 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		05C3EBB528CBCC1A0068597C /* RxSwift */ = {
+		05F5FDF928CCE0C60025D7F5 /* Swinject */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 05C3EBB428CBCC1A0068597C /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxSwift;
+			package = 05F5FDF828CCE0C60025D7F5 /* XCRemoteSwiftPackageReference "Swinject" */;
+			productName = Swinject;
 		};
-		05C3EBB828CBD2790068597C /* RxCocoa */ = {
+		05F5FDFE28CCE23B0025D7F5 /* RxCocoa */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 05C3EBB728CBD2790068597C /* XCRemoteSwiftPackageReference "RxSwift" */;
+			package = 05F5FDFD28CCE23B0025D7F5 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxCocoa;
 		};
-		05C3EBC328CBE4480068597C /* Swinject */ = {
+		05F5FE0028CCE23B0025D7F5 /* RxSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 05C3EBC228CBE4480068597C /* XCRemoteSwiftPackageReference "Swinject" */;
-			productName = Swinject;
+			package = 05F5FDFD28CCE23B0025D7F5 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

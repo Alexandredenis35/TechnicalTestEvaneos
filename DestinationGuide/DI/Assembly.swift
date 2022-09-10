@@ -7,10 +7,10 @@ class DestinationAssembly: Assembly {
             DestinationFetchingService()
         }
         container.register(DestinationsRepositoryProtocol.self) { _ in
-            DestinationsRepository(dataSource: container.resolve(DestinationFetchingServiceProtocol.self))
+            DestinationsRepository(dataSource: container.resolve(DestinationFetchingServiceProtocol.self)!)
         }
         container.register(FetchDestinationsUseCaseProtocol.self) { _ in
-            FetchDestinationsUseCase(repository: container.resolve(DestinationsRepositoryProtocol.self))
+            FetchDestinationsUseCase(repository: container.resolve(DestinationsRepositoryProtocol.self)!)
         }
     }
 }
@@ -21,10 +21,10 @@ class DestinationDetailsAssembly: Assembly {
             DestinationFetchingService()
         }
         container.register(DestinationsRepository.self) { _ in
-            DestinationsRepository(dataSource: container.resolve(DestinationFetchingServiceProtocol.self))
+            DestinationsRepository(dataSource: container.resolve(DestinationFetchingServiceProtocol.self)!)
         }
         container.register(FetchDestinationDetailsUseCaseProtocol.self) { _ in
-            FetchDestinationDetailsUseCase(repository: container.resolve(DestinationsRepositoryProtocol.self))
+            FetchDestinationDetailsUseCase(repository: container.resolve(DestinationsRepositoryProtocol.self)!)
         }
     }
 }
