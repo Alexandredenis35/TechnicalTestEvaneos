@@ -22,8 +22,10 @@ class MockDestinationsRepository: DestinationsRepositoryProtocol {
     var getDestinationDetailsUseCaseError: Error?
     var getDestinationsDetailsUseCaseData: DestinationDetails?
     var getDestinationsDetailsUseCaseGotCalled: Bool = false
-
-    func getDestinationDetails(destinationID _: String) -> Single<DestinationDetails> {
+    var getDestinationDetailsGotCalledWith: String?
+    
+    func getDestinationDetails(destinationID: String) -> Single<DestinationDetails> {
+        getDestinationDetailsGotCalledWith = destinationID
         getDestinationsDetailsUseCaseGotCalled = true
         if getDestinationsDetailsUseCaseData != nil,
            let destinationDetails = getDestinationsDetailsUseCaseData {

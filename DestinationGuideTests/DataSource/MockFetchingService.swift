@@ -1,5 +1,7 @@
 @testable import DestinationGuide
 import Foundation
+import RxCocoa
+import RxSwift
 
 class MockFetchingService: DestinationFetchingServiceProtocol {
     var getDestinationsError: DestinationFetchingServiceError?
@@ -8,7 +10,7 @@ class MockFetchingService: DestinationFetchingServiceProtocol {
 
     func getDestinations(completion: @escaping (Result<Set<Destination>, DestinationFetchingServiceError>) -> Void) {
         getDestinationsGotCalled = true
-        if getDestinationsError != nil,
+        if getDestinationsError == nil,
            let destinations = getDestinationsData {
             completion(.success(destinations))
         } else if let error = getDestinationsError {
@@ -25,7 +27,7 @@ class MockFetchingService: DestinationFetchingServiceProtocol {
         completion: @escaping (Result<DestinationDetails, DestinationFetchingServiceError>) -> Void
     ) {
         getDestinationDetailsGotCalled = true
-        if getDestinationDetailsError != nil,
+        if getDestinationDetailsError == nil,
            let destinations = getDestinationDetailsData {
             completion(.success(destinations))
         } else if let error = getDestinationDetailsError {

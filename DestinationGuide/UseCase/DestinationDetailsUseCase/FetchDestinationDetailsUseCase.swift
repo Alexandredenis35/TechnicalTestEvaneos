@@ -1,6 +1,6 @@
 import RxSwift
 
-struct FetchDestinatioDetailsUseCase: FetchDestinationDetailsUseCaseProtocol {
+struct FetchDestinationDetailsUseCase: FetchDestinationDetailsUseCaseProtocol {
     var repository: DestinationsRepositoryProtocol
 
     func execute(destinationID: String) -> Single<DestinationDetails> {

@@ -12,6 +12,7 @@ protocol DestinationsViewModelProtocol: AnyObject {
 final class DestinationsViewModel: DestinationsViewModelProtocol {
     private enum Constant {
         static let errorTitle: String = "Erreur"
+        static let recentDestinationsKey: String = "recentDestinations"
     }
 
     private let destinationsUseCase: FetchDestinationsUseCaseProtocol
@@ -20,7 +21,7 @@ final class DestinationsViewModel: DestinationsViewModelProtocol {
     private let disposeBag: DisposeBag = .init()
     private var recentDestinationsDetails: [DestinationDetails] = []
 
-    var recentDestinationsRelay: BehaviorRelay<[DestinationDetails]> = .init(value: [])
+    var recentDestinationsRelay: BehaviorRelay<[DestinationDetails]>
 
     var destinationsRelay: BehaviorRelay<[Destination]> = .init(value: [])
     var needToShowLoader: BehaviorRelay<Bool> = .init(value: true)
@@ -34,6 +35,10 @@ final class DestinationsViewModel: DestinationsViewModelProtocol {
         self.destinationsUseCase = destinationsUseCase
         self.destinationDetailsUseCase = destinationDetailsUseCase
         self.coordinator = coordinator
+
+        let data = UserDefaults.standard.data(forKey: Constant.recentDestinationsKey)
+        let recentDestinations: [DestinationDetails] = CodableUtils.parse(data: data)
+        recentDestinationsRelay = .init(value: recentDestinations)
         fetchDestinations()
     }
 
@@ -74,7 +79,11 @@ final class DestinationsViewModel: DestinationsViewModelProtocol {
         if recentDestinationsDetails.count >= 2 {
             recentDestinationsDetails.removeFirst()
         }
-        recentDestinationsDetails.append(details)
+        if !recentDestinationsDetails.contains(details) {
+            recentDestinationsDetails.append(details)
+        }
+        let data = recentDestinationsDetails.encode()
+        UserDefaults.standard.set(data, forKey: Constant.recentDestinationsKey)
         recentDestinationsRelay.accept(recentDestinationsDetails)
     }
 }

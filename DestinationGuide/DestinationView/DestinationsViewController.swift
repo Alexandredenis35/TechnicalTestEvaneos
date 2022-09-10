@@ -1,7 +1,6 @@
 import RxCocoa
 import RxSwift
 import UIKit
-
 final class DestinationsViewController: UIViewController {
     private enum Constant {
         static let destinationCellIdentifier = "DestinationCollectionViewCell"

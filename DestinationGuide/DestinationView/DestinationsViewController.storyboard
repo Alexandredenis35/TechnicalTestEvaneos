@@ -25,13 +25,16 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="100"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Destinations récentes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QDi-mq-m6J">
-                                        <rect key="frame" x="16" y="16" width="382" height="35"/>
+                                        <rect key="frame" x="16" y="16" width="382" height="23"/>
                                         <fontDescription key="fontDescription" name="Averta-Bold" family="Averta" pointSize="28"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="186" placeholderIntrinsicHeight="23" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="7HI-br-6Yz">
-                                        <rect key="frame" x="16" y="61" width="186" height="23"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="7HI-br-6Yz">
+                                        <rect key="frame" x="16" y="49" width="186" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="yxx-Mh-oKM"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -48,8 +51,9 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="aR8-CB-7hs">
                                 <rect key="frame" x="0.0" y="160" width="414" height="736"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" sectionInsetReference="layoutMargins" id="MlL-m9-wkh">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" sectionInsetReference="layoutMargins" id="MlL-m9-wkh">
                                     <size key="itemSize" width="342" height="280"/>
+                                    <size key="estimatedItemSize" width="342" height="280"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>

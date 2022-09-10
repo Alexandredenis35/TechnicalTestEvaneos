@@ -17,20 +17,21 @@ class FetchDestinationsUseCaseTests: XCTestCase {
             .init(
                 id: "217",
                 name: "Barbade",
-                picture: URL(string: "")!,
+                picture: URL(string: "https://static1.evcdn.net/images/reduction/1027399_w-800_h-800_q-70_m-crop.jpg")!,
                 tag: "Incontournable",
                 rating: 5
             ),
             .init(
                 id: "50",
                 name: "Arménie",
-                picture: URL(string: "")!,
+                picture: URL(string: "https://static1.evcdn.net/images/reduction/1544481_w-800_h-800_q-70_m-crop.jpg")!,
                 tag: "Incontournable",
                 rating: 4
             )
         ]
-        mockedRepository.getDestinationsData = expectedResult
-        sut.execute() // Here Single<Destinations>
+        
+        mockedRepository.getDestinationsUseCaseData = expectedResult
+        sut.execute()
     }
 
     override func tearDown() {
