@@ -1,0 +1,35 @@
+@testable import DestinationGuide
+import Foundation
+
+class MockFetchingService: DestinationFetchingServiceProtocol {
+    var getDestinationsError: DestinationFetchingServiceError?
+    var getDestinationsData: Set<Destination>?
+    var getDestinationsGotCalled: Bool = false
+
+    func getDestinations(completion: @escaping (Result<Set<Destination>, DestinationFetchingServiceError>) -> Void) {
+        getDestinationsGotCalled = true
+        if getDestinationsError != nil,
+           let destinations = getDestinationsData {
+            completion(.success(destinations))
+        } else if let error = getDestinationsError {
+            completion(.failure(error))
+        }
+    }
+
+    var getDestinationDetailsError: DestinationFetchingServiceError?
+    var getDestinationDetailsData: DestinationDetails?
+    var getDestinationDetailsGotCalled: Bool = false
+
+    func getDestinationDetails(
+        for _: Destination.ID,
+        completion: @escaping (Result<DestinationDetails, DestinationFetchingServiceError>) -> Void
+    ) {
+        getDestinationDetailsGotCalled = true
+        if getDestinationDetailsError != nil,
+           let destinations = getDestinationDetailsData {
+            completion(.success(destinations))
+        } else if let error = getDestinationDetailsError {
+            completion(.failure(error))
+        }
+    }
+}

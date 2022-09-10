@@ -3,19 +3,60 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Averta-Bold.otf">
+            <string>Averta-Bold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Destinations View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController id="Y6W-OH-hqX" customClass="DestinationsViewController" customModule="DestinationGuide" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5EZ-qb-Rvc">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="374" placeholderIntrinsicHeight="128" translatesAutoresizingMaskIntoConstraints="NO" id="oOn-iE-Rb3" userLabel="RecentDestinationView">
+                                <rect key="frame" x="0.0" y="44" width="414" height="100"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Destinations récentes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QDi-mq-m6J">
+                                        <rect key="frame" x="16" y="16" width="382" height="0.0"/>
+                                        <fontDescription key="fontDescription" name="Averta-Bold" family="Averta" pointSize="28"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="7HI-br-6Yz">
+                                        <rect key="frame" x="16" y="26" width="382" height="58"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="186" placeholderIntrinsicHeight="68" translatesAutoresizingMaskIntoConstraints="NO" id="bRY-9C-p1q" customClass="LastSearchedDestinationView" customModule="DestinationGuide" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="186" height="58"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="186" placeholderIntrinsicHeight="68" translatesAutoresizingMaskIntoConstraints="NO" id="H5Y-iK-bhU" customClass="LastSearchedDestinationView" customModule="DestinationGuide" customModuleProvider="target">
+                                                <rect key="frame" x="196" y="0.0" width="186" height="58"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="7HI-br-6Yz" secondAttribute="bottom" constant="16" id="5eP-yj-dRs"/>
+                                    <constraint firstItem="QDi-mq-m6J" firstAttribute="leading" secondItem="oOn-iE-Rb3" secondAttribute="leading" constant="16" id="7Oh-Xx-8cN"/>
+                                    <constraint firstItem="7HI-br-6Yz" firstAttribute="top" secondItem="QDi-mq-m6J" secondAttribute="bottom" constant="10" id="KDA-tg-ngV"/>
+                                    <constraint firstAttribute="height" constant="100" id="KH7-PA-9Ui"/>
+                                    <constraint firstItem="QDi-mq-m6J" firstAttribute="centerX" secondItem="oOn-iE-Rb3" secondAttribute="centerX" id="SPq-Ex-qU1"/>
+                                    <constraint firstItem="7HI-br-6Yz" firstAttribute="leading" secondItem="oOn-iE-Rb3" secondAttribute="leading" constant="16" id="dPc-HJ-vFm"/>
+                                    <constraint firstItem="QDi-mq-m6J" firstAttribute="top" secondItem="oOn-iE-Rb3" secondAttribute="top" constant="16" id="x14-2A-EkJ"/>
+                                </constraints>
+                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="aR8-CB-7hs">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="160" width="414" height="736"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" sectionInsetReference="layoutMargins" id="MlL-m9-wkh">
                                     <size key="itemSize" width="342" height="280"/>
@@ -26,12 +67,16 @@
                                 <cells/>
                             </collectionView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="ham-8Y-AUe"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="aR8-CB-7hs" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="1ni-ZE-NQv"/>
-                            <constraint firstItem="aR8-CB-7hs" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="6ME-mG-BVq"/>
+                            <constraint firstAttribute="bottom" secondItem="aR8-CB-7hs" secondAttribute="bottom" id="3ld-NP-S2w"/>
+                            <constraint firstItem="oOn-iE-Rb3" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="9SC-f7-VyM"/>
+                            <constraint firstItem="aR8-CB-7hs" firstAttribute="top" secondItem="oOn-iE-Rb3" secondAttribute="bottom" constant="16" id="HAx-kf-85h"/>
                             <constraint firstItem="aR8-CB-7hs" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="bGq-1a-9AY"/>
+                            <constraint firstItem="oOn-iE-Rb3" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="e5i-qa-rrH"/>
                             <constraint firstItem="aR8-CB-7hs" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="iey-MK-urh"/>
+                            <constraint firstItem="oOn-iE-Rb3" firstAttribute="top" secondItem="ham-8Y-AUe" secondAttribute="top" id="yqL-DF-B7K"/>
                         </constraints>
                     </view>
                     <connections>
@@ -43,4 +88,9 @@
             <point key="canvasLocation" x="139" y="116"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

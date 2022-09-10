@@ -14,7 +14,7 @@ extension UIViewController {
         view.addSubview(loaderContainer ?? UIView())
     }
 
-    func removeLoader() {
+    func hideLoader() {
         loaderContainer?.removeFromSuperview()
         loaderContainer = nil
     }

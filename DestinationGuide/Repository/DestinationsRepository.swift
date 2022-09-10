@@ -4,7 +4,7 @@ import RxSwift
 struct DestinationsRepository: DestinationsRepositoryProtocol {
     var dataSource: DestinationFetchingServiceProtocol
 
-    func getDestinationsDetails(destinationID: String) -> Single<DestinationDetails> {
+    func getDestinationDetails(destinationID: String) -> Single<DestinationDetails> {
         return Single.create { observer in
             dataSource.getDestinationDetails(for: destinationID) { result in
                 switch result {

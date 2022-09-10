@@ -1,4 +1,5 @@
 import Foundation
+import RxCocoa
 import RxRelay
 import RxSwift
 import UIKit
@@ -16,7 +17,7 @@ final class DestinationsViewModel: DestinationsViewModelProtocol {
     private let destinationsUseCase: FetchDestinationsUseCaseProtocol
     private let destinationDetailsUseCase: FetchDestinationDetailsUseCaseProtocol
     private let disposeBag: DisposeBag = .init()
-
+    var destinationsDriver: Driver<[Destination]>
     var destinationsRelay: BehaviorRelay<[Destination]> = .init(value: [])
     var needToShowLoader: BehaviorRelay<Bool> = .init(value: true)
     weak var coordinator: AppCoordinator?
@@ -29,6 +30,7 @@ final class DestinationsViewModel: DestinationsViewModelProtocol {
         self.destinationsUseCase = destinationsUseCase
         self.destinationDetailsUseCase = destinationDetailsUseCase
         self.coordinator = coordinator
+        destinationsDriver = destinationsRelay.asDriver()
         fetchDestinations()
     }
 

@@ -31,7 +31,7 @@ final class DestinationsViewController: UIViewController {
                 if needToShowLoader {
                     self?.showLoader()
                 } else {
-                    self?.removeLoader()
+                    self?.hideLoader()
                 }
             }).disposed(by: disposeBag)
 
