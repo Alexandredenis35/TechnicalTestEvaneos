@@ -13,10 +13,33 @@ class FetchDestinationDetailsUseCaseTests: XCTestCase {
     }
 
     func tests_useCase_with_data() async {
-        let expectedResult: Set<Destination> = [
-        ]
-        mockedRepository.getDestinationsUseCaseData = expectedResult
-        sut.execute(destinationID: <#String#>) // Here Single<Destinations>
+        let expectedResult: DestinationDetails = .init(
+            id: "217",
+            name: "Barbade",
+            url: URL(string: "https://evaneos.fr/barbade")!
+        )
+
+        mockedRepository.getDestinationsUseCaseError = nil
+        mockedRepository.getDestinationDetailsUseCaseData = expectedResult
+
+        let expectedId = "217"
+        let result = await sut.execute(destinationID: expectedId)
+        XCTAssertEqual(result, .success(expectedResult))
+        XCTAssertEqual(expectedId, mockedRepository.getDestinationDetailsGotCalledWith)
+        XCTAssertTrue(mockedRepository.getDestinationDetailsUseCaseGotCalled)
+    }
+
+    func tests_useCase_with_error() async {
+        let expectedResult: DestinationFetchingServiceError = .destinationNotFound
+
+        mockedRepository.getDestinationsUseCaseError = expectedResult
+        mockedRepository.getDestinationDetailsUseCaseData = nil
+
+        let expectedId = "217"
+        let result = await sut.execute(destinationID: expectedId)
+        XCTAssertEqual(result, .failure(expectedResult))
+        XCTAssertEqual(expectedId, mockedRepository.getDestinationDetailsGotCalledWith)
+        XCTAssertTrue(mockedRepository.getDestinationDetailsUseCaseGotCalled)
     }
 
     override func tearDown() {

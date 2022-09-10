@@ -68,15 +68,18 @@ final class DestinationsViewModel: DestinationsViewModelProtocol {
         needToShowLoader.accept(true)
         let result = await destinationDetailsUseCase.execute(destinationID: id)
         DispatchQueue.main.async { [weak self] in
-            self?.needToShowLoader.accept(false)
+            guard let self = self else {
+                return
+            }
+            self.needToShowLoader.accept(false)
 
             switch result {
             case let .success(destinationDetails):
-                self?.addRecentDestination(destinationDetails)
-                self?.coordinator?.goToDetails(name: destinationDetails.name, webViewURL: destinationDetails.url)
+                self.addRecentDestination(destinationDetails)
+                self.coordinator?.goToDetails(name: destinationDetails.name, webViewURL: destinationDetails.url)
 
             case let .failure(error):
-                self?.coordinator?.showAlert(
+                self.coordinator?.showAlert(
                     alertTitle: Constant.errorTitle,
                     alertMessage: error.localizedDescription
                 )
@@ -85,11 +88,10 @@ final class DestinationsViewModel: DestinationsViewModelProtocol {
     }
 
     private func addRecentDestination(_ details: DestinationDetails) {
-        if recentDestinationsDetails.count >= 2 {
-            recentDestinationsDetails.removeFirst()
-        }
-        if !recentDestinationsDetails.contains(details) {
+        if !recentDestinationsDetails.contains(details), recentDestinationsDetails.count < 2 {
             recentDestinationsDetails.append(details)
+        } else if recentDestinationsDetails.count >= 2 {
+            recentDestinationsDetails.removeFirst()
         }
         let data = recentDestinationsDetails.encode()
         UserDefaults.standard.set(data, forKey: Constant.recentDestinationsKey)

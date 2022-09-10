@@ -6,15 +6,13 @@ import XCTest
 class DestinationsRepositoryTests: XCTestCase {
     var sut: DestinationsRepository!
     var mockedDataSource: MockFetchingService!
-    var testExpectation: XCTestExpectation!
 
     override func setUp() {
-        testExpectation = expectation(description: "Waiting for the getDestinations method to complete.")
         mockedDataSource = MockFetchingService()
         sut = DestinationsRepository(dataSource: mockedDataSource)
     }
 
-    func tests_repository_with_data() async {
+    func tests_repository_getDestinations_with_data() async {
         let expectedResult: Set<Destination> = [
             .init(
                 id: "217",
@@ -32,62 +30,54 @@ class DestinationsRepositoryTests: XCTestCase {
             )
         ]
         mockedDataSource.getDestinationsData = expectedResult
+        mockedDataSource.getDestinationsError = nil
 
-        var tripDestinations: [Destination] = []
-        sut.getDestinations()
-            .subscribe { [weak self] result in
-                switch result {
-                case let .success(destinations):
-                    tripDestinations = destinations
-                    self?.testExpectation.fulfill()
-                case let .failure(error):
-                    XCTFail("Expected success, but failed \(error)")
-                }
-            }
-            .disposed(by: DisposeBag())
-
-        // Wait for expectations for a maximum of 2 seconds.
-        wait(for: [testExpectation], timeout: 2.0)
-        XCTAssertEqual(tripDestinations, Array(expectedResult))
+        let result = await sut.getDestinations()
+        XCTAssertEqual(result, .success(expectedResult))
         XCTAssertTrue(mockedDataSource.getDestinationsGotCalled)
     }
 
-    func tests_repository_with_error() async {
+    func tests_repository_with_getDestinations_error() async {
         let expectedResult: DestinationFetchingServiceError = .destinationNotFound
         mockedDataSource.getDestinationsData = nil
-        mockedDataSource.getDestinationsError = .destinationNotFound
-        var destinationError: Error?
-        sut.getDestinations()
-            .subscribe { [weak self] result in
-                switch result {
-                case .success:
-                    XCTFail("Expected failure, but success")
-                case let .failure(error):
-                    destinationError = error
-                    self?.testExpectation.fulfill()
-                }
-            }
-            .disposed(by: DisposeBag())
+        mockedDataSource.getDestinationsError = expectedResult
 
-        // Wait for expectations for a maximum of 2 seconds.
-        wait(for: [testExpectation], timeout: 2.0)
-        XCTAssertEqual(destinationError?.convertToDestinationError(), expectedResult)
+        let result = await sut.getDestinations()
+        XCTAssertEqual(result, .failure(expectedResult))
         XCTAssertTrue(mockedDataSource.getDestinationsGotCalled)
+    }
+
+    func tests_repository_getDestinationDetails_with_data() async {
+        let expectedResult: DestinationDetails = .init(
+            id: "217",
+            name: "Barbade",
+            url: URL(string: "https://evaneos.fr/barbade")!
+        )
+        let expectedId = "217"
+        mockedDataSource.getDestinationDetailsData = expectedResult
+        mockedDataSource.getDestinationDetailsError = nil
+
+        let result = await sut.getDestinationDetails(destinationID: expectedId)
+        XCTAssertEqual(result, .success(expectedResult))
+        XCTAssertEqual(expectedId, mockedDataSource.getDestinationDetailsGotCalledWith)
+        XCTAssertTrue(mockedDataSource.getDestinationDetailsGotCalled)
+    }
+
+    func tests_repository_with_getDestinationDetails_error() async {
+        let expectedResult: DestinationFetchingServiceError = .destinationNotFound
+        mockedDataSource.getDestinationDetailsData = nil
+        mockedDataSource.getDestinationDetailsError = expectedResult
+        let expectedId = "217"
+
+        let result = await sut.getDestinationDetails(destinationID: "217")
+        XCTAssertEqual(result, .failure(expectedResult))
+        XCTAssertEqual(expectedId, mockedDataSource.getDestinationDetailsGotCalledWith)
+        XCTAssertTrue(mockedDataSource.getDestinationDetailsGotCalled)
     }
 
     override func tearDown() {
         super.tearDown()
         mockedDataSource = nil
-        testExpectation = nil
         sut = nil
-    }
-}
-
-extension Error {
-    func convertToDestinationError() -> DestinationFetchingServiceError? {
-        guard let error = self as? DestinationFetchingServiceError else {
-            return nil
-        }
-        return error
     }
 }

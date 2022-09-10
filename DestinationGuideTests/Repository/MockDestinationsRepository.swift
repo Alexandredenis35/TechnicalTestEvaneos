@@ -1,39 +1,36 @@
 @testable import DestinationGuide
 import Foundation
-import RxSwift
 
-/// class MockDestinationsRepository: DestinationsRepositoryProtocol {
-//    var getDestinationsUseCaseError: Error?
-//    var getDestinationsUseCaseData: Set<Destination>?
-//    var getDestinationsUseCaseGotCalled: Bool = false
-//
-//    func getDestinations() -> Single<[Destination]> {
-//        getDestinationsUseCaseGotCalled = true
-//        if getDestinationsUseCaseError != nil,
-//           let destinations = getDestinationsUseCaseData {
-//            return Single.just(Array(destinations))
-//        } else if let error = getDestinationsUseCaseError {
-//            return Single.error(error)
-//        } else {
-//            return Single.error(NSError(domain: "Not Found", code: 404))
-//        }
-//    }
-//
-//    var getDestinationDetailsUseCaseError: Error?
-//    var getDestinationsDetailsUseCaseData: DestinationDetails?
-//    var getDestinationsDetailsUseCaseGotCalled: Bool = false
-//    var getDestinationDetailsGotCalledWith: String?
-//
-//    func getDestinationDetails(destinationID: String) -> Single<DestinationDetails> {
-//        getDestinationDetailsGotCalledWith = destinationID
-//        getDestinationsDetailsUseCaseGotCalled = true
-//        if getDestinationsDetailsUseCaseData != nil,
-//           let destinationDetails = getDestinationsDetailsUseCaseData {
-//            return Single.just(destinationDetails)
-//        } else if let error = getDestinationDetailsUseCaseError {
-//            return Single.error(error)
-//        } else {
-//            return Single.error(NSError(domain: "Not Found", code: 404))
-//        }
-//    }
-// }
+class MockDestinationsRepository: DestinationsRepositoryProtocol {
+    var getDestinationsUseCaseError: DestinationFetchingServiceError?
+    var getDestinationsUseCaseData: Set<Destination>?
+    var getDestinationsUseCaseGotCalled: Bool = false
+
+    func getDestinations() async -> Result<Set<Destination>, DestinationFetchingServiceError> {
+        getDestinationsUseCaseGotCalled = true
+        if getDestinationsUseCaseData != nil,
+           let destinations = getDestinationsUseCaseData {
+            return .success(destinations)
+        } else {
+            return .failure(getDestinationsUseCaseError ?? .destinationNotFound)
+        }
+    }
+
+    var getDestinationDetailsUseCaseError: DestinationFetchingServiceError?
+    var getDestinationDetailsUseCaseData: DestinationDetails?
+    var getDestinationDetailsUseCaseGotCalled: Bool = false
+    var getDestinationDetailsGotCalledWith: String?
+
+    func getDestinationDetails(destinationID: String) async
+    -> Result<DestinationDetails, DestinationFetchingServiceError> {
+        getDestinationDetailsGotCalledWith = destinationID
+        getDestinationDetailsUseCaseGotCalled = true
+
+        if getDestinationDetailsUseCaseData != nil,
+           let destinationDetails = getDestinationDetailsUseCaseData {
+            return .success(destinationDetails)
+        } else {
+            return .failure(getDestinationsUseCaseError ?? .destinationNotFound)
+        }
+    }
+}

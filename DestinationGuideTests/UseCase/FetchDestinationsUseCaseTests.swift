@@ -1,6 +1,5 @@
 @testable import DestinationGuide
 import Foundation
-import RxSwift
 import XCTest
 
 class FetchDestinationsUseCaseTests: XCTestCase {
@@ -29,9 +28,22 @@ class FetchDestinationsUseCaseTests: XCTestCase {
                 rating: 4
             )
         ]
-
+        mockedRepository.getDestinationsUseCaseError = nil
         mockedRepository.getDestinationsUseCaseData = expectedResult
-        sut.execute()
+        let result = await sut.execute()
+        XCTAssertEqual(result, .success(expectedResult))
+        XCTAssertTrue(mockedRepository.getDestinationsUseCaseGotCalled)
+    }
+
+    func tests_useCase_with_error() async {
+        let expectedResult: DestinationFetchingServiceError = .destinationNotFound
+
+        mockedRepository.getDestinationsUseCaseError = expectedResult
+        mockedRepository.getDestinationDetailsUseCaseData = nil
+
+        let result = await sut.execute()
+        XCTAssertEqual(result, .failure(expectedResult))
+        XCTAssertTrue(mockedRepository.getDestinationsUseCaseGotCalled)
     }
 
     override func tearDown() {

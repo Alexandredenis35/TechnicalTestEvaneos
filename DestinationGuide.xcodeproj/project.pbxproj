@@ -31,10 +31,10 @@
 		05C3EBD128CC03180068597C /* NibInstantiationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3EBD028CC03180068597C /* NibInstantiationProtocol.swift */; };
 		05F5FDFA28CCE0C60025D7F5 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 05F5FDF928CCE0C60025D7F5 /* Swinject */; };
 		05F5FDFB28CCE1460025D7F5 /* MockFetchingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB538E28CC7727008C57BC /* MockFetchingService.swift */; };
-		05F5FDFC28CCE1490025D7F5 /* MockDestinationsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB539128CC7B4A008C57BC /* MockDestinationsRepository.swift */; };
 		05F5FDFF28CCE23B0025D7F5 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 05F5FDFE28CCE23B0025D7F5 /* RxCocoa */; };
 		05F5FE0128CCE23B0025D7F5 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 05F5FE0028CCE23B0025D7F5 /* RxSwift */; };
 		05F5FE0328CCEB0B0025D7F5 /* FetchDestinationDetailsUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F5FE0228CCEB0B0025D7F5 /* FetchDestinationDetailsUseCaseTests.swift */; };
+		05F5FE0428CCF57A0025D7F5 /* MockDestinationsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB539128CC7B4A008C57BC /* MockDestinationsRepository.swift */; };
 		05FB538928CC72BE008C57BC /* DestinationsRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB538828CC72BE008C57BC /* DestinationsRepositoryTests.swift */; };
 		05FB539528CC7D22008C57BC /* FetchDestinationsUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB539428CC7D22008C57BC /* FetchDestinationsUseCaseTests.swift */; };
 		05FB539728CCB356008C57BC /* UIView+Subviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB539628CCB356008C57BC /* UIView+Subviews.swift */; };
@@ -596,7 +596,6 @@
 				05FB539728CCB356008C57BC /* UIView+Subviews.swift in Sources */,
 				05C3EBBD28CBD82E0068597C /* FetchDestinationDetailsUseCaseProtocol.swift in Sources */,
 				E710FABC2885AB4000326EEF /* Fonts.swift in Sources */,
-				05F5FDFC28CCE1490025D7F5 /* MockDestinationsRepository.swift in Sources */,
 				05C3EBD128CC03180068597C /* NibInstantiationProtocol.swift in Sources */,
 				E710FAC52885AF2E00326EEF /* DestinationDetailsViewController.swift in Sources */,
 				E794201C26B854040032C12E /* DestinationDetails.swift in Sources */,
@@ -607,6 +606,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05F5FE0428CCF57A0025D7F5 /* MockDestinationsRepository.swift in Sources */,
 				05FB538928CC72BE008C57BC /* DestinationsRepositoryTests.swift in Sources */,
 				05F5FE0328CCEB0B0025D7F5 /* FetchDestinationDetailsUseCaseTests.swift in Sources */,
 				05FB539528CC7D22008C57BC /* FetchDestinationsUseCaseTests.swift in Sources */,
