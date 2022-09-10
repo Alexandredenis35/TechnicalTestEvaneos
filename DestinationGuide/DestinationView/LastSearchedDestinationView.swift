@@ -5,10 +5,10 @@ protocol LastSearchedDestinationProtocol: AnyObject {
 }
 
 class LastSearchedDestinationView: UIView, NibInstantiation {
-    @IBOutlet private var destinationsStackView: UIStackView!
     @IBOutlet private var lastDestinationButton: UIButton!
 
     private weak var recentDestinationDelegate: LastSearchedDestinationProtocol?
+    private var destinationID: String?
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -23,17 +23,22 @@ class LastSearchedDestinationView: UIView, NibInstantiation {
     }
 
     @IBAction private func didTapDestination() {
-        recentDestinationDelegate?.didSelectRecentDestination(id: "")
+        recentDestinationDelegate?.didSelectRecentDestination(id: destinationID ?? "")
     }
 
     private func setupUI() {
         lastDestinationButton.backgroundColor = .clear
-        lastDestinationButton.layer.cornerRadius = 10
+        lastDestinationButton.layer.cornerRadius = 20
         lastDestinationButton.layer.borderWidth = 2
         lastDestinationButton.layer.borderColor = UIColor.black.cgColor
     }
 
-    func setup(delegate: LastSearchedDestinationProtocol?) {
+    func setup(
+        delegate: LastSearchedDestinationProtocol?,
+        details: DestinationDetails
+    ) {
         recentDestinationDelegate = delegate
+        lastDestinationButton.setTitle(details.name, for: .normal)
+        destinationID = details.id
     }
 }

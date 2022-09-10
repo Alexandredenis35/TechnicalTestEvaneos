@@ -8,6 +8,7 @@ final class DestinationsViewController: UIViewController {
         static let headerViewIdentifier = "SectionHeaderView"
     }
 
+    @IBOutlet private var recentDestinationsStackView: UIStackView!
     @IBOutlet private var destinationsCollectionView: UICollectionView!
 
     private var disposeBag = DisposeBag()
@@ -25,6 +26,22 @@ final class DestinationsViewController: UIViewController {
         super.viewDidLoad()
         setupCollectionView()
         viewModel?.fetchDestinations()
+        setupBinding()
+    }
+
+    private func setupBinding() {
+        viewModel?.recentDestinationsRelay
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] recentDestinations in
+                self?.recentDestinationsStackView.removeSubviews()
+                recentDestinations.forEach { recentDestination in
+                    let recentDestinationView = LastSearchedDestinationView()
+                    recentDestinationView.setup(delegate: self, details: recentDestination)
+                    self?.recentDestinationsStackView.addArrangedSubview(recentDestinationView)
+                }
+            })
+            .disposed(by: disposeBag)
+
         viewModel?.needToShowLoader
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] needToShowLoader in
@@ -33,13 +50,15 @@ final class DestinationsViewController: UIViewController {
                 } else {
                     self?.hideLoader()
                 }
-            }).disposed(by: disposeBag)
+            })
+            .disposed(by: disposeBag)
 
         viewModel?.destinationsRelay
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { _ in
                 self.destinationsCollectionView.reloadData()
-            }).disposed(by: disposeBag)
+            })
+            .disposed(by: disposeBag)
     }
 
     private func setupCollectionView() {
@@ -134,5 +153,12 @@ extension DestinationsViewController: UICollectionViewDelegate {
             return
         }
         viewModel?.fetchDestinationDetails(id: selectedDestination.id)
+    }
+}
+
+// MARK: - LastSearchedDestinationProtocol extension
+extension DestinationsViewController: LastSearchedDestinationProtocol {
+    func didSelectRecentDestination(id: String) {
+        viewModel?.fetchDestinationDetails(id: id)
     }
 }

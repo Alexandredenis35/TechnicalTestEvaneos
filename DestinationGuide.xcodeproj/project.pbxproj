@@ -36,6 +36,7 @@
 		05FB538F28CC7727008C57BC /* MockFetchingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB538E28CC7727008C57BC /* MockFetchingService.swift */; };
 		05FB539228CC7B4A008C57BC /* MockDestinationsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB539128CC7B4A008C57BC /* MockDestinationsRepository.swift */; };
 		05FB539528CC7D22008C57BC /* FetchDestinationsUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB539428CC7D22008C57BC /* FetchDestinationsUseCaseTests.swift */; };
+		05FB539728CCB356008C57BC /* UIView+Subviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB539628CCB356008C57BC /* UIView+Subviews.swift */; };
 		E710FABC2885AB4000326EEF /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E710FABB2885AB4000326EEF /* Fonts.swift */; };
 		E710FAC52885AF2E00326EEF /* DestinationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E710FAC42885AF2E00326EEF /* DestinationDetailsViewController.swift */; };
 		E7878C1D26BACE2400CF1DB8 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7878C1C26BACE2400CF1DB8 /* Styles.swift */; };
@@ -100,6 +101,7 @@
 		05FB538E28CC7727008C57BC /* MockFetchingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFetchingService.swift; sourceTree = "<group>"; };
 		05FB539128CC7B4A008C57BC /* MockDestinationsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDestinationsRepository.swift; sourceTree = "<group>"; };
 		05FB539428CC7D22008C57BC /* FetchDestinationsUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchDestinationsUseCaseTests.swift; sourceTree = "<group>"; };
+		05FB539628CCB356008C57BC /* UIView+Subviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Subviews.swift"; sourceTree = "<group>"; };
 		E710FABB2885AB4000326EEF /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		E710FAC42885AF2E00326EEF /* DestinationDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationDetailsViewController.swift; sourceTree = "<group>"; };
 		E7878C1C26BACE2400CF1DB8 /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 			children = (
 				05626C1928CB95EA00AE96A4 /* Storyboard+Instantiation.swift */,
 				05C3EBCA28CBE9B80068597C /* UIViewController+Loader.swift */,
+				05FB539628CCB356008C57BC /* UIView+Subviews.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -586,6 +589,7 @@
 				E7AE6A8A26B81F4F0059FB12 /* AppDelegate.swift in Sources */,
 				E7B8690B287C4701000D2C2C /* GradientView.swift in Sources */,
 				05C3EBAC28CBBFE00068597C /* AppCoordinator.swift in Sources */,
+				05FB539728CCB356008C57BC /* UIView+Subviews.swift in Sources */,
 				05C3EBBD28CBD82E0068597C /* FetchDestinationDetailsUseCaseProtocol.swift in Sources */,
 				E710FABC2885AB4000326EEF /* Fonts.swift in Sources */,
 				05C3EBD128CC03180068597C /* NibInstantiationProtocol.swift in Sources */,

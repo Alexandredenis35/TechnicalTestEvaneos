@@ -31,7 +31,6 @@ class DestinationsRepositoryTests: XCTestCase {
         sut.getDestinations() // Here Single<Destinations>
     }
 
-    
     override func tearDown() {
         super.tearDown()
         mockedDataSource = nil

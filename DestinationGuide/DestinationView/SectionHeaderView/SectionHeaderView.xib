@@ -18,7 +18,7 @@
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P9y-Rs-Xtf">
-                    <rect key="frame" x="8" y="16" width="304" height="18"/>
+                    <rect key="frame" x="16" y="16" width="288" height="18"/>
                     <fontDescription key="fontDescription" name="Averta-Bold" family="Averta" pointSize="28"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -28,7 +28,7 @@
                 <constraint firstItem="P9y-Rs-Xtf" firstAttribute="centerX" secondItem="U6b-Vx-4bR" secondAttribute="centerX" id="1FQ-ln-5sE"/>
                 <constraint firstItem="P9y-Rs-Xtf" firstAttribute="centerY" secondItem="U6b-Vx-4bR" secondAttribute="centerY" id="DD1-Uh-wgh"/>
                 <constraint firstItem="P9y-Rs-Xtf" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" constant="16" id="Pcu-m6-6tl"/>
-                <constraint firstItem="P9y-Rs-Xtf" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" constant="8" id="xLz-ao-oi7"/>
+                <constraint firstItem="P9y-Rs-Xtf" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" constant="16" id="xLz-ao-oi7"/>
             </constraints>
             <connections>
                 <outlet property="titleLabel" destination="P9y-Rs-Xtf" id="Mqz-3b-z0T"/>

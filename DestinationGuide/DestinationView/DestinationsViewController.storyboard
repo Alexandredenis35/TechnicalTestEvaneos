@@ -25,23 +25,13 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="100"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Destinations récentes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QDi-mq-m6J">
-                                        <rect key="frame" x="16" y="16" width="382" height="0.0"/>
+                                        <rect key="frame" x="16" y="16" width="382" height="35"/>
                                         <fontDescription key="fontDescription" name="Averta-Bold" family="Averta" pointSize="28"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="7HI-br-6Yz">
-                                        <rect key="frame" x="16" y="26" width="382" height="58"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="186" placeholderIntrinsicHeight="68" translatesAutoresizingMaskIntoConstraints="NO" id="bRY-9C-p1q" customClass="LastSearchedDestinationView" customModule="DestinationGuide" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="186" height="58"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                            </view>
-                                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="186" placeholderIntrinsicHeight="68" translatesAutoresizingMaskIntoConstraints="NO" id="H5Y-iK-bhU" customClass="LastSearchedDestinationView" customModule="DestinationGuide" customModuleProvider="target">
-                                                <rect key="frame" x="196" y="0.0" width="186" height="58"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                            </view>
-                                        </subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="186" placeholderIntrinsicHeight="23" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="7HI-br-6Yz">
+                                        <rect key="frame" x="16" y="61" width="186" height="23"/>
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -81,6 +71,7 @@
                     </view>
                     <connections>
                         <outlet property="destinationsCollectionView" destination="aR8-CB-7hs" id="60l-x0-mfM"/>
+                        <outlet property="recentDestinationsStackView" destination="7HI-br-6Yz" id="97R-lo-43E"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

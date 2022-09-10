@@ -32,7 +32,7 @@ class FetchDestinationsUseCaseTests: XCTestCase {
         mockedRepository.getDestinationsData = expectedResult
         sut.execute() // Here Single<Destinations>
     }
-    
+
     override func tearDown() {
         super.tearDown()
         mockedRepository = nil
