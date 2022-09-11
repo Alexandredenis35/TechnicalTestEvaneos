@@ -21,11 +21,13 @@ class MockFetchingService: DestinationFetchingServiceProtocol {
     var getDestinationDetailsError: DestinationFetchingServiceError?
     var getDestinationDetailsData: DestinationDetails?
     var getDestinationDetailsGotCalled: Bool = false
+    var getDestinationDetailsGotCalledWith: String?
 
     func getDestinationDetails(
-        for _: Destination.ID,
+        for destinationID: Destination.ID,
         completion: @escaping (Result<DestinationDetails, DestinationFetchingServiceError>) -> Void
     ) {
+        getDestinationDetailsGotCalledWith = destinationID
         getDestinationDetailsGotCalled = true
         if getDestinationDetailsError == nil,
            let destinations = getDestinationDetailsData {

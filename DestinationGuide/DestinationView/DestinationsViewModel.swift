@@ -4,28 +4,36 @@ import RxRelay
 import RxSwift
 import UIKit
 
+// MARK: - DestinationsViewModelProtocol
 protocol DestinationsViewModelProtocol: AnyObject {
-    func fetchDestinations()
-    func fetchDestinationDetails(id: String)
+    func fetchDestinations() async
+    func fetchDestinationDetails(id: String) async
+    var recentDestinationsRelay: BehaviorRelay<[DestinationDetails]> { get }
+    var destinationsRelay: BehaviorRelay<[Destination]> { get }
+    var needToShowLoaderRelay: BehaviorRelay<Bool> { get }
 }
 
 final class DestinationsViewModel: DestinationsViewModelProtocol {
+    // MARK: Constant
+
     private enum Constant {
         static let errorTitle: String = "Erreur"
         static let recentDestinationsKey: String = "recentDestinations"
     }
 
-    private let destinationsUseCase: FetchDestinationsUseCaseProtocol
-    private let destinationDetailsUseCase: FetchDestinationDetailsUseCaseProtocol
-
-    private let disposeBag: DisposeBag = .init()
-    private var recentDestinationsDetails: [DestinationDetails] = []
+    // MARK: Properties
 
     var recentDestinationsRelay: BehaviorRelay<[DestinationDetails]>
-
     var destinationsRelay: BehaviorRelay<[Destination]> = .init(value: [])
-    var needToShowLoader: BehaviorRelay<Bool> = .init(value: true)
+    var needToShowLoaderRelay: BehaviorRelay<Bool> = .init(value: true)
     weak var coordinator: AppCoordinator?
+
+    private let destinationsUseCase: FetchDestinationsUseCaseProtocol
+    private let destinationDetailsUseCase: FetchDestinationDetailsUseCaseProtocol
+    private let recentDestinationsUseCase: RecentDestinationUseCaseProtocol
+    private let disposeBag: DisposeBag = .init()
+
+    // MARK: Initialisation
 
     init(
         destinationsUseCase: FetchDestinationsUseCaseProtocol,
@@ -39,51 +47,66 @@ final class DestinationsViewModel: DestinationsViewModelProtocol {
         let data = UserDefaults.standard.data(forKey: Constant.recentDestinationsKey)
         let recentDestinations: [DestinationDetails] = CodableUtils.parse(data: data)
         recentDestinationsRelay = .init(value: recentDestinations)
-        fetchDestinations()
+        recentDestinationsUseCase = RecentDestinationUseCase(currentRecentDestinations: recentDestinationsRelay.value)
+
+        Task {
+            await fetchDestinations()
+        }
     }
 
-    func fetchDestinations() {
-        destinationsUseCase.execute()
-            .observe(on: MainScheduler.instance)
-            .do(onSubscribe: { [weak self] in self?.needToShowLoader.accept(true) })
-            .subscribe(onSuccess: { [weak self] destinations in
-                self?.destinationsRelay.accept(destinations)
-                self?.needToShowLoader.accept(false)
-            }, onFailure: { [weak self] error in
-                self?.needToShowLoader.accept(false)
-                self?.coordinator?.showAlert(
+    // MARK: Public Functions
+
+    func fetchDestinations() async {
+        needToShowLoaderRelay.accept(true)
+        let result = await destinationsUseCase.execute()
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else {
+                return
+            }
+            self.needToShowLoaderRelay.accept(false)
+            switch result {
+            case let .success(destinations):
+                self.destinationsRelay.accept(Array(destinations))
+            case let .failure(error):
+                self.coordinator?.showAlert(
                     alertTitle: Constant.errorTitle,
                     alertMessage: error.localizedDescription
                 )
-            }).disposed(by: disposeBag)
+            }
+        }
     }
 
-    func fetchDestinationDetails(id: String) {
-        destinationDetailsUseCase.execute(destinationID: id)
-            .observe(on: MainScheduler.instance)
-            .do(onSubscribe: { [weak self] in self?.needToShowLoader.accept(true) })
-            .subscribe(onSuccess: { [weak self] destinationDetails in
-                self?.addRecentDestination(destinationDetails)
-                self?.needToShowLoader.accept(false)
-                self?.coordinator?.goToDetails(name: destinationDetails.name, webViewURL: destinationDetails.url)
-            }, onFailure: { [weak self] error in
-                self?.needToShowLoader.accept(false)
-                self?.coordinator?.showAlert(
+    func fetchDestinationDetails(id: String) async {
+        needToShowLoaderRelay.accept(true)
+        let result = await destinationDetailsUseCase.execute(destinationID: id)
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else {
+                return
+            }
+            self.needToShowLoaderRelay.accept(false)
+            switch result {
+            case let .success(destinationDetails):
+                let recentDestinations = self.getRecentDestinations(destinationDetails)
+                self.recentDestinationsRelay.accept(recentDestinations)
+
+                self.coordinator?.goToDetails(name: destinationDetails.name, webViewURL: destinationDetails.url)
+            case let .failure(error):
+                self.coordinator?.showAlert(
                     alertTitle: Constant.errorTitle,
                     alertMessage: error.localizedDescription
                 )
-            }).disposed(by: disposeBag)
+            }
+        }
     }
 
-    private func addRecentDestination(_ details: DestinationDetails) {
-        if recentDestinationsDetails.count >= 2 {
-            recentDestinationsDetails.removeFirst()
-        }
-        if !recentDestinationsDetails.contains(details) {
-            recentDestinationsDetails.append(details)
-        }
-        let data = recentDestinationsDetails.encode()
+    // MARK: Private functions
+
+    private func getRecentDestinations(_ details: DestinationDetails) -> [DestinationDetails] {
+        recentDestinationsUseCase.execute(details: details)
+    }
+
+    private func saveDestinations(_ recentDestinations: DestinationDetails) {
+        let data = CodableUtils.encode(object: recentDestinations)
         UserDefaults.standard.set(data, forKey: Constant.recentDestinationsKey)
-        recentDestinationsRelay.accept(recentDestinationsDetails)
     }
 }

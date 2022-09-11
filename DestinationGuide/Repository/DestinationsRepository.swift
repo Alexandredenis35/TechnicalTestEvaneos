@@ -1,34 +1,22 @@
 import Foundation
-import RxSwift
 
 struct DestinationsRepository: DestinationsRepositoryProtocol {
     var dataSource: DestinationFetchingServiceProtocol
 
-    func getDestinationDetails(destinationID: String) -> Single<DestinationDetails> {
-        return Single.create { observer in
-            dataSource.getDestinationDetails(for: destinationID) { result in
-                switch result {
-                case let .success(value):
-                    observer(.success(value))
-                case let .failure(error):
-                    observer(.failure(error))
-                }
-            }
-            return Disposables.create()
+    func getDestinationDetails(destinationID: String) async
+    -> Result<DestinationDetails, DestinationFetchingServiceError> {
+        await withCheckedContinuation { continuation in
+            dataSource.getDestinationDetails(for: destinationID, completion: { result in
+                continuation.resume(returning: result)
+            })
         }
     }
 
-    func getDestinations() -> Single<[Destination]> {
-        return Single.create { observer in
+    func getDestinations() async -> Result<Set<Destination>, DestinationFetchingServiceError> {
+        await withCheckedContinuation { continuation in
             dataSource.getDestinations { result in
-                switch result {
-                case let .success(value):
-                    observer(.success(Array(value)))
-                case let .failure(error):
-                    observer(.failure(error))
-                }
+                continuation.resume(returning: result)
             }
-            return Disposables.create()
         }
     }
 }

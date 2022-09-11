@@ -1,16 +1,25 @@
 import UIKit
 import WebKit
 
+// MARK: - DestinationDetailsViewController
 final class DestinationDetailsViewController: UIViewController {
+    // MARK: IBOutlets
+
     @IBOutlet private var webView: WKWebView!
+
+    // MARK: Properties
 
     var viewModel: DestinationDetailsViewModel?
 
+    // MARK: View controller lifecycle methods
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupWebview()
         navigationItem.title = viewModel?.name
+        setupWebview()
     }
+
+    // MARK: Private functions
 
     private func setupWebview() {
         webView.navigationDelegate = self

@@ -1,14 +1,21 @@
 import UIKit
 
+// MARK: - LastSearchedDestinationProtocol
 protocol LastSearchedDestinationProtocol: AnyObject {
     func didSelectRecentDestination(id: String)
 }
 
+// MARK: - LastSearchedDestinationView
 class LastSearchedDestinationView: UIView, NibInstantiation {
+    // MARK: IBOulets
     @IBOutlet private var lastDestinationButton: UIButton!
+
+    // MARK: Properties
 
     private weak var recentDestinationDelegate: LastSearchedDestinationProtocol?
     private var destinationID: String?
+
+    // MARK: - Initialisation
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -22,9 +29,7 @@ class LastSearchedDestinationView: UIView, NibInstantiation {
         setupUI()
     }
 
-    @IBAction private func didTapDestination() {
-        recentDestinationDelegate?.didSelectRecentDestination(id: destinationID ?? "")
-    }
+    // MARK: Private functions
 
     private func setupUI() {
         lastDestinationButton.backgroundColor = .clear
@@ -33,6 +38,8 @@ class LastSearchedDestinationView: UIView, NibInstantiation {
         lastDestinationButton.layer.borderColor = UIColor.black.cgColor
     }
 
+    // MARK: Public functions
+
     func setup(
         delegate: LastSearchedDestinationProtocol?,
         details: DestinationDetails
@@ -40,5 +47,11 @@ class LastSearchedDestinationView: UIView, NibInstantiation {
         recentDestinationDelegate = delegate
         lastDestinationButton.setTitle(details.name, for: .normal)
         destinationID = details.id
+    }
+
+    // MARK: IBActions
+
+    @IBAction private func didTapDestination() {
+        recentDestinationDelegate?.didSelectRecentDestination(id: destinationID ?? "")
     }
 }

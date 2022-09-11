@@ -1,17 +1,25 @@
 import RxCocoa
 import RxSwift
 import UIKit
+
+// MARK: - DestinationsViewController
 final class DestinationsViewController: UIViewController {
+    // MARK: Constant
+    
     private enum Constant {
         static let destinationCellIdentifier = "DestinationCollectionViewCell"
         static let headerViewIdentifier = "SectionHeaderView"
     }
 
+    // MARK: IBOutlets
+    
     @IBOutlet private var recentDestinationsStackView: UIStackView!
     @IBOutlet private var destinationsCollectionView: UICollectionView!
 
+    // MARK: Properties
+    
     private var disposeBag = DisposeBag()
-    var viewModel: DestinationsViewModel?
+    var viewModel: DestinationsViewModelProtocol?
 
     lazy var collectionViewLayout: UICollectionViewLayout = {
         let layout = UICollectionViewFlowLayout()
@@ -21,12 +29,15 @@ final class DestinationsViewController: UIViewController {
         return layout
     }()
 
+    // MARK: View controller lifecycle methods
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
-        viewModel?.fetchDestinations()
         setupBinding()
     }
+
+    // MARK: Private functions
 
     private func setupBinding() {
         viewModel?.recentDestinationsRelay
@@ -41,7 +52,7 @@ final class DestinationsViewController: UIViewController {
             })
             .disposed(by: disposeBag)
 
-        viewModel?.needToShowLoader
+        viewModel?.needToShowLoaderRelay
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] needToShowLoader in
                 if needToShowLoader {
@@ -151,13 +162,17 @@ extension DestinationsViewController: UICollectionViewDelegate {
         guard let selectedDestination = viewModel?.destinationsRelay.value[indexPath.item] else {
             return
         }
-        viewModel?.fetchDestinationDetails(id: selectedDestination.id)
+        Task {
+            await viewModel?.fetchDestinationDetails(id: selectedDestination.id)
+        }
     }
 }
 
 // MARK: - LastSearchedDestinationProtocol extension
 extension DestinationsViewController: LastSearchedDestinationProtocol {
     func didSelectRecentDestination(id: String) {
-        viewModel?.fetchDestinationDetails(id: id)
+        Task {
+            await viewModel?.fetchDestinationDetails(id: id)
+        }
     }
 }
