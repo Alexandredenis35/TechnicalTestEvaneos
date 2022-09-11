@@ -17,8 +17,10 @@ final class AppCoordinator: Coordinator {
 
     func start() {
         let mainVC = DestinationsViewController.instantiate()
-        let destinationsUseCase = Resolver.shared.resolve(FetchDestinationsUseCaseProtocol.self)
-        let destinationDetailUseCase = Resolver.shared.resolve(FetchDestinationDetailsUseCaseProtocol.self)
+        let destinationsUseCase =
+            FetchDestinationsUseCase(repository: DestinationsRepository(dataSource: DestinationFetchingService()))
+        let destinationDetailUseCase =
+            FetchDestinationDetailsUseCase(repository: DestinationsRepository(dataSource: DestinationFetchingService()))
         let viewModel = DestinationsViewModel(
             destinationsUseCase: destinationsUseCase,
             destinationDetailsUseCase: destinationDetailUseCase,
