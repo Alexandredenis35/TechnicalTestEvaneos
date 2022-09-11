@@ -1,10 +1,15 @@
 import UIKit
 
-class DestinationCollectionViewCell: UICollectionViewCell {
+// MARK: - DestinationCollectionViewCell
+final class DestinationCollectionViewCell: UICollectionViewCell {
+    // MARK: IBOulets
+    
     @IBOutlet private var destinationLabel: UILabel!
     @IBOutlet private var labelTagButton: UIButton!
     @IBOutlet private var containerImageView: UIImageView!
     @IBOutlet private var stackViewRating: UIStackView!
+
+    // MARK: Properties
 
     private lazy var gradientView: GradientView = {
         let gradientView = GradientView()
@@ -13,6 +18,8 @@ class DestinationCollectionViewCell: UICollectionViewCell {
         gradientView.endColor = .black.withAlphaComponent(0.5)
         return gradientView
     }()
+
+    // MARK: View Lifecycle
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,6 +33,8 @@ class DestinationCollectionViewCell: UICollectionViewCell {
         gradientView.frame = containerImageView.frame
         containerImageView.addSubview(gradientView)
     }
+
+    // MARK: Private functions
 
     private func setupUILabelTag() {
         labelTagButton.titleLabel?.font = UIFont.avertaBold(fontSize: 16)
@@ -56,7 +65,7 @@ class DestinationCollectionViewCell: UICollectionViewCell {
         layer.shadowRadius = 4.0
     }
 
-    func downloadImage(url: URL) {
+    private func downloadImage(url: URL) {
         URLSession.shared.dataTask(with: URLRequest(url: url), completionHandler: { data, _, _ in
             if let data = data {
                 DispatchQueue.main.async {
@@ -65,6 +74,8 @@ class DestinationCollectionViewCell: UICollectionViewCell {
             }
         }).resume()
     }
+
+    // MARK: - Public functions
 
     func setupCell(destination: Destination) {
         destinationLabel.text = destination.name

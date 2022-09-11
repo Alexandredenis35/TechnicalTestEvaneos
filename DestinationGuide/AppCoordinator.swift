@@ -1,20 +1,29 @@
 import Foundation
 import UIKit
 
-protocol Coordinator {
-    var childCoordinators: [Coordinator] { get set }
+// MARK: - CoordinatorProtocol
+protocol CoordinatorProtocol {
+    var childCoordinators: [CoordinatorProtocol] { get set }
     var navigationController: UINavigationController { get set }
     func start()
 }
 
-final class AppCoordinator: Coordinator {
-    var childCoordinators = [Coordinator]()
+// MARK: - AppCoordinator
+final class AppCoordinator {
+    // MARK: Properties
+    
+    var childCoordinators = [CoordinatorProtocol]()
     var navigationController: UINavigationController
+
+    // MARK: Initialisation
 
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
+}
 
+// MARK: - CoordinatorProtocol extension
+extension AppCoordinator: CoordinatorProtocol {
     func start() {
         let mainVC = DestinationsViewController.instantiate()
         let destinationsUseCase =

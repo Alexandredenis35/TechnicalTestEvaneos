@@ -5,6 +5,7 @@ disabled_rules: # rule identifiers to exclude from running
   - orphaned_doc_comment
 opt_in_rules: # some rules are only opt-in
   - control_statement
+  - unused_import
   - empty_count
   - trailing_newline
   - colon

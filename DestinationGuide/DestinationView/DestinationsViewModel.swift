@@ -4,28 +4,36 @@ import RxRelay
 import RxSwift
 import UIKit
 
+// MARK: - DestinationsViewModelProtocol
 protocol DestinationsViewModelProtocol: AnyObject {
     func fetchDestinations() async
     func fetchDestinationDetails(id: String) async
+    var recentDestinationsRelay: BehaviorRelay<[DestinationDetails]> { get }
+    var destinationsRelay: BehaviorRelay<[Destination]> { get }
+    var needToShowLoaderRelay: BehaviorRelay<Bool> { get }
 }
 
 final class DestinationsViewModel: DestinationsViewModelProtocol {
+    // MARK: Constant
+
     private enum Constant {
         static let errorTitle: String = "Erreur"
         static let recentDestinationsKey: String = "recentDestinations"
     }
 
-    private let destinationsUseCase: FetchDestinationsUseCaseProtocol
-    private let destinationDetailsUseCase: FetchDestinationDetailsUseCaseProtocol
-
-    private let disposeBag: DisposeBag = .init()
-    // private var recentDestinationsDetails: [DestinationDetails] = []
+    // MARK: Properties
 
     var recentDestinationsRelay: BehaviorRelay<[DestinationDetails]>
     var destinationsRelay: BehaviorRelay<[Destination]> = .init(value: [])
     var needToShowLoaderRelay: BehaviorRelay<Bool> = .init(value: true)
-
     weak var coordinator: AppCoordinator?
+
+    private let destinationsUseCase: FetchDestinationsUseCaseProtocol
+    private let destinationDetailsUseCase: FetchDestinationDetailsUseCaseProtocol
+    private let recentDestinationsUseCase: RecentDestinationUseCaseProtocol
+    private let disposeBag: DisposeBag = .init()
+
+    // MARK: Initialisation
 
     init(
         destinationsUseCase: FetchDestinationsUseCaseProtocol,
@@ -39,11 +47,14 @@ final class DestinationsViewModel: DestinationsViewModelProtocol {
         let data = UserDefaults.standard.data(forKey: Constant.recentDestinationsKey)
         let recentDestinations: [DestinationDetails] = CodableUtils.parse(data: data)
         recentDestinationsRelay = .init(value: recentDestinations)
+        recentDestinationsUseCase = RecentDestinationUseCase(currentRecentDestinations: recentDestinationsRelay.value)
 
         Task {
             await fetchDestinations()
         }
     }
+
+    // MARK: Public Functions
 
     func fetchDestinations() async {
         needToShowLoaderRelay.accept(true)
@@ -75,7 +86,9 @@ final class DestinationsViewModel: DestinationsViewModelProtocol {
             self.needToShowLoaderRelay.accept(false)
             switch result {
             case let .success(destinationDetails):
-                self.addRecentDestination(destinationDetails)
+                let recentDestinations = self.getRecentDestinations(destinationDetails)
+                self.recentDestinationsRelay.accept(recentDestinations)
+
                 self.coordinator?.goToDetails(name: destinationDetails.name, webViewURL: destinationDetails.url)
             case let .failure(error):
                 self.coordinator?.showAlert(
@@ -86,15 +99,14 @@ final class DestinationsViewModel: DestinationsViewModelProtocol {
         }
     }
 
-    private func addRecentDestination(_ details: DestinationDetails) {
-        var recentDestinations = recentDestinationsRelay.value
-        if !recentDestinationsRelay.value.contains(details), recentDestinationsRelay.value.count < 2 {
-            recentDestinations.append(details)
-        } else if recentDestinationsRelay.value.count >= 2 {
-            recentDestinations.removeFirst()
-        }
+    // MARK: Private functions
+
+    private func getRecentDestinations(_ details: DestinationDetails) -> [DestinationDetails] {
+        recentDestinationsUseCase.execute(details: details)
+    }
+
+    private func saveDestinations(_ recentDestinations: DestinationDetails) {
         let data = CodableUtils.encode(object: recentDestinations)
         UserDefaults.standard.set(data, forKey: Constant.recentDestinationsKey)
-        recentDestinationsRelay.accept(recentDestinations)
     }
 }

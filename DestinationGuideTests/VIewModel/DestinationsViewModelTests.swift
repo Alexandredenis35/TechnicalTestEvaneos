@@ -2,11 +2,12 @@
 import Foundation
 import XCTest
 
-class DestinationsViewModelTests: XCTestCase {
+final class DestinationsViewModelTests: XCTestCase {
+    // TODO: PUT FINAL ON ALL CLASES
     var sut: DestinationsViewModel!
     var mockedFetchDestinationsUseCase: MockFetchDestinationUseCase!
     var mockedFetchDestinationDetailsUseCase: MockFetchDestinationDetailsUseCase!
-    var dummyCoordinator: Coordinator!
+    var dummyCoordinator: CoordinatorProtocol!
 
     override func setUp() {
         super.setUp()
@@ -51,12 +52,13 @@ class DestinationsViewModelTests: XCTestCase {
         mockedFetchDestinationDetailsUseCase.executeResult = .success(expectedResult)
         let expectedId = "217"
         await sut.fetchDestinationDetails(id: expectedId)
+
         XCTAssertEqual(sut.recentDestinationsRelay.value, [expectedResult])
         XCTAssertEqual(mockedFetchDestinationDetailsUseCase.executeGotCalledWith, expectedId)
     }
 
-    func test_addRecentDestinations() {
-        // sut.
+    func tests_recentDestinations_with_one_destination() {
+        //    sut.
     }
 
     override func tearDown() {
@@ -92,9 +94,29 @@ final class MockFetchDestinationDetailsUseCase: FetchDestinationDetailsUseCasePr
     }
 }
 
-final class DummyCoordinator: Coordinator {
-    var childCoordinators: [Coordinator] = []
+final class DummyCoordinator: CoordinatorProtocol {
+    var childCoordinators: [CoordinatorProtocol] = []
     var navigationController: UINavigationController = .init()
 
     func start() {}
+}
+
+extension XCTestCase {
+    func await<T>(_ function: (@escaping (T) -> Void) -> Void) -> T? {
+        let expectation = self.expectation(description: "Async call")
+        var result: T?
+
+        function { value in
+            result = value
+            expectation.fulfill()
+        }
+
+        waitForExpectations(timeout: 10)
+
+        guard let unwrappedResult = result else {
+            return nil
+        }
+
+        return unwrappedResult
+    }
 }

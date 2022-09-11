@@ -1,17 +1,25 @@
 import RxCocoa
 import RxSwift
 import UIKit
+
+// MARK: - DestinationsViewController
 final class DestinationsViewController: UIViewController {
+    // MARK: Constant
+    
     private enum Constant {
         static let destinationCellIdentifier = "DestinationCollectionViewCell"
         static let headerViewIdentifier = "SectionHeaderView"
     }
 
+    // MARK: IBOutlets
+    
     @IBOutlet private var recentDestinationsStackView: UIStackView!
     @IBOutlet private var destinationsCollectionView: UICollectionView!
 
+    // MARK: Properties
+    
     private var disposeBag = DisposeBag()
-    var viewModel: DestinationsViewModel?
+    var viewModel: DestinationsViewModelProtocol?
 
     lazy var collectionViewLayout: UICollectionViewLayout = {
         let layout = UICollectionViewFlowLayout()
@@ -21,11 +29,15 @@ final class DestinationsViewController: UIViewController {
         return layout
     }()
 
+    // MARK: View controller lifecycle methods
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
         setupBinding()
     }
+
+    // MARK: Private functions
 
     private func setupBinding() {
         viewModel?.recentDestinationsRelay

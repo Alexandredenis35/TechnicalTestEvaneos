@@ -1,5 +1,3 @@
-import RxSwift
-
 struct FetchDestinationDetailsUseCase: FetchDestinationDetailsUseCaseProtocol {
     var repository: DestinationsRepositoryProtocol
 

@@ -1,7 +1,8 @@
 import Foundation
-import RxSwift
 
 struct DestinationsRepository: DestinationsRepositoryProtocol {
+    var dataSource: DestinationFetchingServiceProtocol
+
     func getDestinationDetails(destinationID: String) async
     -> Result<DestinationDetails, DestinationFetchingServiceError> {
         await withCheckedContinuation { continuation in
@@ -10,8 +11,6 @@ struct DestinationsRepository: DestinationsRepositoryProtocol {
             })
         }
     }
-
-    var dataSource: DestinationFetchingServiceProtocol
 
     func getDestinations() async -> Result<Set<Destination>, DestinationFetchingServiceError> {
         await withCheckedContinuation { continuation in
