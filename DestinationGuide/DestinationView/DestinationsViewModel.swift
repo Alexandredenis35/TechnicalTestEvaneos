@@ -19,12 +19,12 @@ final class DestinationsViewModel: DestinationsViewModelProtocol {
     private let destinationDetailsUseCase: FetchDestinationDetailsUseCaseProtocol
 
     private let disposeBag: DisposeBag = .init()
-    private var recentDestinationsDetails: [DestinationDetails] = []
+    // private var recentDestinationsDetails: [DestinationDetails] = []
 
     var recentDestinationsRelay: BehaviorRelay<[DestinationDetails]>
-
     var destinationsRelay: BehaviorRelay<[Destination]> = .init(value: [])
-    var needToShowLoader: BehaviorRelay<Bool> = .init(value: true)
+    var needToShowLoaderRelay: BehaviorRelay<Bool> = .init(value: true)
+
     weak var coordinator: AppCoordinator?
 
     init(
@@ -39,19 +39,20 @@ final class DestinationsViewModel: DestinationsViewModelProtocol {
         let data = UserDefaults.standard.data(forKey: Constant.recentDestinationsKey)
         let recentDestinations: [DestinationDetails] = CodableUtils.parse(data: data)
         recentDestinationsRelay = .init(value: recentDestinations)
+
         Task {
             await fetchDestinations()
         }
     }
 
     func fetchDestinations() async {
-        needToShowLoader.accept(true)
+        needToShowLoaderRelay.accept(true)
         let result = await destinationsUseCase.execute()
         DispatchQueue.main.async { [weak self] in
             guard let self = self else {
                 return
             }
-            self.needToShowLoader.accept(false)
+            self.needToShowLoaderRelay.accept(false)
             switch result {
             case let .success(destinations):
                 self.destinationsRelay.accept(Array(destinations))
@@ -65,19 +66,17 @@ final class DestinationsViewModel: DestinationsViewModelProtocol {
     }
 
     func fetchDestinationDetails(id: String) async {
-        needToShowLoader.accept(true)
+        needToShowLoaderRelay.accept(true)
         let result = await destinationDetailsUseCase.execute(destinationID: id)
         DispatchQueue.main.async { [weak self] in
             guard let self = self else {
                 return
             }
-            self.needToShowLoader.accept(false)
-
+            self.needToShowLoaderRelay.accept(false)
             switch result {
             case let .success(destinationDetails):
                 self.addRecentDestination(destinationDetails)
                 self.coordinator?.goToDetails(name: destinationDetails.name, webViewURL: destinationDetails.url)
-
             case let .failure(error):
                 self.coordinator?.showAlert(
                     alertTitle: Constant.errorTitle,
@@ -88,13 +87,14 @@ final class DestinationsViewModel: DestinationsViewModelProtocol {
     }
 
     private func addRecentDestination(_ details: DestinationDetails) {
-        if !recentDestinationsDetails.contains(details), recentDestinationsDetails.count < 2 {
-            recentDestinationsDetails.append(details)
-        } else if recentDestinationsDetails.count >= 2 {
-            recentDestinationsDetails.removeFirst()
+        var recentDestinations = recentDestinationsRelay.value
+        if !recentDestinationsRelay.value.contains(details), recentDestinationsRelay.value.count < 2 {
+            recentDestinations.append(details)
+        } else if recentDestinationsRelay.value.count >= 2 {
+            recentDestinations.removeFirst()
         }
-        let data = recentDestinationsDetails.encode()
+        let data = CodableUtils.encode(object: recentDestinations)
         UserDefaults.standard.set(data, forKey: Constant.recentDestinationsKey)
-        recentDestinationsRelay.accept(recentDestinationsDetails)
+        recentDestinationsRelay.accept(recentDestinations)
     }
 }

@@ -30,11 +30,14 @@
 		05C3EBCF28CC02830068597C /* LastSearchedDestinationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05C3EBCE28CC02830068597C /* LastSearchedDestinationView.xib */; };
 		05C3EBD128CC03180068597C /* NibInstantiationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3EBD028CC03180068597C /* NibInstantiationProtocol.swift */; };
 		05F5FDFA28CCE0C60025D7F5 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 05F5FDF928CCE0C60025D7F5 /* Swinject */; };
-		05F5FDFB28CCE1460025D7F5 /* MockFetchingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB538E28CC7727008C57BC /* MockFetchingService.swift */; };
 		05F5FDFF28CCE23B0025D7F5 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 05F5FDFE28CCE23B0025D7F5 /* RxCocoa */; };
 		05F5FE0128CCE23B0025D7F5 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 05F5FE0028CCE23B0025D7F5 /* RxSwift */; };
 		05F5FE0328CCEB0B0025D7F5 /* FetchDestinationDetailsUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F5FE0228CCEB0B0025D7F5 /* FetchDestinationDetailsUseCaseTests.swift */; };
 		05F5FE0428CCF57A0025D7F5 /* MockDestinationsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB539128CC7B4A008C57BC /* MockDestinationsRepository.swift */; };
+		05F5FE0728CDC63A0025D7F5 /* DestinationModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F5FE0628CDC63A0025D7F5 /* DestinationModelTests.swift */; };
+		05F5FE0828CDC8CF0025D7F5 /* MockFetchingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB538E28CC7727008C57BC /* MockFetchingService.swift */; };
+		05F5FE0B28CDC9B70025D7F5 /* DestinationsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F5FE0A28CDC9B70025D7F5 /* DestinationsViewModelTests.swift */; };
+		05F5FE0F28CDDCBA0025D7F5 /* DestinationGuideUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F5FE0E28CDDCBA0025D7F5 /* DestinationGuideUITests.swift */; };
 		05FB538928CC72BE008C57BC /* DestinationsRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB538828CC72BE008C57BC /* DestinationsRepositoryTests.swift */; };
 		05FB539528CC7D22008C57BC /* FetchDestinationsUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB539428CC7D22008C57BC /* FetchDestinationsUseCaseTests.swift */; };
 		05FB539728CCB356008C57BC /* UIView+Subviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB539628CCB356008C57BC /* UIView+Subviews.swift */; };
@@ -54,7 +57,6 @@
 		E7AE6A8E26B81F4F0059FB12 /* DestinationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AE6A8D26B81F4F0059FB12 /* DestinationsViewController.swift */; };
 		E7AE6A9326B81F510059FB12 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7AE6A9226B81F510059FB12 /* Assets.xcassets */; };
 		E7AE6A9626B81F510059FB12 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7AE6A9426B81F510059FB12 /* LaunchScreen.storyboard */; };
-		E7AE6AAB26B81F520059FB12 /* DestinationGuideUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AE6AAA26B81F520059FB12 /* DestinationGuideUITests.swift */; };
 		E7B8690B287C4701000D2C2C /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B8690A287C4701000D2C2C /* GradientView.swift */; };
 /* End PBXBuildFile section */
 
@@ -99,6 +101,9 @@
 		05C3EBCE28CC02830068597C /* LastSearchedDestinationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LastSearchedDestinationView.xib; sourceTree = "<group>"; };
 		05C3EBD028CC03180068597C /* NibInstantiationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibInstantiationProtocol.swift; sourceTree = "<group>"; };
 		05F5FE0228CCEB0B0025D7F5 /* FetchDestinationDetailsUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchDestinationDetailsUseCaseTests.swift; sourceTree = "<group>"; };
+		05F5FE0628CDC63A0025D7F5 /* DestinationModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationModelTests.swift; sourceTree = "<group>"; };
+		05F5FE0A28CDC9B70025D7F5 /* DestinationsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationsViewModelTests.swift; sourceTree = "<group>"; };
+		05F5FE0E28CDDCBA0025D7F5 /* DestinationGuideUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DestinationGuideUITests.swift; sourceTree = "<group>"; };
 		05FB538828CC72BE008C57BC /* DestinationsRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationsRepositoryTests.swift; sourceTree = "<group>"; };
 		05FB538E28CC7727008C57BC /* MockFetchingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFetchingService.swift; sourceTree = "<group>"; };
 		05FB539128CC7B4A008C57BC /* MockDestinationsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDestinationsRepository.swift; sourceTree = "<group>"; };
@@ -124,7 +129,6 @@
 		E7AE6A9726B81F510059FB12 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E7AE6A9C26B81F520059FB12 /* DestinationGuideTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DestinationGuideTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7AE6AA626B81F520059FB12 /* DestinationGuideUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DestinationGuideUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E7AE6AAA26B81F520059FB12 /* DestinationGuideUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationGuideUITests.swift; sourceTree = "<group>"; };
 		E7B8690A287C4701000D2C2C /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -253,6 +257,30 @@
 			path = DI;
 			sourceTree = "<group>";
 		};
+		05F5FE0528CDC6250025D7F5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				05F5FE0628CDC63A0025D7F5 /* DestinationModelTests.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		05F5FE0928CDC9A10025D7F5 /* VIewModel */ = {
+			isa = PBXGroup;
+			children = (
+				05F5FE0A28CDC9B70025D7F5 /* DestinationsViewModelTests.swift */,
+			);
+			path = VIewModel;
+			sourceTree = "<group>";
+		};
+		05F5FE0C28CDDAE20025D7F5 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				05FB539828CCBDC4008C57BC /* CodableUtils.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		05FB538C28CC7701008C57BC /* Repository */ = {
 			isa = PBXGroup;
 			children = (
@@ -341,15 +369,15 @@
 		E7AE6A8826B81F4F0059FB12 /* DestinationGuide */ = {
 			isa = PBXGroup;
 			children = (
-				05FB539828CCBDC4008C57BC /* CodableUtils.swift */,
-				05FB539028CC7731008C57BC /* DataSource */,
-				05C3EBC528CBE6C40068597C /* DI */,
 				E7AE6A8926B81F4F0059FB12 /* AppDelegate.swift */,
 				05C3EBAB28CBBFE00068597C /* AppCoordinator.swift */,
+				05FB539028CC7731008C57BC /* DataSource */,
+				05C3EBC528CBE6C40068597C /* DI */,
 				05C3EBBB28CBD8120068597C /* UseCase */,
 				05C3EBBA28CBD8030068597C /* Repository */,
 				05626C3528CBBBBE00AE96A4 /* DestinationDetailsView */,
 				05626C2A28CBB88400AE96A4 /* DestinationView */,
+				05F5FE0C28CDDAE20025D7F5 /* Utils */,
 				05626C1828CB95C300AE96A4 /* Extensions */,
 				E7B8690A287C4701000D2C2C /* GradientView.swift */,
 				E7878C1F26BACF3E00CF1DB8 /* Fonts */,
@@ -365,6 +393,8 @@
 		E7AE6A9F26B81F520059FB12 /* DestinationGuideTests */ = {
 			isa = PBXGroup;
 			children = (
+				05F5FE0928CDC9A10025D7F5 /* VIewModel */,
+				05F5FE0528CDC6250025D7F5 /* Model */,
 				05FB539328CC7D13008C57BC /* UseCase */,
 				05FB538D28CC770B008C57BC /* DataSource */,
 				05FB538C28CC7701008C57BC /* Repository */,
@@ -375,7 +405,7 @@
 		E7AE6AA926B81F520059FB12 /* DestinationGuideUITests */ = {
 			isa = PBXGroup;
 			children = (
-				E7AE6AAA26B81F520059FB12 /* DestinationGuideUITests.swift */,
+				05F5FE0E28CDDCBA0025D7F5 /* DestinationGuideUITests.swift */,
 			);
 			path = DestinationGuideUITests;
 			sourceTree = "<group>";
@@ -462,6 +492,7 @@
 					};
 					E7AE6AA526B81F520059FB12 = {
 						CreatedOnToolsVersion = 13.0;
+						LastSwiftMigration = 1330;
 						TestTargetID = E7AE6A8526B81F4F0059FB12;
 					};
 				};
@@ -588,7 +619,6 @@
 				E794201A26B853F10032C12E /* Destination.swift in Sources */,
 				05C3EBCB28CBE9B80068597C /* UIViewController+Loader.swift in Sources */,
 				05626C1A28CB95EA00AE96A4 /* Storyboard+Instantiation.swift in Sources */,
-				05F5FDFB28CCE1460025D7F5 /* MockFetchingService.swift in Sources */,
 				E7AE6A8A26B81F4F0059FB12 /* AppDelegate.swift in Sources */,
 				E7B8690B287C4701000D2C2C /* GradientView.swift in Sources */,
 				05FB539928CCBDC4008C57BC /* CodableUtils.swift in Sources */,
@@ -607,9 +637,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				05F5FE0428CCF57A0025D7F5 /* MockDestinationsRepository.swift in Sources */,
+				05F5FE0B28CDC9B70025D7F5 /* DestinationsViewModelTests.swift in Sources */,
 				05FB538928CC72BE008C57BC /* DestinationsRepositoryTests.swift in Sources */,
 				05F5FE0328CCEB0B0025D7F5 /* FetchDestinationDetailsUseCaseTests.swift in Sources */,
+				05F5FE0728CDC63A0025D7F5 /* DestinationModelTests.swift in Sources */,
 				05FB539528CC7D22008C57BC /* FetchDestinationsUseCaseTests.swift in Sources */,
+				05F5FE0828CDC8CF0025D7F5 /* MockFetchingService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -617,7 +650,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E7AE6AAB26B81F520059FB12 /* DestinationGuideUITests.swift in Sources */,
+				05F5FE0F28CDDCBA0025D7F5 /* DestinationGuideUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -872,6 +905,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3K4X5D5KTS;
@@ -885,6 +919,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.evaneos.DestinationGuideUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "DestinationGuideUITests/DestinationGuideUITests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = DestinationGuide;
@@ -895,6 +931,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3K4X5D5KTS;
@@ -908,6 +945,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.evaneos.DestinationGuideUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "DestinationGuideUITests/DestinationGuideUITests-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = DestinationGuide;
