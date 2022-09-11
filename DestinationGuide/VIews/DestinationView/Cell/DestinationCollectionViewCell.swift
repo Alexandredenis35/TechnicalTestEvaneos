@@ -3,7 +3,7 @@ import UIKit
 // MARK: - DestinationCollectionViewCell
 final class DestinationCollectionViewCell: UICollectionViewCell {
     // MARK: IBOulets
-    
+
     @IBOutlet private var destinationLabel: UILabel!
     @IBOutlet private var labelTagButton: UIButton!
     @IBOutlet private var containerImageView: UIImageView!
@@ -39,11 +39,11 @@ final class DestinationCollectionViewCell: UICollectionViewCell {
     private func setupUILabelTag() {
         labelTagButton.titleLabel?.font = UIFont.avertaBold(fontSize: 16)
         labelTagButton.backgroundColor = UIColor.evaneos(color: .ink)
-        labelTagButton.layer.cornerRadius = 5
+        labelTagButton.cornerRadius(with: 5)
     }
 
     private func setupUIImageView() {
-        containerImageView.layer.cornerRadius = 16
+        containerImageView.cornerRadius(with: 16)
         containerImageView.layer.masksToBounds = true
     }
 
@@ -58,14 +58,11 @@ final class DestinationCollectionViewCell: UICollectionViewCell {
     }
 
     private func setupShadow() {
-        layer.backgroundColor = UIColor.clear.cgColor
-        layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOffset = CGSize(width: 0, height: 4.0)
-        layer.shadowOpacity = 0.25
-        layer.shadowRadius = 4.0
+        addShadow(opacity: 0.25, radius: 4.0, offset: CGSize(width: 0, height: 4.0))
     }
 
     private func downloadImage(url: URL) {
+        // TODO: Move this logic in ViewModel or Parent ViewModel
         URLSession.shared.dataTask(with: URLRequest(url: url), completionHandler: { data, _, _ in
             if let data = data {
                 DispatchQueue.main.async {
@@ -75,7 +72,7 @@ final class DestinationCollectionViewCell: UICollectionViewCell {
         }).resume()
     }
 
-    // MARK: - Public functions
+    // MARK: Public functions
 
     func setupCell(destination: Destination) {
         destinationLabel.text = destination.name

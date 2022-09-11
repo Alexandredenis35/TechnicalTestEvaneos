@@ -1,6 +1,6 @@
 import Foundation
 
-class CodableUtils {
+final class CodableUtils {
     static func parse<T: Decodable>(data: Data?) -> [T] {
         guard let data = data else {
             return []

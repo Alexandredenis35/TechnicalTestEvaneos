@@ -11,7 +11,7 @@ protocol CoordinatorProtocol {
 // MARK: - AppCoordinator
 final class AppCoordinator {
     // MARK: Properties
-    
+
     var childCoordinators = [CoordinatorProtocol]()
     var navigationController: UINavigationController
 

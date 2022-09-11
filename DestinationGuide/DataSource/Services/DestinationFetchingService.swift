@@ -12,7 +12,7 @@ protocol DestinationFetchingServiceProtocol {
     )
 }
 
-class DestinationFetchingService: DestinationFetchingServiceProtocol {
+final class DestinationFetchingService: DestinationFetchingServiceProtocol {
     func getDestinations(completion: @escaping (Result<Set<Destination>, DestinationFetchingServiceError>) -> Void) {
         let extraSeconds = Double.random(in: 1 ..< 5)
         DispatchQueue.global().asyncAfter(deadline: .now() + extraSeconds) {

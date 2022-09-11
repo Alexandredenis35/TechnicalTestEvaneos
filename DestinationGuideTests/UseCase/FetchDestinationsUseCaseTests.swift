@@ -2,7 +2,7 @@
 import Foundation
 import XCTest
 
-class FetchDestinationsUseCaseTests: XCTestCase {
+final class FetchDestinationsUseCaseTests: XCTestCase {
     var sut: FetchDestinationsUseCase!
     var mockedRepository: MockDestinationsRepository!
 

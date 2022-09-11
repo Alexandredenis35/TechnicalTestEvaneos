@@ -5,19 +5,19 @@ import UIKit
 // MARK: - DestinationsViewController
 final class DestinationsViewController: UIViewController {
     // MARK: Constant
-    
+
     private enum Constant {
         static let destinationCellIdentifier = "DestinationCollectionViewCell"
         static let headerViewIdentifier = "SectionHeaderView"
     }
 
     // MARK: IBOutlets
-    
+
     @IBOutlet private var recentDestinationsStackView: UIStackView!
     @IBOutlet private var destinationsCollectionView: UICollectionView!
 
     // MARK: Properties
-    
+
     private var disposeBag = DisposeBag()
     var viewModel: DestinationsViewModelProtocol?
 

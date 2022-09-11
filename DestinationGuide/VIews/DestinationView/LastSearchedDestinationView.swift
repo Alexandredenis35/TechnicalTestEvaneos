@@ -6,7 +6,7 @@ protocol LastSearchedDestinationProtocol: AnyObject {
 }
 
 // MARK: - LastSearchedDestinationView
-class LastSearchedDestinationView: UIView, NibInstantiation {
+final class LastSearchedDestinationView: UIView, NibInstantiation {
     // MARK: IBOulets
     @IBOutlet private var lastDestinationButton: UIButton!
 

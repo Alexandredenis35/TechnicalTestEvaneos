@@ -3,7 +3,7 @@ import RxCocoa
 import RxSwift
 import XCTest
 
-class DestinationsRepositoryTests: XCTestCase {
+final class DestinationsRepositoryTests: XCTestCase {
     var sut: DestinationsRepository!
     var mockedDataSource: MockFetchingService!
 

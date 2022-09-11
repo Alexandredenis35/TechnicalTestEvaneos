@@ -2,7 +2,7 @@
 import Foundation
 import XCTest
 
-class DestinationModelTests: XCTestCase {
+final class DestinationModelTests: XCTestCase {
     var destination: Destination!
 
     override func setUp() {

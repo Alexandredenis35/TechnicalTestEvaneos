@@ -1,7 +1,7 @@
 @testable import DestinationGuide
 import Foundation
 
-class MockDestinationsRepository: DestinationsRepositoryProtocol {
+final class MockDestinationsRepository: DestinationsRepositoryProtocol {
     var getDestinationsUseCaseError: DestinationFetchingServiceError?
     var getDestinationsUseCaseData: Set<Destination>?
     var getDestinationsUseCaseGotCalled: Bool = false

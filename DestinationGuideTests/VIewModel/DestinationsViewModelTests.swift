@@ -3,7 +3,6 @@ import Foundation
 import XCTest
 
 final class DestinationsViewModelTests: XCTestCase {
-    // TODO: PUT FINAL ON ALL CLASES
     var sut: DestinationsViewModel!
     var mockedFetchDestinationsUseCase: MockFetchDestinationUseCase!
     var mockedFetchDestinationDetailsUseCase: MockFetchDestinationDetailsUseCase!
@@ -53,12 +52,8 @@ final class DestinationsViewModelTests: XCTestCase {
         let expectedId = "217"
         await sut.fetchDestinationDetails(id: expectedId)
 
-        XCTAssertEqual(sut.recentDestinationsRelay.value, [expectedResult])
+        XCTAssertTrue(sut.recentDestinationsRelay.value.contains(expectedResult))
         XCTAssertEqual(mockedFetchDestinationDetailsUseCase.executeGotCalledWith, expectedId)
-    }
-
-    func tests_recentDestinations_with_one_destination() {
-        //    sut.
     }
 
     override func tearDown() {
@@ -99,24 +94,4 @@ final class DummyCoordinator: CoordinatorProtocol {
     var navigationController: UINavigationController = .init()
 
     func start() {}
-}
-
-extension XCTestCase {
-    func await<T>(_ function: (@escaping (T) -> Void) -> Void) -> T? {
-        let expectation = self.expectation(description: "Async call")
-        var result: T?
-
-        function { value in
-            result = value
-            expectation.fulfill()
-        }
-
-        waitForExpectations(timeout: 10)
-
-        guard let unwrappedResult = result else {
-            return nil
-        }
-
-        return unwrappedResult
-    }
 }

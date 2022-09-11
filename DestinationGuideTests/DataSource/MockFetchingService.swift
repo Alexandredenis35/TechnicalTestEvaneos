@@ -1,9 +1,7 @@
 @testable import DestinationGuide
 import Foundation
-import RxCocoa
-import RxSwift
 
-class MockFetchingService: DestinationFetchingServiceProtocol {
+final class MockFetchingService: DestinationFetchingServiceProtocol {
     var getDestinationsError: DestinationFetchingServiceError?
     var getDestinationsData: Set<Destination>?
     var getDestinationsGotCalled: Bool = false

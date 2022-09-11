@@ -1,9 +1,8 @@
 @testable import DestinationGuide
 import Foundation
-import RxSwift
 import XCTest
 
-class FetchDestinationDetailsUseCaseTests: XCTestCase {
+final class FetchDestinationDetailsUseCaseTests: XCTestCase {
     var sut: FetchDestinationDetailsUseCase!
     var mockedRepository: MockDestinationsRepository!
 

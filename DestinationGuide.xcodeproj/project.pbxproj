@@ -204,6 +204,15 @@
 			path = RecentDestinationUseCase;
 			sourceTree = "<group>";
 		};
+		056D758F28CE70D400A28659 /* VIews */ = {
+			isa = PBXGroup;
+			children = (
+				05626C2A28CBB88400AE96A4 /* DestinationView */,
+				05626C3528CBBBBE00AE96A4 /* DestinationDetailsView */,
+			);
+			path = VIews;
+			sourceTree = "<group>";
+		};
 		05C3EBBA28CBD8030068597C /* Repository */ = {
 			isa = PBXGroup;
 			children = (
@@ -354,13 +363,12 @@
 			children = (
 				E7AE6A8926B81F4F0059FB12 /* AppDelegate.swift */,
 				05C3EBAB28CBBFE00068597C /* AppCoordinator.swift */,
-				05FB539028CC7731008C57BC /* DataSource */,
-				05C3EBBB28CBD8120068597C /* UseCase */,
-				05C3EBBA28CBD8030068597C /* Repository */,
-				05626C3528CBBBBE00AE96A4 /* DestinationDetailsView */,
-				05626C2A28CBB88400AE96A4 /* DestinationView */,
-				05F5FE0C28CDDAE20025D7F5 /* Utils */,
 				05626C1828CB95C300AE96A4 /* Extensions */,
+				056D758F28CE70D400A28659 /* VIews */,
+				05C3EBBB28CBD8120068597C /* UseCase */,
+				05FB539028CC7731008C57BC /* DataSource */,
+				05C3EBBA28CBD8030068597C /* Repository */,
+				05F5FE0C28CDDAE20025D7F5 /* Utils */,
 				E7B8690A287C4701000D2C2C /* GradientView.swift */,
 				E7878C1F26BACF3E00CF1DB8 /* Fonts */,
 				E794201826B853E50032C12E /* Models */,

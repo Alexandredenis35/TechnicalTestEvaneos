@@ -1,8 +1,6 @@
 import Foundation
-import RxCocoa
 import RxRelay
 import RxSwift
-import UIKit
 
 // MARK: - DestinationsViewModelProtocol
 protocol DestinationsViewModelProtocol: AnyObject {
@@ -43,7 +41,6 @@ final class DestinationsViewModel: DestinationsViewModelProtocol {
         self.destinationsUseCase = destinationsUseCase
         self.destinationDetailsUseCase = destinationDetailsUseCase
         self.coordinator = coordinator
-
         let data = UserDefaults.standard.data(forKey: Constant.recentDestinationsKey)
         let recentDestinations: [DestinationDetails] = CodableUtils.parse(data: data)
         recentDestinationsRelay = .init(value: recentDestinations)
@@ -88,7 +85,6 @@ final class DestinationsViewModel: DestinationsViewModelProtocol {
             case let .success(destinationDetails):
                 let recentDestinations = self.getRecentDestinations(destinationDetails)
                 self.recentDestinationsRelay.accept(recentDestinations)
-
                 self.coordinator?.goToDetails(name: destinationDetails.name, webViewURL: destinationDetails.url)
             case let .failure(error):
                 self.coordinator?.showAlert(
@@ -102,11 +98,13 @@ final class DestinationsViewModel: DestinationsViewModelProtocol {
     // MARK: Private functions
 
     private func getRecentDestinations(_ details: DestinationDetails) -> [DestinationDetails] {
-        recentDestinationsUseCase.execute(details: details)
+        let destinationDetails = recentDestinationsUseCase.execute(details: details)
+        saveDestinationsUserDefault(destinations: destinationDetails)
+        return destinationDetails
     }
 
-    private func saveDestinations(_ recentDestinations: DestinationDetails) {
-        let data = CodableUtils.encode(object: recentDestinations)
+    private func saveDestinationsUserDefault(destinations: [DestinationDetails]) {
+        let data = CodableUtils.encode(object: destinations)
         UserDefaults.standard.set(data, forKey: Constant.recentDestinationsKey)
     }
 }
