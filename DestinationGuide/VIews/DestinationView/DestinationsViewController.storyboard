@@ -30,8 +30,8 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="7HI-br-6Yz">
-                                        <rect key="frame" x="16" y="49" width="186" height="35"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="382" placeholderIntrinsicHeight="35" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="7HI-br-6Yz">
+                                        <rect key="frame" x="16" y="49" width="382" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="yxx-Mh-oKM"/>
                                         </constraints>
@@ -41,6 +41,7 @@
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="7HI-br-6Yz" secondAttribute="bottom" constant="16" id="5eP-yj-dRs"/>
                                     <constraint firstItem="QDi-mq-m6J" firstAttribute="leading" secondItem="oOn-iE-Rb3" secondAttribute="leading" constant="16" id="7Oh-Xx-8cN"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="7HI-br-6Yz" secondAttribute="trailing" constant="16" id="8Zk-CK-yWJ"/>
                                     <constraint firstItem="7HI-br-6Yz" firstAttribute="top" secondItem="QDi-mq-m6J" secondAttribute="bottom" constant="10" id="KDA-tg-ngV"/>
                                     <constraint firstAttribute="height" constant="100" id="KH7-PA-9Ui"/>
                                     <constraint firstItem="QDi-mq-m6J" firstAttribute="centerX" secondItem="oOn-iE-Rb3" secondAttribute="centerX" id="SPq-Ex-qU1"/>

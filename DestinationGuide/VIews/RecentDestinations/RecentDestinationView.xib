@@ -12,7 +12,7 @@
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LastSearchedDestinationView" customModule="DestinationGuide" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RecentDestinationView" customModule="DestinationGuide" customModuleProvider="target">
             <connections>
                 <outlet property="lastDestinationButton" destination="H51-Ry-56g" id="yiV-uY-Mli"/>
             </connections>

@@ -44,7 +44,7 @@ final class DestinationsViewController: UIViewController {
             .subscribe(onNext: { [weak self] recentDestinations in
                 self?.recentDestinationsStackView.removeSubviews()
                 recentDestinations.forEach { recentDestination in
-                    let recentDestinationView = LastSearchedDestinationView()
+                    let recentDestinationView = RecentDestinationView()
                     recentDestinationView.setup(delegate: self, details: recentDestination)
                     self?.recentDestinationsStackView.addArrangedSubview(recentDestinationView)
                 }
@@ -167,8 +167,8 @@ extension DestinationsViewController: UICollectionViewDelegate {
     }
 }
 
-// MARK: - LastSearchedDestinationProtocol extension
-extension DestinationsViewController: LastSearchedDestinationProtocol {
+// MARK: - RecentDestinationProtocol extension
+extension DestinationsViewController: RecentDestinationProtocol {
     func didSelectRecentDestination(id: String) {
         Task {
             await viewModel?.fetchDestinationDetails(id: id)

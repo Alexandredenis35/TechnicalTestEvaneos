@@ -1,18 +1,18 @@
 import UIKit
 
-// MARK: - LastSearchedDestinationProtocol
-protocol LastSearchedDestinationProtocol: AnyObject {
+// MARK: - RecentDestinationProtocol
+protocol RecentDestinationProtocol: AnyObject {
     func didSelectRecentDestination(id: String)
 }
 
-// MARK: - LastSearchedDestinationView
-final class LastSearchedDestinationView: UIView, NibInstantiation {
+// MARK: - RecentDestinationView
+final class RecentDestinationView: UIView, NibInstantiation {
     // MARK: IBOulets
     @IBOutlet private var lastDestinationButton: UIButton!
 
     // MARK: Properties
 
-    private weak var recentDestinationDelegate: LastSearchedDestinationProtocol?
+    private weak var recentDestinationDelegate: RecentDestinationProtocol?
     private var destinationID: String?
 
     // MARK: - Initialisation
@@ -41,7 +41,7 @@ final class LastSearchedDestinationView: UIView, NibInstantiation {
     // MARK: Public functions
 
     func setup(
-        delegate: LastSearchedDestinationProtocol?,
+        delegate: RecentDestinationProtocol?,
         details: DestinationDetails
     ) {
         recentDestinationDelegate = delegate

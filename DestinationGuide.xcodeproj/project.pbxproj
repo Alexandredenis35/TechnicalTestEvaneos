@@ -22,16 +22,16 @@
 		056D758928CDE68D00A28659 /* RecentDestinationUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056D758828CDE68D00A28659 /* RecentDestinationUseCaseProtocol.swift */; };
 		056D758B28CDE69C00A28659 /* RecentDestinationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056D758A28CDE69C00A28659 /* RecentDestinationUseCase.swift */; };
 		056D758D28CDE7E900A28659 /* RecentDestinationsUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056D758C28CDE7E900A28659 /* RecentDestinationsUseCaseTests.swift */; };
+		056D759D28CF0F8E00A28659 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 056D759C28CF0F8E00A28659 /* RxCocoa */; };
+		056D759F28CF0F8E00A28659 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 056D759E28CF0F8E00A28659 /* RxSwift */; };
 		05C3EBAA28CBBD990068597C /* DestinationDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3EBA928CBBD990068597C /* DestinationDetailsViewModel.swift */; };
 		05C3EBAC28CBBFE00068597C /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3EBAB28CBBFE00068597C /* AppCoordinator.swift */; };
 		05C3EBBD28CBD82E0068597C /* FetchDestinationDetailsUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3EBBC28CBD82E0068597C /* FetchDestinationDetailsUseCaseProtocol.swift */; };
 		05C3EBBF28CBD8420068597C /* FetchDestinationDetailsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3EBBE28CBD8420068597C /* FetchDestinationDetailsUseCase.swift */; };
 		05C3EBCB28CBE9B80068597C /* UIViewController+Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3EBCA28CBE9B80068597C /* UIViewController+Loader.swift */; };
-		05C3EBCD28CC026B0068597C /* LastSearchedDestinationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3EBCC28CC026B0068597C /* LastSearchedDestinationView.swift */; };
-		05C3EBCF28CC02830068597C /* LastSearchedDestinationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05C3EBCE28CC02830068597C /* LastSearchedDestinationView.xib */; };
+		05C3EBCD28CC026B0068597C /* RecentDestinationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3EBCC28CC026B0068597C /* RecentDestinationView.swift */; };
+		05C3EBCF28CC02830068597C /* RecentDestinationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05C3EBCE28CC02830068597C /* RecentDestinationView.xib */; };
 		05C3EBD128CC03180068597C /* NibInstantiationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3EBD028CC03180068597C /* NibInstantiationProtocol.swift */; };
-		05F5FDFF28CCE23B0025D7F5 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 05F5FDFE28CCE23B0025D7F5 /* RxCocoa */; };
-		05F5FE0128CCE23B0025D7F5 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 05F5FE0028CCE23B0025D7F5 /* RxSwift */; };
 		05F5FE0328CCEB0B0025D7F5 /* FetchDestinationDetailsUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F5FE0228CCEB0B0025D7F5 /* FetchDestinationDetailsUseCaseTests.swift */; };
 		05F5FE0428CCF57A0025D7F5 /* MockDestinationsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB539128CC7B4A008C57BC /* MockDestinationsRepository.swift */; };
 		05F5FE0728CDC63A0025D7F5 /* DestinationModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F5FE0628CDC63A0025D7F5 /* DestinationModelTests.swift */; };
@@ -90,8 +90,8 @@
 		05C3EBBC28CBD82E0068597C /* FetchDestinationDetailsUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchDestinationDetailsUseCaseProtocol.swift; sourceTree = "<group>"; };
 		05C3EBBE28CBD8420068597C /* FetchDestinationDetailsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchDestinationDetailsUseCase.swift; sourceTree = "<group>"; };
 		05C3EBCA28CBE9B80068597C /* UIViewController+Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Loader.swift"; sourceTree = "<group>"; };
-		05C3EBCC28CC026B0068597C /* LastSearchedDestinationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastSearchedDestinationView.swift; sourceTree = "<group>"; };
-		05C3EBCE28CC02830068597C /* LastSearchedDestinationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LastSearchedDestinationView.xib; sourceTree = "<group>"; };
+		05C3EBCC28CC026B0068597C /* RecentDestinationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentDestinationView.swift; sourceTree = "<group>"; };
+		05C3EBCE28CC02830068597C /* RecentDestinationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecentDestinationView.xib; sourceTree = "<group>"; };
 		05C3EBD028CC03180068597C /* NibInstantiationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibInstantiationProtocol.swift; sourceTree = "<group>"; };
 		05F5FE0228CCEB0B0025D7F5 /* FetchDestinationDetailsUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchDestinationDetailsUseCaseTests.swift; sourceTree = "<group>"; };
 		05F5FE0628CDC63A0025D7F5 /* DestinationModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationModelTests.swift; sourceTree = "<group>"; };
@@ -128,8 +128,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				05F5FE0128CCE23B0025D7F5 /* RxSwift in Frameworks */,
-				05F5FDFF28CCE23B0025D7F5 /* RxCocoa in Frameworks */,
+				056D759F28CF0F8E00A28659 /* RxSwift in Frameworks */,
+				056D759D28CF0F8E00A28659 /* RxCocoa in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,13 +174,11 @@
 		05626C2A28CBB88400AE96A4 /* DestinationView */ = {
 			isa = PBXGroup;
 			children = (
+				05626C2228CBB41900AE96A4 /* SectionHeaderView */,
+				05626C1F28CB977500AE96A4 /* Cell */,
 				05626C2E28CBB96C00AE96A4 /* DestinationsViewModel.swift */,
 				05626C1628CB93B400AE96A4 /* DestinationsViewController.storyboard */,
 				E7AE6A8D26B81F4F0059FB12 /* DestinationsViewController.swift */,
-				05626C1F28CB977500AE96A4 /* Cell */,
-				05626C2228CBB41900AE96A4 /* SectionHeaderView */,
-				05C3EBCC28CC026B0068597C /* LastSearchedDestinationView.swift */,
-				05C3EBCE28CC02830068597C /* LastSearchedDestinationView.xib */,
 			);
 			path = DestinationView;
 			sourceTree = "<group>";
@@ -207,6 +205,7 @@
 		056D758F28CE70D400A28659 /* VIews */ = {
 			isa = PBXGroup;
 			children = (
+				05C47EC428CF1C9D004E8161 /* RecentDestinations */,
 				05626C2A28CBB88400AE96A4 /* DestinationView */,
 				05626C3528CBBBBE00AE96A4 /* DestinationDetailsView */,
 			);
@@ -248,6 +247,15 @@
 				05C3EBBE28CBD8420068597C /* FetchDestinationDetailsUseCase.swift */,
 			);
 			path = DestinationDetailsUseCase;
+			sourceTree = "<group>";
+		};
+		05C47EC428CF1C9D004E8161 /* RecentDestinations */ = {
+			isa = PBXGroup;
+			children = (
+				05C3EBCE28CC02830068597C /* RecentDestinationView.xib */,
+				05C3EBCC28CC026B0068597C /* RecentDestinationView.swift */,
+			);
+			path = RecentDestinations;
 			sourceTree = "<group>";
 		};
 		05F5FE0528CDC6250025D7F5 /* Model */ = {
@@ -411,8 +419,8 @@
 			);
 			name = DestinationGuide;
 			packageProductDependencies = (
-				05F5FDFE28CCE23B0025D7F5 /* RxCocoa */,
-				05F5FE0028CCE23B0025D7F5 /* RxSwift */,
+				056D759C28CF0F8E00A28659 /* RxCocoa */,
+				056D759E28CF0F8E00A28659 /* RxSwift */,
 			);
 			productName = DestinationGuide;
 			productReference = E7AE6A8626B81F4F0059FB12 /* DestinationGuide.app */;
@@ -465,7 +473,7 @@
 			);
 			mainGroup = E7AE6A7D26B81F4F0059FB12;
 			packageReferences = (
-				05F5FDFD28CCE23B0025D7F5 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				056D759B28CF0F8E00A28659 /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = E7AE6A8726B81F4F0059FB12 /* Products */;
 			projectDirPath = "";
@@ -490,7 +498,7 @@
 				05626C3728CBBBFC00AE96A4 /* DestinationDetailsViewController.storyboard in Resources */,
 				E7878C2826BACF3E00CF1DB8 /* Averta-Bold.otf in Resources */,
 				E7878C2526BACF3E00CF1DB8 /* Averta-Light.otf in Resources */,
-				05C3EBCF28CC02830068597C /* LastSearchedDestinationView.xib in Resources */,
+				05C3EBCF28CC02830068597C /* RecentDestinationView.xib in Resources */,
 				05626C2628CBB45000AE96A4 /* SectionHeaderView.xib in Resources */,
 				E7878C2726BACF3E00CF1DB8 /* Averta-ExtraBold.otf in Resources */,
 				E7878C2626BACF3E00CF1DB8 /* Averta-Regular.otf in Resources */,
@@ -558,7 +566,7 @@
 				05626C3128CBB96C00AE96A4 /* FetchDestinationsUseCase.swift in Sources */,
 				05626C2528CBB45000AE96A4 /* SectionHeaderView.swift in Sources */,
 				056D758928CDE68D00A28659 /* RecentDestinationUseCaseProtocol.swift in Sources */,
-				05C3EBCD28CC026B0068597C /* LastSearchedDestinationView.swift in Sources */,
+				05C3EBCD28CC026B0068597C /* RecentDestinationView.swift in Sources */,
 				056D758B28CDE69C00A28659 /* RecentDestinationUseCase.swift in Sources */,
 				E7AE6A8E26B81F4F0059FB12 /* DestinationsViewController.swift in Sources */,
 				05626C3228CBB96C00AE96A4 /* DestinationsViewModel.swift in Sources */,
@@ -871,7 +879,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		05F5FDFD28CCE23B0025D7F5 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+		056D759B28CF0F8E00A28659 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
 			requirement = {
@@ -882,14 +890,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		05F5FDFE28CCE23B0025D7F5 /* RxCocoa */ = {
+		056D759C28CF0F8E00A28659 /* RxCocoa */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 05F5FDFD28CCE23B0025D7F5 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			package = 056D759B28CF0F8E00A28659 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxCocoa;
 		};
-		05F5FE0028CCE23B0025D7F5 /* RxSwift */ = {
+		056D759E28CF0F8E00A28659 /* RxSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 05F5FDFD28CCE23B0025D7F5 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			package = 056D759B28CF0F8E00A28659 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
 		};
 /* End XCSwiftPackageProductDependency section */

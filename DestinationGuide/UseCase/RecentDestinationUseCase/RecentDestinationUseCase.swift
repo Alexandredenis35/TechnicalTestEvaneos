@@ -8,12 +8,16 @@ final class RecentDestinationUseCase: RecentDestinationUseCaseProtocol {
     }
 
     func execute(details: DestinationDetails) -> [DestinationDetails] {
-        if !currentRecentDestinations.contains(details), currentRecentDestinations.count < 2 {
-            currentRecentDestinations.append(details)
-        } else if currentRecentDestinations.count >= 2 {
-            currentRecentDestinations.removeFirst()
-            currentRecentDestinations.append(details)
+        if let index = currentRecentDestinations.firstIndex(where: { $0 == details }) {
+            currentRecentDestinations.remove(at: index)
         }
+
+        if currentRecentDestinations.count >= 2 {
+            currentRecentDestinations.removeFirst()
+        }
+
+        currentRecentDestinations.append(details)
+
         return currentRecentDestinations
     }
 }
