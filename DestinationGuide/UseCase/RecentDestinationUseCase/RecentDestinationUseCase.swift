@@ -1,23 +1,20 @@
 import Foundation
 
 final class RecentDestinationUseCase: RecentDestinationUseCaseProtocol {
-    var currentRecentDestinations: [DestinationDetails]
-
-    init(currentRecentDestinations: [DestinationDetails]) {
-        self.currentRecentDestinations = currentRecentDestinations
-    }
-
-    func execute(details: DestinationDetails) -> [DestinationDetails] {
-        if let index = currentRecentDestinations.firstIndex(where: { $0 == details }) {
-            currentRecentDestinations.remove(at: index)
+    func execute(
+        newRecentDestinations: DestinationDetails,
+        currentRecentDestinations: [DestinationDetails]
+    ) -> [DestinationDetails] {
+        var destinations = currentRecentDestinations
+        if let index = destinations.firstIndex(where: { $0 == newRecentDestinations }) {
+            destinations.remove(at: index)
         }
 
-        if currentRecentDestinations.count >= 2 {
-            currentRecentDestinations.removeFirst()
+        if destinations.count >= 2 {
+            destinations.removeFirst()
         }
 
-        currentRecentDestinations.append(details)
-
-        return currentRecentDestinations
+        destinations.append(newRecentDestinations)
+        return destinations
     }
 }

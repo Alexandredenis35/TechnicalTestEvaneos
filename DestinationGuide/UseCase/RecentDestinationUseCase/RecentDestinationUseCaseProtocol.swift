@@ -1,3 +1,6 @@
 protocol RecentDestinationUseCaseProtocol {
-    func execute(details: DestinationDetails) -> [DestinationDetails]
+    func execute(
+        newRecentDestinations: DestinationDetails,
+        currentRecentDestinations: [DestinationDetails]
+    ) -> [DestinationDetails]
 }

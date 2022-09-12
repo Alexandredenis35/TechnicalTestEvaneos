@@ -6,16 +6,19 @@ final class DestinationsViewModelTests: XCTestCase {
     var sut: DestinationsViewModel!
     var mockedFetchDestinationsUseCase: MockFetchDestinationUseCase!
     var mockedFetchDestinationDetailsUseCase: MockFetchDestinationDetailsUseCase!
+    var mockRecentDestinationUseCase: MockRecentDestinationsUseCase!
     var dummyCoordinator: CoordinatorProtocol!
 
     override func setUp() {
         super.setUp()
         mockedFetchDestinationsUseCase = MockFetchDestinationUseCase()
         mockedFetchDestinationDetailsUseCase = MockFetchDestinationDetailsUseCase()
+        mockRecentDestinationUseCase = MockRecentDestinationsUseCase()
         dummyCoordinator = DummyCoordinator()
         sut = DestinationsViewModel(
             destinationsUseCase: mockedFetchDestinationsUseCase,
             destinationDetailsUseCase: mockedFetchDestinationDetailsUseCase,
+            recentDestinationsUseCase: mockRecentDestinationUseCase,
             coordinator: AppCoordinator(navigationController: UINavigationController())
         )
     }
@@ -48,10 +51,11 @@ final class DestinationsViewModelTests: XCTestCase {
             name: "Barbade",
             url: URL(string: "https://evaneos.fr/barbade")!
         )
+        mockRecentDestinationUseCase.newRecentDestinations = expectedResult
         mockedFetchDestinationDetailsUseCase.executeResult = .success(expectedResult)
         let expectedId = "217"
         await sut.fetchDestinationDetails(id: expectedId)
-
+        Thread.sleep(forTimeInterval: 0.1)
         XCTAssertTrue(sut.recentDestinationsRelay.value.contains(expectedResult))
         XCTAssertEqual(mockedFetchDestinationDetailsUseCase.executeGotCalledWith, expectedId)
     }
@@ -62,6 +66,7 @@ final class DestinationsViewModelTests: XCTestCase {
         mockedFetchDestinationsUseCase = nil
         mockedFetchDestinationDetailsUseCase = nil
         dummyCoordinator = nil
+        mockRecentDestinationUseCase = nil
     }
 }
 
@@ -94,4 +99,16 @@ final class DummyCoordinator: CoordinatorProtocol {
     var navigationController: UINavigationController = .init()
 
     func start() {}
+}
+
+final class MockRecentDestinationsUseCase: RecentDestinationUseCaseProtocol {
+    var newRecentDestinations: DestinationDetails?
+    func execute(
+        newRecentDestinations: DestinationDetails,
+        currentRecentDestinations: [DestinationDetails]
+    ) -> [DestinationDetails] {
+        var destinations = currentRecentDestinations
+        destinations.append(newRecentDestinations)
+        return destinations
+    }
 }

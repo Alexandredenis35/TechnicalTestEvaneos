@@ -36,16 +36,16 @@ final class DestinationsViewModel: DestinationsViewModelProtocol {
     init(
         destinationsUseCase: FetchDestinationsUseCaseProtocol,
         destinationDetailsUseCase: FetchDestinationDetailsUseCaseProtocol,
+        recentDestinationsUseCase: RecentDestinationUseCaseProtocol,
         coordinator: AppCoordinator?
     ) {
         self.destinationsUseCase = destinationsUseCase
         self.destinationDetailsUseCase = destinationDetailsUseCase
+        self.recentDestinationsUseCase = recentDestinationsUseCase
         self.coordinator = coordinator
         let data = UserDefaults.standard.data(forKey: Constant.recentDestinationsKey)
         let recentDestinations: [DestinationDetails] = CodableUtils.parse(data: data)
         recentDestinationsRelay = .init(value: recentDestinations)
-        recentDestinationsUseCase = RecentDestinationUseCase(currentRecentDestinations: recentDestinationsRelay.value)
-
         Task {
             await fetchDestinations()
         }
@@ -98,7 +98,10 @@ final class DestinationsViewModel: DestinationsViewModelProtocol {
     // MARK: Private functions
 
     private func getRecentDestinations(_ details: DestinationDetails) -> [DestinationDetails] {
-        let destinationDetails = recentDestinationsUseCase.execute(details: details)
+        let destinationDetails = recentDestinationsUseCase.execute(
+            newRecentDestinations: details,
+            currentRecentDestinations: recentDestinationsRelay.value
+        )
         saveDestinationsUserDefault(destinations: destinationDetails)
         return destinationDetails
     }
