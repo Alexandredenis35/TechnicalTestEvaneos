@@ -129,7 +129,11 @@ extension DestinationsViewController: UICollectionViewDataSource {
                   ) as? DestinationCollectionViewCell else {
             return UICollectionViewCell()
         }
-        cell.setupCell(destination: desti)
+        let viewModel = DestinationCellViewModel(
+            destination: desti,
+            fetchDestinationImageUseCase: FetchDestinationImageUseCase()
+        )
+        cell.setupCell(viewModel: viewModel)
         return cell
     }
 
