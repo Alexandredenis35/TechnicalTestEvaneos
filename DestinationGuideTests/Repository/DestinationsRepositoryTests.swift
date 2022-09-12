@@ -1,5 +1,4 @@
 @testable import DestinationGuide
-import RxCocoa
 import RxSwift
 import XCTest
 
