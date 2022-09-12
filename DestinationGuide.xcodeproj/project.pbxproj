@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		053E852B28CF71A600278B74 /* FetchDestinationImageUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053E852A28CF71A600278B74 /* FetchDestinationImageUseCase.swift */; };
-		053E852D28CF71BC00278B74 /* FetchDestinationImageUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053E852C28CF71BC00278B74 /* FetchDestinationImageUseCaseProtocol.swift */; };
+		053E852B28CF71A600278B74 /* FetchDataRequestUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053E852A28CF71A600278B74 /* FetchDataRequestUseCase.swift */; };
+		053E852D28CF71BC00278B74 /* FetchDataRequestUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053E852C28CF71BC00278B74 /* FetchDataRequestUseCaseProtocol.swift */; };
 		053E853028CF72A800278B74 /* DestinationCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053E852F28CF72A800278B74 /* DestinationCellViewModel.swift */; };
 		05626C1728CB93B400AE96A4 /* DestinationsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05626C1628CB93B400AE96A4 /* DestinationsViewController.storyboard */; };
 		05626C1A28CB95EA00AE96A4 /* Storyboard+Instantiation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05626C1928CB95EA00AE96A4 /* Storyboard+Instantiation.swift */; };
@@ -73,8 +73,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		053E852A28CF71A600278B74 /* FetchDestinationImageUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchDestinationImageUseCase.swift; sourceTree = "<group>"; };
-		053E852C28CF71BC00278B74 /* FetchDestinationImageUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchDestinationImageUseCaseProtocol.swift; sourceTree = "<group>"; };
+		053E852A28CF71A600278B74 /* FetchDataRequestUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchDataRequestUseCase.swift; sourceTree = "<group>"; };
+		053E852C28CF71BC00278B74 /* FetchDataRequestUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchDataRequestUseCaseProtocol.swift; sourceTree = "<group>"; };
 		053E852F28CF72A800278B74 /* DestinationCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationCellViewModel.swift; sourceTree = "<group>"; };
 		05626C1628CB93B400AE96A4 /* DestinationsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DestinationsViewController.storyboard; sourceTree = "<group>"; };
 		05626C1928CB95EA00AE96A4 /* Storyboard+Instantiation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Storyboard+Instantiation.swift"; sourceTree = "<group>"; };
@@ -149,13 +149,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		053E852E28CF71C100278B74 /* FetchDestinationImageUseCase */ = {
+		053E852E28CF71C100278B74 /* FetchDataRequestUseCase */ = {
 			isa = PBXGroup;
 			children = (
-				053E852C28CF71BC00278B74 /* FetchDestinationImageUseCaseProtocol.swift */,
-				053E852A28CF71A600278B74 /* FetchDestinationImageUseCase.swift */,
+				053E852C28CF71BC00278B74 /* FetchDataRequestUseCaseProtocol.swift */,
+				053E852A28CF71A600278B74 /* FetchDataRequestUseCase.swift */,
 			);
-			path = FetchDestinationImageUseCase;
+			path = FetchDataRequestUseCase;
 			sourceTree = "<group>";
 		};
 		05626C1828CB95C300AE96A4 /* Extensions */ = {
@@ -240,7 +240,7 @@
 		05C3EBBB28CBD8120068597C /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
-				053E852E28CF71C100278B74 /* FetchDestinationImageUseCase */,
+				053E852E28CF71C100278B74 /* FetchDataRequestUseCase */,
 				056D758728CDE67200A28659 /* RecentDestinationUseCase */,
 				05C3EBC128CBDAAA0068597C /* DestinationDetailsUseCase */,
 				05C3EBC028CBDAA10068597C /* DestinationsUseCase */,
@@ -585,7 +585,7 @@
 				053E853028CF72A800278B74 /* DestinationCellViewModel.swift in Sources */,
 				056D758928CDE68D00A28659 /* RecentDestinationUseCaseProtocol.swift in Sources */,
 				05C3EBCD28CC026B0068597C /* RecentDestinationView.swift in Sources */,
-				053E852D28CF71BC00278B74 /* FetchDestinationImageUseCaseProtocol.swift in Sources */,
+				053E852D28CF71BC00278B74 /* FetchDataRequestUseCaseProtocol.swift in Sources */,
 				056D758B28CDE69C00A28659 /* RecentDestinationUseCase.swift in Sources */,
 				E7AE6A8E26B81F4F0059FB12 /* DestinationsViewController.swift in Sources */,
 				05626C3228CBB96C00AE96A4 /* DestinationsViewModel.swift in Sources */,
@@ -604,7 +604,7 @@
 				E710FABC2885AB4000326EEF /* Fonts.swift in Sources */,
 				05C3EBD128CC03180068597C /* NibInstantiationProtocol.swift in Sources */,
 				E710FAC52885AF2E00326EEF /* DestinationDetailsViewController.swift in Sources */,
-				053E852B28CF71A600278B74 /* FetchDestinationImageUseCase.swift in Sources */,
+				053E852B28CF71A600278B74 /* FetchDataRequestUseCase.swift in Sources */,
 				E794201C26B854040032C12E /* DestinationDetails.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

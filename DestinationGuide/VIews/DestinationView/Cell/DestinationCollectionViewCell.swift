@@ -68,9 +68,13 @@ final class DestinationCollectionViewCell: UICollectionViewCell {
         configureStackView(rating: viewModel.destination.rating)
         labelTagButton.setTitle(viewModel.destination.tag, for: .normal)
         Task {
-            let destinationPicture = await viewModel.downloadImage(url: viewModel.destination.picture)
+            let imageData = await viewModel.downloadImage(url: viewModel.destination.picture)
             DispatchQueue.main.async { [weak self] in
-                self?.containerImageView.image = destinationPicture
+                guard let self = self,
+                      let imageDownloaded = imageData else {
+                    return
+                }
+                self.containerImageView.image = UIImage(data: imageDownloaded)
             }
         }
     }

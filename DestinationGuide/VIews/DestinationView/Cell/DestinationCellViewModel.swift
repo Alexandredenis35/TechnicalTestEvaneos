@@ -1,17 +1,16 @@
 import Foundation
-import UIKit
 
 protocol DestinationCellViewModelProtocol {
     var destination: Destination { get }
-    func downloadImage(url: URL) async -> UIImage?
+    func downloadImage(url: URL) async -> Data?
 }
 
 struct DestinationCellViewModel: DestinationCellViewModelProtocol {
     let destination: Destination
-    let fetchDestinationImageUseCase: FetchDestinationImageUseCaseProtocol
+    let fetchDestinationImageUseCase: FetchDataRequestUseCaseProtocol
 
-    func downloadImage(url: URL) async -> UIImage? {
-        let image = await fetchDestinationImageUseCase.execute(url: url)
-        return image
+    func downloadImage(url: URL) async -> Data? {
+        let data = await fetchDestinationImageUseCase.execute(url: url)
+        return data
     }
 }

@@ -131,7 +131,7 @@ extension DestinationsViewController: UICollectionViewDataSource {
         }
         let viewModel = DestinationCellViewModel(
             destination: desti,
-            fetchDestinationImageUseCase: FetchDestinationImageUseCase()
+            fetchDestinationImageUseCase: FetchDataRequestUseCase()
         )
         cell.setupCell(viewModel: viewModel)
         return cell
