@@ -121,7 +121,8 @@ extension DestinationsViewController: UICollectionViewDataSource {
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
-        guard let desti = viewModel?.destinationsRelay.value[indexPath.item],
+        guard let destinationDetails = viewModel?.destinationsRelay.value[indexPath.item],
+              let cellViewModel = viewModel?.createCellViewModel(destination: destinationDetails),
               let cell = collectionView
                   .dequeueReusableCell(
                       withReuseIdentifier: Constant.destinationCellIdentifier,
@@ -129,11 +130,8 @@ extension DestinationsViewController: UICollectionViewDataSource {
                   ) as? DestinationCollectionViewCell else {
             return UICollectionViewCell()
         }
-        let viewModel = DestinationCellViewModel(
-            destination: desti,
-            fetchDestinationImageUseCase: FetchDataRequestUseCase()
-        )
-        cell.setupCell(viewModel: viewModel)
+
+        cell.setupCell(viewModel: cellViewModel)
         return cell
     }
 

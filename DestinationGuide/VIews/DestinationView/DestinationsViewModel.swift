@@ -6,6 +6,7 @@ import RxSwift
 protocol DestinationsViewModelProtocol: AnyObject {
     func fetchDestinations() async
     func fetchDestinationDetails(id: String) async
+    func createCellViewModel(destination: Destination) -> DestinationCellViewModel
     var recentDestinationsRelay: BehaviorRelay<[DestinationDetails]> { get }
     var destinationsRelay: BehaviorRelay<[Destination]> { get }
     var needToShowLoaderRelay: BehaviorRelay<Bool> { get }
@@ -93,6 +94,16 @@ final class DestinationsViewModel: DestinationsViewModelProtocol {
                 )
             }
         }
+    }
+
+    func createCellViewModel(destination: Destination) -> DestinationCellViewModel {
+        let repository = DestinationsRepository(dataSource: DestinationFetchingService())
+        let fetchDestinationImageUseCase = FetchDataRequestUseCase(repository: repository)
+        let viewModel = DestinationCellViewModel(
+            destination: destination,
+            fetchDestinationImageUseCase: fetchDestinationImageUseCase
+        )
+        return viewModel
     }
 
     // MARK: Private functions
