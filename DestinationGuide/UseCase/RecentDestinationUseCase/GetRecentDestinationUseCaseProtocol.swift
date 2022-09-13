@@ -1,4 +1,4 @@
-protocol RecentDestinationUseCaseProtocol {
+protocol GetRecentDestinationUseCaseProtocol {
     func execute(
         newRecentDestinations: DestinationDetails,
         currentRecentDestinations: [DestinationDetails]

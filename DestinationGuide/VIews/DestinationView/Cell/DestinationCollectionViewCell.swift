@@ -61,23 +61,21 @@ final class DestinationCollectionViewCell: UICollectionViewCell {
         }
     }
 
-    private func downloadImage(url: URL) {
-        // TODO: Move this logic in ViewModel or Parent ViewModel
-        URLSession.shared.dataTask(with: URLRequest(url: url), completionHandler: { data, _, _ in
-            if let data = data {
-                DispatchQueue.main.async {
-                    self.containerImageView.image = UIImage(data: data)
-                }
-            }
-        }).resume()
-    }
-
     // MARK: Public functions
 
-    func setupCell(destination: Destination) {
-        destinationLabel.text = destination.name
-        configureStackView(rating: destination.rating)
-        labelTagButton.setTitle(destination.tag, for: .normal)
-        downloadImage(url: destination.picture)
+    func setupCell(viewModel: DestinationCellViewModel) {
+        destinationLabel.text = viewModel.destination.name
+        configureStackView(rating: viewModel.destination.rating)
+        labelTagButton.setTitle(viewModel.destination.tag, for: .normal)
+        Task {
+            let imageData = await viewModel.downloadImage(url: viewModel.destination.picture)
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self,
+                      let imageDownloaded = imageData else {
+                    return
+                }
+                self.containerImageView.image = UIImage(data: imageDownloaded)
+            }
+        }
     }
 }

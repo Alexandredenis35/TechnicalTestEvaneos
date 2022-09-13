@@ -33,4 +33,12 @@ final class MockDestinationsRepository: DestinationsRepositoryProtocol {
             return .failure(getDestinationsUseCaseError ?? .destinationNotFound)
         }
     }
+
+    var getDataRequestGotCalledWith: String?
+    var getDataRequestData: Data?
+
+    func getDataRequest(url: URL) async -> Data? {
+        getDataRequestGotCalledWith = url.absoluteString
+        return getDataRequestData
+    }
 }

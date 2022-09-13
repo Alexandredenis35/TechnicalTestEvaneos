@@ -101,7 +101,7 @@ final class DummyCoordinator: CoordinatorProtocol {
     func start() {}
 }
 
-final class MockRecentDestinationsUseCase: RecentDestinationUseCaseProtocol {
+final class MockRecentDestinationsUseCase: GetRecentDestinationUseCaseProtocol {
     var newRecentDestinations: DestinationDetails?
     func execute(
         newRecentDestinations: DestinationDetails,

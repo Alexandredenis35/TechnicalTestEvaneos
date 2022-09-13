@@ -19,4 +19,11 @@ struct DestinationsRepository: DestinationsRepositoryProtocol {
             }
         }
     }
+
+    func getDataRequest(url: URL) async -> Data? {
+        guard let (data, _) = try? await URLSession.shared.data(from: url) else {
+            return nil
+        }
+        return data
+    }
 }

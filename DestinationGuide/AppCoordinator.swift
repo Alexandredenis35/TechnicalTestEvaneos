@@ -31,7 +31,7 @@ extension AppCoordinator: CoordinatorProtocol {
         let destinationDetailUseCase =
             FetchDestinationDetailsUseCase(repository: DestinationsRepository(dataSource: DestinationFetchingService()))
 
-        let recentDestinationUseCase = RecentDestinationUseCase()
+        let recentDestinationUseCase = GetRecentDestinationUseCase()
         let viewModel = DestinationsViewModel(
             destinationsUseCase: destinationsUseCase,
             destinationDetailsUseCase: destinationDetailUseCase,
