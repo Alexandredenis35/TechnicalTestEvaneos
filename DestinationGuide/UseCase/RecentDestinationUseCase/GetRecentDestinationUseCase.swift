@@ -1,6 +1,6 @@
 import Foundation
 
-final class RecentDestinationUseCase: RecentDestinationUseCaseProtocol {
+final class GetRecentDestinationUseCase: GetRecentDestinationUseCaseProtocol {
     func execute(
         newRecentDestinations: DestinationDetails,
         currentRecentDestinations: [DestinationDetails]

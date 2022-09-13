@@ -22,11 +22,12 @@
 		05626C3228CBB96C00AE96A4 /* DestinationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05626C2E28CBB96C00AE96A4 /* DestinationsViewModel.swift */; };
 		05626C3428CBB99200AE96A4 /* DestinationsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05626C3328CBB99200AE96A4 /* DestinationsRepository.swift */; };
 		05626C3728CBBBFC00AE96A4 /* DestinationDetailsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05626C3628CBBBFC00AE96A4 /* DestinationDetailsViewController.storyboard */; };
-		056D758928CDE68D00A28659 /* RecentDestinationUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056D758828CDE68D00A28659 /* RecentDestinationUseCaseProtocol.swift */; };
-		056D758B28CDE69C00A28659 /* RecentDestinationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056D758A28CDE69C00A28659 /* RecentDestinationUseCase.swift */; };
-		056D758D28CDE7E900A28659 /* RecentDestinationsUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056D758C28CDE7E900A28659 /* RecentDestinationsUseCaseTests.swift */; };
+		056D758928CDE68D00A28659 /* GetRecentDestinationUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056D758828CDE68D00A28659 /* GetRecentDestinationUseCaseProtocol.swift */; };
+		056D758B28CDE69C00A28659 /* GetRecentDestinationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056D758A28CDE69C00A28659 /* GetRecentDestinationUseCase.swift */; };
+		056D758D28CDE7E900A28659 /* GetRecentDestinationsUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056D758C28CDE7E900A28659 /* GetRecentDestinationsUseCaseTests.swift */; };
 		056D759D28CF0F8E00A28659 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 056D759C28CF0F8E00A28659 /* RxCocoa */; };
 		056D759F28CF0F8E00A28659 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 056D759E28CF0F8E00A28659 /* RxSwift */; };
+		05ACC0F428D06B4800C68B7B /* FetchDataRequestUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05ACC0F328D06B4800C68B7B /* FetchDataRequestUseCaseTests.swift */; };
 		05C3EBAA28CBBD990068597C /* DestinationDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3EBA928CBBD990068597C /* DestinationDetailsViewModel.swift */; };
 		05C3EBAC28CBBFE00068597C /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3EBAB28CBBFE00068597C /* AppCoordinator.swift */; };
 		05C3EBBD28CBD82E0068597C /* FetchDestinationDetailsUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3EBBC28CBD82E0068597C /* FetchDestinationDetailsUseCaseProtocol.swift */; };
@@ -88,9 +89,10 @@
 		05626C2E28CBB96C00AE96A4 /* DestinationsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DestinationsViewModel.swift; sourceTree = "<group>"; };
 		05626C3328CBB99200AE96A4 /* DestinationsRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DestinationsRepository.swift; sourceTree = "<group>"; };
 		05626C3628CBBBFC00AE96A4 /* DestinationDetailsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DestinationDetailsViewController.storyboard; sourceTree = "<group>"; };
-		056D758828CDE68D00A28659 /* RecentDestinationUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentDestinationUseCaseProtocol.swift; sourceTree = "<group>"; };
-		056D758A28CDE69C00A28659 /* RecentDestinationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentDestinationUseCase.swift; sourceTree = "<group>"; };
-		056D758C28CDE7E900A28659 /* RecentDestinationsUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentDestinationsUseCaseTests.swift; sourceTree = "<group>"; };
+		056D758828CDE68D00A28659 /* GetRecentDestinationUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRecentDestinationUseCaseProtocol.swift; sourceTree = "<group>"; };
+		056D758A28CDE69C00A28659 /* GetRecentDestinationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRecentDestinationUseCase.swift; sourceTree = "<group>"; };
+		056D758C28CDE7E900A28659 /* GetRecentDestinationsUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRecentDestinationsUseCaseTests.swift; sourceTree = "<group>"; };
+		05ACC0F328D06B4800C68B7B /* FetchDataRequestUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchDataRequestUseCaseTests.swift; sourceTree = "<group>"; };
 		05C3EBA928CBBD990068597C /* DestinationDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationDetailsViewModel.swift; sourceTree = "<group>"; };
 		05C3EBAB28CBBFE00068597C /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		05C3EBBC28CBD82E0068597C /* FetchDestinationDetailsUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchDestinationDetailsUseCaseProtocol.swift; sourceTree = "<group>"; };
@@ -212,8 +214,8 @@
 		056D758728CDE67200A28659 /* RecentDestinationUseCase */ = {
 			isa = PBXGroup;
 			children = (
-				056D758828CDE68D00A28659 /* RecentDestinationUseCaseProtocol.swift */,
-				056D758A28CDE69C00A28659 /* RecentDestinationUseCase.swift */,
+				056D758828CDE68D00A28659 /* GetRecentDestinationUseCaseProtocol.swift */,
+				056D758A28CDE69C00A28659 /* GetRecentDestinationUseCase.swift */,
 			);
 			path = RecentDestinationUseCase;
 			sourceTree = "<group>";
@@ -329,7 +331,8 @@
 			children = (
 				05FB539428CC7D22008C57BC /* FetchDestinationsUseCaseTests.swift */,
 				05F5FE0228CCEB0B0025D7F5 /* FetchDestinationDetailsUseCaseTests.swift */,
-				056D758C28CDE7E900A28659 /* RecentDestinationsUseCaseTests.swift */,
+				056D758C28CDE7E900A28659 /* GetRecentDestinationsUseCaseTests.swift */,
+				05ACC0F328D06B4800C68B7B /* FetchDataRequestUseCaseTests.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -583,10 +586,10 @@
 				05626C3128CBB96C00AE96A4 /* FetchDestinationsUseCase.swift in Sources */,
 				05626C2528CBB45000AE96A4 /* SectionHeaderView.swift in Sources */,
 				053E853028CF72A800278B74 /* DestinationCellViewModel.swift in Sources */,
-				056D758928CDE68D00A28659 /* RecentDestinationUseCaseProtocol.swift in Sources */,
+				056D758928CDE68D00A28659 /* GetRecentDestinationUseCaseProtocol.swift in Sources */,
 				05C3EBCD28CC026B0068597C /* RecentDestinationView.swift in Sources */,
 				053E852D28CF71BC00278B74 /* FetchDataRequestUseCaseProtocol.swift in Sources */,
-				056D758B28CDE69C00A28659 /* RecentDestinationUseCase.swift in Sources */,
+				056D758B28CDE69C00A28659 /* GetRecentDestinationUseCase.swift in Sources */,
 				E7AE6A8E26B81F4F0059FB12 /* DestinationsViewController.swift in Sources */,
 				05626C3228CBB96C00AE96A4 /* DestinationsViewModel.swift in Sources */,
 				05C3EBAA28CBBD990068597C /* DestinationDetailsViewModel.swift in Sources */,
@@ -614,9 +617,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				05F5FE0428CCF57A0025D7F5 /* MockDestinationsRepository.swift in Sources */,
-				056D758D28CDE7E900A28659 /* RecentDestinationsUseCaseTests.swift in Sources */,
+				056D758D28CDE7E900A28659 /* GetRecentDestinationsUseCaseTests.swift in Sources */,
 				05F5FE0B28CDC9B70025D7F5 /* DestinationsViewModelTests.swift in Sources */,
 				05FB538928CC72BE008C57BC /* DestinationsRepositoryTests.swift in Sources */,
+				05ACC0F428D06B4800C68B7B /* FetchDataRequestUseCaseTests.swift in Sources */,
 				05F5FE0328CCEB0B0025D7F5 /* FetchDestinationDetailsUseCaseTests.swift in Sources */,
 				05F5FE0728CDC63A0025D7F5 /* DestinationModelTests.swift in Sources */,
 				05FB539528CC7D22008C57BC /* FetchDestinationsUseCaseTests.swift in Sources */,

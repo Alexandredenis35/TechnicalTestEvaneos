@@ -2,10 +2,10 @@
 import Foundation
 import XCTest
 
-final class RecentDestinationsUseCaseTests: XCTestCase {
-    var sut: RecentDestinationUseCase!
+final class GetRecentDestinationsUseCaseTests: XCTestCase {
+    var sut: GetRecentDestinationUseCase!
     override func setUp() {
-        sut = RecentDestinationUseCase()
+        sut = GetRecentDestinationUseCase()
     }
 
     func tests_useCase_with_empty_currentRecentDestinations() {

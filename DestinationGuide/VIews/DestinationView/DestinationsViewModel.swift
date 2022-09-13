@@ -29,7 +29,7 @@ final class DestinationsViewModel: DestinationsViewModelProtocol {
 
     private let destinationsUseCase: FetchDestinationsUseCaseProtocol
     private let destinationDetailsUseCase: FetchDestinationDetailsUseCaseProtocol
-    private let recentDestinationsUseCase: RecentDestinationUseCaseProtocol
+    private let recentDestinationsUseCase: GetRecentDestinationUseCaseProtocol
     private let disposeBag: DisposeBag = .init()
 
     // MARK: Initialisation
@@ -37,7 +37,7 @@ final class DestinationsViewModel: DestinationsViewModelProtocol {
     init(
         destinationsUseCase: FetchDestinationsUseCaseProtocol,
         destinationDetailsUseCase: FetchDestinationDetailsUseCaseProtocol,
-        recentDestinationsUseCase: RecentDestinationUseCaseProtocol,
+        recentDestinationsUseCase: GetRecentDestinationUseCaseProtocol,
         coordinator: AppCoordinator?
     ) {
         self.destinationsUseCase = destinationsUseCase

@@ -74,6 +74,20 @@ final class DestinationsRepositoryTests: XCTestCase {
         XCTAssertTrue(mockedDataSource.getDestinationDetailsGotCalled)
     }
 
+    func tests_repository_with_getDataRequest_with_validURL() async {
+        let validUrlImage =
+            URL(string: "https://static1.evcdn.net/images/reduction/1027399_w-800_h-800_q-70_m-crop.jpg")!
+
+        let data = await sut.getDataRequest(url: validUrlImage)
+        XCTAssertTrue(data != nil)
+    }
+
+    func tests_repository_with_getDataRequest_with_invalidUrl() async {
+        let invalidUrlImage = URL(string: "https://")!
+        let data = await sut.getDataRequest(url: invalidUrlImage)
+        XCTAssertTrue(data == nil)
+    }
+
     override func tearDown() {
         super.tearDown()
         mockedDataSource = nil
