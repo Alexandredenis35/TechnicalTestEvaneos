@@ -65,7 +65,7 @@ final class DestinationsViewController: UIViewController {
         viewModel?.destinationsRelay
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] _ in
-                self.destinationsCollectionView.reloadData()
+                self?.destinationsCollectionView.reloadData()
             })
             .disposed(by: disposeBag)
     }
