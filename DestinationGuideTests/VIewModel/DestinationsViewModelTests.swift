@@ -1,19 +1,19 @@
+import Cuckoo
 @testable import DestinationGuide
 import Foundation
 import XCTest
-
 final class DestinationsViewModelTests: XCTestCase {
     var sut: DestinationsViewModel!
     var mockedFetchDestinationsUseCase: MockFetchDestinationUseCase!
     var mockedFetchDestinationDetailsUseCase: MockFetchDestinationDetailsUseCase!
-    var mockRecentDestinationUseCase: MockRecentDestinationsUseCase!
+    var mockRecentDestinationUseCase: MockGetRecentDestinationUseCase!
     var dummyCoordinator: CoordinatorProtocol!
 
     override func setUp() {
         super.setUp()
         mockedFetchDestinationsUseCase = MockFetchDestinationUseCase()
         mockedFetchDestinationDetailsUseCase = MockFetchDestinationDetailsUseCase()
-        mockRecentDestinationUseCase = MockRecentDestinationsUseCase()
+        mockRecentDestinationUseCase = MockGetRecentDestinationUseCase()
         dummyCoordinator = DummyCoordinator()
         sut = DestinationsViewModel(
             destinationsUseCase: mockedFetchDestinationsUseCase,
@@ -101,14 +101,14 @@ final class DummyCoordinator: CoordinatorProtocol {
     func start() {}
 }
 
-final class MockRecentDestinationsUseCase: GetRecentDestinationUseCaseProtocol {
-    var newRecentDestinations: DestinationDetails?
-    func execute(
-        newRecentDestinations: DestinationDetails,
-        currentRecentDestinations: [DestinationDetails]
-    ) -> [DestinationDetails] {
-        var destinations = currentRecentDestinations
-        destinations.append(newRecentDestinations)
-        return destinations
-    }
-}
+/// final class     : GetRecentDestinationUseCaseProtocol {
+//    var newRecentDestinations: DestinationDetails?
+//    func execute(
+//        newRecentDestinations: DestinationDetails,
+//        currentRecentDestinations: [DestinationDetails]
+//    ) -> [DestinationDetails] {
+//        var destinations = currentRecentDestinations
+//        destinations.append(newRecentDestinations)
+//        return destinations
+//    }
+// }

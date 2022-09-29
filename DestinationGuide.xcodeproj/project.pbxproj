@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0517C34828E4A8B00054169D /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 0517C34728E4A8B00054169D /* RxCocoa */; };
+		0517C34A28E4A8B00054169D /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0517C34928E4A8B00054169D /* RxSwift */; };
+		0517C35028E4AA090054169D /* Cuckoo in Frameworks */ = {isa = PBXBuildFile; productRef = 0517C34F28E4AA090054169D /* Cuckoo */; };
+		0517C35528E57EB10054169D /* GeneratedMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0517C35428E57EB10054169D /* GeneratedMocks.swift */; };
 		053E852B28CF71A600278B74 /* FetchDataRequestUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053E852A28CF71A600278B74 /* FetchDataRequestUseCase.swift */; };
 		053E852D28CF71BC00278B74 /* FetchDataRequestUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053E852C28CF71BC00278B74 /* FetchDataRequestUseCaseProtocol.swift */; };
 		053E853028CF72A800278B74 /* DestinationCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053E852F28CF72A800278B74 /* DestinationCellViewModel.swift */; };
@@ -25,8 +29,6 @@
 		056D758928CDE68D00A28659 /* GetRecentDestinationUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056D758828CDE68D00A28659 /* GetRecentDestinationUseCaseProtocol.swift */; };
 		056D758B28CDE69C00A28659 /* GetRecentDestinationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056D758A28CDE69C00A28659 /* GetRecentDestinationUseCase.swift */; };
 		056D758D28CDE7E900A28659 /* GetRecentDestinationsUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056D758C28CDE7E900A28659 /* GetRecentDestinationsUseCaseTests.swift */; };
-		056D759D28CF0F8E00A28659 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 056D759C28CF0F8E00A28659 /* RxCocoa */; };
-		056D759F28CF0F8E00A28659 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 056D759E28CF0F8E00A28659 /* RxSwift */; };
 		05ACC0F428D06B4800C68B7B /* FetchDataRequestUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05ACC0F328D06B4800C68B7B /* FetchDataRequestUseCaseTests.swift */; };
 		05C3EBAA28CBBD990068597C /* DestinationDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3EBA928CBBD990068597C /* DestinationDetailsViewModel.swift */; };
 		05C3EBAC28CBBFE00068597C /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3EBAB28CBBFE00068597C /* AppCoordinator.swift */; };
@@ -74,6 +76,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0517C35428E57EB10054169D /* GeneratedMocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratedMocks.swift; sourceTree = "<group>"; };
 		053E852A28CF71A600278B74 /* FetchDataRequestUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchDataRequestUseCase.swift; sourceTree = "<group>"; };
 		053E852C28CF71BC00278B74 /* FetchDataRequestUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchDataRequestUseCaseProtocol.swift; sourceTree = "<group>"; };
 		053E852F28CF72A800278B74 /* DestinationCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationCellViewModel.swift; sourceTree = "<group>"; };
@@ -136,8 +139,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				056D759F28CF0F8E00A28659 /* RxSwift in Frameworks */,
-				056D759D28CF0F8E00A28659 /* RxCocoa in Frameworks */,
+				0517C34A28E4A8B00054169D /* RxSwift in Frameworks */,
+				0517C34828E4A8B00054169D /* RxCocoa in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,6 +148,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0517C35028E4AA090054169D /* Cuckoo in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -411,6 +415,7 @@
 		E7AE6A9F26B81F520059FB12 /* DestinationGuideTests */ = {
 			isa = PBXGroup;
 			children = (
+				0517C35428E57EB10054169D /* GeneratedMocks.swift */,
 				05F5FE0928CDC9A10025D7F5 /* VIewModel */,
 				05F5FE0528CDC6250025D7F5 /* Model */,
 				05FB539328CC7D13008C57BC /* UseCase */,
@@ -439,8 +444,8 @@
 			);
 			name = DestinationGuide;
 			packageProductDependencies = (
-				056D759C28CF0F8E00A28659 /* RxCocoa */,
-				056D759E28CF0F8E00A28659 /* RxSwift */,
+				0517C34728E4A8B00054169D /* RxCocoa */,
+				0517C34928E4A8B00054169D /* RxSwift */,
 			);
 			productName = DestinationGuide;
 			productReference = E7AE6A8626B81F4F0059FB12 /* DestinationGuide.app */;
@@ -450,6 +455,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E7AE6AB126B81F520059FB12 /* Build configuration list for PBXNativeTarget "DestinationGuideTests" */;
 			buildPhases = (
+				0517C35128E4AA290054169D /* Cuckoo */,
 				E7AE6A9826B81F520059FB12 /* Sources */,
 				E7AE6A9926B81F520059FB12 /* Frameworks */,
 				E7AE6A9A26B81F520059FB12 /* Resources */,
@@ -460,6 +466,9 @@
 				E7AE6A9E26B81F520059FB12 /* PBXTargetDependency */,
 			);
 			name = DestinationGuideTests;
+			packageProductDependencies = (
+				0517C34F28E4AA090054169D /* Cuckoo */,
+			);
 			productName = DestinationGuideTests;
 			productReference = E7AE6A9C26B81F520059FB12 /* DestinationGuideTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -493,7 +502,8 @@
 			);
 			mainGroup = E7AE6A7D26B81F4F0059FB12;
 			packageReferences = (
-				056D759B28CF0F8E00A28659 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				0517C34628E4A8B00054169D /* XCRemoteSwiftPackageReference "RxSwift" */,
+				0517C34E28E4AA090054169D /* XCRemoteSwiftPackageReference "Cuckoo" */,
 			);
 			productRefGroup = E7AE6A8726B81F4F0059FB12 /* Products */;
 			projectDirPath = "";
@@ -535,6 +545,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0517C35128E4AA290054169D /* Cuckoo */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Cuckoo;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ $ACTION == \"indexbuild\" ]; then\n  echo \"Not running Cuckoo generator during indexing.\"\n  exit 0 \nfi\n\n# Skip for preview builds\nif [ \"${ENABLE_PREVIEWS}\" = \"YES\" ]; then\n  echo \"Not running Cuckoo generator during preview builds.\"\n  exit 0\nfi\n# Define output file. Change \"${PROJECT_DIR}/${PROJECT_NAME}Tests\" to your test's root source folder, if it's not the default name.\nOUTPUT_FILE=\"${PROJECT_DIR}/${PROJECT_NAME}Tests/GeneratedMocks.swift\"\necho \"Generated Mocks File = ${OUTPUT_FILE}\"\n\n# Define input directory. Change \"${PROJECT_DIR}/${PROJECT_NAME}\" to your project's root source folder, if it's not the default name.\nINPUT_DIR=\"${PROJECT_DIR}/${PROJECT_NAME}\"\necho \"Mocks Input Directory = ${INPUT_DIR}\"\n\n# Generate mock files, include as many input files as you'd like to create mocks for.\n\"${PROJECT_DIR}/run\" --download generate --testable \"${PROJECT_NAME}\" \\\n--output \"${OUTPUT_FILE}\" \\\n\"${INPUT_DIR}/UseCase/RecentDestinationUseCase/GetRecentDestinationUseCase.swift\" \n\n# ... and so forth, the last line should never end with a backslash\n\n# After running once, locate `GeneratedMocks.swift` and drag it into your Xcode test target group.\n";
+		};
 		05626C2728CBB79A00AE96A4 /* SwiftFormat */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -625,6 +653,7 @@
 				05F5FE0728CDC63A0025D7F5 /* DestinationModelTests.swift in Sources */,
 				05FB539528CC7D22008C57BC /* FetchDestinationsUseCaseTests.swift in Sources */,
 				05F5FE0828CDC8CF0025D7F5 /* MockFetchingService.swift in Sources */,
+				0517C35528E57EB10054169D /* GeneratedMocks.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -687,6 +716,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -748,6 +778,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -824,6 +855,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -849,6 +881,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -903,7 +936,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		056D759B28CF0F8E00A28659 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+		0517C34628E4A8B00054169D /* XCRemoteSwiftPackageReference "RxSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
 			requirement = {
@@ -911,18 +944,31 @@
 				kind = branch;
 			};
 		};
+		0517C34E28E4AA090054169D /* XCRemoteSwiftPackageReference "Cuckoo" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Brightify/Cuckoo.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		056D759C28CF0F8E00A28659 /* RxCocoa */ = {
+		0517C34728E4A8B00054169D /* RxCocoa */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 056D759B28CF0F8E00A28659 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			package = 0517C34628E4A8B00054169D /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxCocoa;
 		};
-		056D759E28CF0F8E00A28659 /* RxSwift */ = {
+		0517C34928E4A8B00054169D /* RxSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 056D759B28CF0F8E00A28659 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			package = 0517C34628E4A8B00054169D /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
+		};
+		0517C34F28E4AA090054169D /* Cuckoo */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0517C34E28E4AA090054169D /* XCRemoteSwiftPackageReference "Cuckoo" */;
+			productName = Cuckoo;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
