@@ -1,5 +1,4 @@
 @testable import DestinationGuide
-import RxSwift
 import XCTest
 
 final class DestinationsRepositoryTests: XCTestCase {

@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0517C34828E4A8B00054169D /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 0517C34728E4A8B00054169D /* RxCocoa */; };
-		0517C34A28E4A8B00054169D /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0517C34928E4A8B00054169D /* RxSwift */; };
+		0512A11E28FD4B1C003174FC /* PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0512A11D28FD4B1C003174FC /* PromiseKit */; };
 		0517C35028E4AA090054169D /* Cuckoo in Frameworks */ = {isa = PBXBuildFile; productRef = 0517C34F28E4AA090054169D /* Cuckoo */; };
 		0517C35528E57EB10054169D /* GeneratedMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0517C35428E57EB10054169D /* GeneratedMocks.swift */; };
+		0517C35728E5C85C0054169D /* UserDefaultStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0517C35628E5C85C0054169D /* UserDefaultStorageService.swift */; };
 		053E852B28CF71A600278B74 /* FetchDataRequestUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053E852A28CF71A600278B74 /* FetchDataRequestUseCase.swift */; };
 		053E852D28CF71BC00278B74 /* FetchDataRequestUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053E852C28CF71BC00278B74 /* FetchDataRequestUseCaseProtocol.swift */; };
 		053E853028CF72A800278B74 /* DestinationCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053E852F28CF72A800278B74 /* DestinationCellViewModel.swift */; };
@@ -77,6 +77,7 @@
 
 /* Begin PBXFileReference section */
 		0517C35428E57EB10054169D /* GeneratedMocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratedMocks.swift; sourceTree = "<group>"; };
+		0517C35628E5C85C0054169D /* UserDefaultStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultStorageService.swift; sourceTree = "<group>"; };
 		053E852A28CF71A600278B74 /* FetchDataRequestUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchDataRequestUseCase.swift; sourceTree = "<group>"; };
 		053E852C28CF71BC00278B74 /* FetchDataRequestUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchDataRequestUseCaseProtocol.swift; sourceTree = "<group>"; };
 		053E852F28CF72A800278B74 /* DestinationCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationCellViewModel.swift; sourceTree = "<group>"; };
@@ -139,8 +140,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0517C34A28E4A8B00054169D /* RxSwift in Frameworks */,
-				0517C34828E4A8B00054169D /* RxCocoa in Frameworks */,
+				0512A11E28FD4B1C003174FC /* PromiseKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,6 +359,7 @@
 			isa = PBXGroup;
 			children = (
 				E794201626B83C0E0032C12E /* DestinationFetchingService.swift */,
+				0517C35628E5C85C0054169D /* UserDefaultStorageService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -444,8 +445,7 @@
 			);
 			name = DestinationGuide;
 			packageProductDependencies = (
-				0517C34728E4A8B00054169D /* RxCocoa */,
-				0517C34928E4A8B00054169D /* RxSwift */,
+				0512A11D28FD4B1C003174FC /* PromiseKit */,
 			);
 			productName = DestinationGuide;
 			productReference = E7AE6A8626B81F4F0059FB12 /* DestinationGuide.app */;
@@ -502,8 +502,8 @@
 			);
 			mainGroup = E7AE6A7D26B81F4F0059FB12;
 			packageReferences = (
-				0517C34628E4A8B00054169D /* XCRemoteSwiftPackageReference "RxSwift" */,
 				0517C34E28E4AA090054169D /* XCRemoteSwiftPackageReference "Cuckoo" */,
+				0512A11C28FD4B1C003174FC /* XCRemoteSwiftPackageReference "PromiseKit" */,
 			);
 			productRefGroup = E7AE6A8726B81F4F0059FB12 /* Products */;
 			projectDirPath = "";
@@ -610,6 +610,7 @@
 				05C3EBBF28CBD8420068597C /* FetchDestinationDetailsUseCase.swift in Sources */,
 				E7878C1D26BACE2400CF1DB8 /* Styles.swift in Sources */,
 				05626C2F28CBB96C00AE96A4 /* DestinationsRepositoryProtocol.swift in Sources */,
+				0517C35728E5C85C0054169D /* UserDefaultStorageService.swift in Sources */,
 				05626C3028CBB96C00AE96A4 /* FetchDestinationsUseCaseProtocol.swift in Sources */,
 				05626C3128CBB96C00AE96A4 /* FetchDestinationsUseCase.swift in Sources */,
 				05626C2528CBB45000AE96A4 /* SectionHeaderView.swift in Sources */,
@@ -936,12 +937,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		0517C34628E4A8B00054169D /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+		0512A11C28FD4B1C003174FC /* XCRemoteSwiftPackageReference "PromiseKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			repositoryURL = "https://github.com/mxcl/PromiseKit";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
 			};
 		};
 		0517C34E28E4AA090054169D /* XCRemoteSwiftPackageReference "Cuckoo" */ = {
@@ -955,15 +956,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		0517C34728E4A8B00054169D /* RxCocoa */ = {
+		0512A11D28FD4B1C003174FC /* PromiseKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 0517C34628E4A8B00054169D /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxCocoa;
-		};
-		0517C34928E4A8B00054169D /* RxSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0517C34628E4A8B00054169D /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxSwift;
+			package = 0512A11C28FD4B1C003174FC /* XCRemoteSwiftPackageReference "PromiseKit" */;
+			productName = PromiseKit;
 		};
 		0517C34F28E4AA090054169D /* Cuckoo */ = {
 			isa = XCSwiftPackageProductDependency;

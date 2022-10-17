@@ -36,6 +36,7 @@ extension AppCoordinator: CoordinatorProtocol {
             destinationsUseCase: destinationsUseCase,
             destinationDetailsUseCase: destinationDetailUseCase,
             recentDestinationsUseCase: recentDestinationUseCase,
+            storageService: UserDefaultStorageService(),
             coordinator: self
         )
         mainVC.viewModel = viewModel
