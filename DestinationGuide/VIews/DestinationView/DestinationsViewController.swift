@@ -1,4 +1,4 @@
-import RxSwift
+import Combine
 import UIKit
 
 // MARK: - DestinationsViewController
@@ -17,7 +17,7 @@ final class DestinationsViewController: UIViewController {
 
     // MARK: Properties
 
-    private var disposeBag = DisposeBag()
+    private var disposables: Set<AnyCancellable> = []
     var viewModel: DestinationsViewModelProtocol?
 
     lazy var collectionViewLayout: UICollectionViewLayout = {
@@ -40,8 +40,8 @@ final class DestinationsViewController: UIViewController {
 
     private func setupBinding() {
         viewModel?.recentDestinationsRelay
-            .observe(on: MainScheduler.instance)
-            .subscribe(onNext: { [weak self] recentDestinations in
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] recentDestinations in
                 self?.recentDestinationsStackView.removeSubviews()
                 recentDestinations.forEach { recentDestination in
                     let recentDestinationView = RecentDestinationView()
@@ -49,25 +49,24 @@ final class DestinationsViewController: UIViewController {
                     self?.recentDestinationsStackView.addArrangedSubview(recentDestinationView)
                 }
             })
-            .disposed(by: disposeBag)
+            .store(in: &disposables)
 
         viewModel?.needToShowLoaderRelay
-            .observe(on: MainScheduler.instance)
-            .subscribe(onNext: { [weak self] needToShowLoader in
+            .sink(receiveValue: { [weak self] needToShowLoader in
                 if needToShowLoader {
                     self?.showLoader()
                 } else {
                     self?.hideLoader()
                 }
             })
-            .disposed(by: disposeBag)
+            .store(in: &disposables)
 
         viewModel?.destinationsRelay
-            .observe(on: MainScheduler.instance)
-            .subscribe(onNext: { [weak self] _ in
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] _ in
                 self?.destinationsCollectionView.reloadData()
             })
-            .disposed(by: disposeBag)
+            .store(in: &disposables)
     }
 
     private func setupCollectionView() {

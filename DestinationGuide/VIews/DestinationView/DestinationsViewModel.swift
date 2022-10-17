@@ -1,15 +1,14 @@
+import Combine
 import Foundation
-import RxRelay
-import RxSwift
 
 // MARK: - DestinationsViewModelProtocol
 protocol DestinationsViewModelProtocol: AnyObject {
     func fetchDestinations() async
     func fetchDestinationDetails(id: String) async
     func createCellViewModel(destination: Destination) -> DestinationCellViewModel
-    var recentDestinationsRelay: BehaviorRelay<[DestinationDetails]> { get }
-    var destinationsRelay: BehaviorRelay<[Destination]> { get }
-    var needToShowLoaderRelay: BehaviorRelay<Bool> { get }
+    var recentDestinationsRelay: CurrentValueSubject<[DestinationDetails], Never> { get }
+    var destinationsRelay: CurrentValueSubject<[Destination], Never> { get }
+    var needToShowLoaderRelay: CurrentValueSubject<Bool, Never> { get }
 }
 
 final class DestinationsViewModel: DestinationsViewModelProtocol {
@@ -22,15 +21,16 @@ final class DestinationsViewModel: DestinationsViewModelProtocol {
 
     // MARK: Properties
 
-    var recentDestinationsRelay: BehaviorRelay<[DestinationDetails]>
-    var destinationsRelay: BehaviorRelay<[Destination]> = .init(value: [])
-    var needToShowLoaderRelay: BehaviorRelay<Bool> = .init(value: true)
+    var recentDestinationsRelay: CurrentValueSubject<[DestinationDetails], Never>
+    var destinationsRelay: CurrentValueSubject<[Destination], Never> = .init([])
+    var needToShowLoaderRelay: CurrentValueSubject<Bool, Never> = .init(true)
+
     weak var coordinator: AppCoordinator?
 
     private let destinationsUseCase: FetchDestinationsUseCaseProtocol
     private let destinationDetailsUseCase: FetchDestinationDetailsUseCaseProtocol
     private let recentDestinationsUseCase: GetRecentDestinationUseCaseProtocol
-    private let disposeBag: DisposeBag = .init()
+    private let storageService: UserDefaultStorageServiceProtocol
 
     // MARK: Initialisation
 
@@ -38,15 +38,17 @@ final class DestinationsViewModel: DestinationsViewModelProtocol {
         destinationsUseCase: FetchDestinationsUseCaseProtocol,
         destinationDetailsUseCase: FetchDestinationDetailsUseCaseProtocol,
         recentDestinationsUseCase: GetRecentDestinationUseCaseProtocol,
+        storageService: UserDefaultStorageServiceProtocol,
         coordinator: AppCoordinator?
     ) {
         self.destinationsUseCase = destinationsUseCase
         self.destinationDetailsUseCase = destinationDetailsUseCase
         self.recentDestinationsUseCase = recentDestinationsUseCase
         self.coordinator = coordinator
-        let data = UserDefaults.standard.data(forKey: Constant.recentDestinationsKey)
+        self.storageService = storageService
+        let data = storageService.getValueFromKey(Constant.recentDestinationsKey)
         let recentDestinations: [DestinationDetails] = CodableUtils.parse(data: data)
-        recentDestinationsRelay = .init(value: recentDestinations)
+        recentDestinationsRelay = .init(recentDestinations)
         Task {
             await fetchDestinations()
         }
@@ -55,16 +57,16 @@ final class DestinationsViewModel: DestinationsViewModelProtocol {
     // MARK: Public Functions
 
     func fetchDestinations() async {
-        needToShowLoaderRelay.accept(true)
+        needToShowLoaderRelay.send(true)
         let result = await destinationsUseCase.execute()
         DispatchQueue.main.async { [weak self] in
             guard let self = self else {
                 return
             }
-            self.needToShowLoaderRelay.accept(false)
+            self.needToShowLoaderRelay.send(false)
             switch result {
             case let .success(destinations):
-                self.destinationsRelay.accept(Array(destinations))
+                self.destinationsRelay.send(Array(destinations))
             case let .failure(error):
                 self.coordinator?.showAlert(
                     alertTitle: Constant.errorTitle,
@@ -75,17 +77,17 @@ final class DestinationsViewModel: DestinationsViewModelProtocol {
     }
 
     func fetchDestinationDetails(id: String) async {
-        needToShowLoaderRelay.accept(true)
+        needToShowLoaderRelay.send(true)
         let result = await destinationDetailsUseCase.execute(destinationID: id)
         DispatchQueue.main.async { [weak self] in
             guard let self = self else {
                 return
             }
-            self.needToShowLoaderRelay.accept(false)
+            self.needToShowLoaderRelay.send(false)
             switch result {
             case let .success(destinationDetails):
                 let recentDestinations = self.getRecentDestinations(destinationDetails)
-                self.recentDestinationsRelay.accept(recentDestinations)
+                self.recentDestinationsRelay.send(recentDestinations)
                 self.coordinator?.goToDetails(name: destinationDetails.name, webViewURL: destinationDetails.url)
             case let .failure(error):
                 self.coordinator?.showAlert(
@@ -120,5 +122,6 @@ final class DestinationsViewModel: DestinationsViewModelProtocol {
     private func saveDestinationsUserDefault(destinations: [DestinationDetails]) {
         let data = CodableUtils.encode(object: destinations)
         UserDefaults.standard.set(data, forKey: Constant.recentDestinationsKey)
+        storageService.setValue(data)
     }
 }

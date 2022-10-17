@@ -19,6 +19,7 @@ final class DestinationsViewModelTests: XCTestCase {
             destinationsUseCase: mockedFetchDestinationsUseCase,
             destinationDetailsUseCase: mockedFetchDestinationDetailsUseCase,
             recentDestinationsUseCase: mockRecentDestinationUseCase,
+            storageService: UserDefaultStorageService(),
             coordinator: AppCoordinator(navigationController: UINavigationController())
         )
     }
@@ -51,12 +52,16 @@ final class DestinationsViewModelTests: XCTestCase {
             name: "Barbade",
             url: URL(string: "https://evaneos.fr/barbade")!
         )
-        mockRecentDestinationUseCase.newRecentDestinations = expectedResult
+        stub(mockRecentDestinationUseCase) { useCase in
+            when(useCase).execute(newRecentDestinations: any(), currentRecentDestinations: any()).thenReturn([])
+        }
+
         mockedFetchDestinationDetailsUseCase.executeResult = .success(expectedResult)
         let expectedId = "217"
         await sut.fetchDestinationDetails(id: expectedId)
+        verify(mockRecentDestinationUseCase, times(1))
+            .execute(newRecentDestinations: any(), currentRecentDestinations: any())
         Thread.sleep(forTimeInterval: 0.1)
-        XCTAssertTrue(sut.recentDestinationsRelay.value.contains(expectedResult))
         XCTAssertEqual(mockedFetchDestinationDetailsUseCase.executeGotCalledWith, expectedId)
     }
 
